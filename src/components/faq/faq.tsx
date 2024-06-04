@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import Marquee from 'react-fast-marquee'
+import HeroMarquee from '../HeroMarquee'
 
 export default function Faq() {
   return (
@@ -51,29 +51,7 @@ export default function Faq() {
           </Accordion>
         </div>
       </section>
-      <div>
-        <Marquee
-          className="border-y-2 border-y-black bg-white py-3 font-base sm:py-5"
-          direction="right"
-        >
-          {Array(10)
-            .fill('xd')
-            .map((x, id) => {
-              return (
-                <div className="flex items-center" key={id}>
-                  <span className="mx-10 text-xl font-heading sm:text-2xl lg:text-4xl">
-                    Neobrutalism components
-                  </span>
-                  <img
-                    className="w-[35px] sm:w-[45px]"
-                    src={'/neobrutalism-icons/star3.svg'}
-                    alt="star"
-                  />
-                </div>
-              )
-            })}
-        </Marquee>
-      </div>
+      <HeroMarquee />
     </div>
   )
 }

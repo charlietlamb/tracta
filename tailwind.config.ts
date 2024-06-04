@@ -14,11 +14,12 @@ const config: Config = {
         container: '1300px',
       },
       colors: {
-        bg: '#E0E7F1',
-        main: '#A3E636',
+        bg: '#daf5f0',
+        main: '#7fbc8c',
+        mainAccent: '#58a769',
       },
       borderRadius: {
-        base: '5px',
+        base: '0px',
       },
       boxShadow: {
         base: '4px 4px 0px 0px rgba(0,0,0,1)',

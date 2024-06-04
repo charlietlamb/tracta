@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import './globals.css'
-
-const dmSans = DM_Sans({ subsets: ['latin'] })
+import Footer from '@/components/footer/footer'
+import Nav from '@/components/nav/Nav'
+import { GeistSans } from 'geist/font/sans'
 
 export const metadata: Metadata = {
-  title: 'Neobrutalism Saas template',
+  title: 'Tracta',
 }
 
 export default function RootLayout({
@@ -15,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>{children}</body>
+      <body className={GeistSans.className}>
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

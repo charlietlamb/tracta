@@ -9,8 +9,9 @@
 }
 
 body {
-  --sb-track-color: #ffffff;
+  --sb-track-color: #ffffff00;
   --sb-thumb-color: #000000;
+  overflow: overlay;
 }
 
 body::-webkit-scrollbar {
@@ -29,4 +30,24 @@ body::-webkit-scrollbar-thumb {
   body {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
+}
+
+@screen md {
+  .dialog-content-md {
+    max-height: calc(100vh - 64px);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.body-no-margin.body-no-margin {
+  margin-right: 0 !important;
 }

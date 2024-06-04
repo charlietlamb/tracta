@@ -15,12 +15,17 @@ const buttonVariants = cva(
         noShadow: 'bg-main border-2 border-black',
         link: 'underline-offset-4 hover:underline',
         neutral: 'bg-white border-2 border-black',
+        whiteOutline:
+          'text-xl font-semibold italic text-white hover:underline underline-offset-4',
+        whiteOutlineBlack:
+          'text-xl font-black italic text-white hover:underline underline-offset-4',
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 px-3',
         lg: 'h-11 px-8 text-base',
         icon: 'h-10 w-10',
+        tight: 'h-10 p-0',
       },
     },
     defaultVariants: {
