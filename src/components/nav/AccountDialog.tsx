@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { useEffect, useState } from 'react'
-import AuthWrap from '../sign-in/AuthWrap'
+import AuthWrap from '../auth/AuthWrap'
 
 export default function AccountDialog() {
   const [isOpen, setIsOpen] = useState(false)

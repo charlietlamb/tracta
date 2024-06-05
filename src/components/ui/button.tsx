@@ -14,11 +14,14 @@ const buttonVariants = cva(
           'bg-main border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         noShadow: 'bg-main border-2 border-black',
         link: 'underline-offset-4 hover:underline',
+        linkBold: 'underline-offset-4 hover:underline font-heading',
         neutral: 'bg-white border-2 border-black',
+        base: 'bg-white border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         whiteOutline:
           'text-xl font-semibold italic text-white hover:underline underline-offset-4',
         whiteOutlineBlack:
           'text-xl font-black italic text-white hover:underline underline-offset-4',
+          sidebar: 'bg-white'
       },
       size: {
         default: 'h-10 px-4 py-2',

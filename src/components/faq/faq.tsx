@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import HeroMarquee from '../HeroMarquee'
+import HeroMarquee from '../general/hero/HeroMarquee'
 
 export default function Faq() {
   return (

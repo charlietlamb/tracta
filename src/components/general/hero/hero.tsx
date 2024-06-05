@@ -1,5 +1,9 @@
+'use client'
+
 import MovingGrid from '@/components/grid/MovingGrid'
 import { Button } from '@/components/ui/button'
+import { gen } from '@/contracts/gen'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -16,18 +20,19 @@ export default function Hero() {
         <p className="text-lg font-normal leading-relaxed md:text-xl lg:text-2xl lg:leading-relaxed">
           Create your first contract within minutes.
           <br /> Start{' '}
-          <a
-            target="_blank"
-            href="https://github.com/neobrutalism-templates/saas"
+          <Link
+            href="/create"
             className="font-heading underline"
+            variant="link"
           >
             building
-          </a>{' '}
+          </Link>{' '}
           now.
         </p>
         <Button
           size="lg"
           className="w-fit text-base font-heading md:text-lg lg:h-14 lg:text-xl"
+          onClick={() => gen()}
         >
           Get started
         </Button>
