@@ -1,0 +1,29 @@
+{
+  "title": "Contract",
+  "author": "This contract is between",
+  "date": "2024-06-07",
+  "1": {
+    "tracta": "clause",
+    "values": ["Introduction", "This is a basic clause."]
+  },
+  "1.1": {
+    "tracta": "clause",
+    "values": ["Subclause", "This is a subclause."]
+  },
+  "1.1.1": {
+    "tracta": "clause",
+    "values": ["Subsubclause", "This is a subsubclause."]
+  },
+  "2": {
+    "tracta": "clause",
+    "values": ["Second Clause", "This is the second clause."]
+  },
+  "2.1": {
+    "tracta": "clause",
+    "values": ["Second Subclause", "This is the second subclause."]
+  },
+  "3": {
+    "tracta": "clause",
+    "values": ["Third Clause", "This is the third clause."]
+  }
+}

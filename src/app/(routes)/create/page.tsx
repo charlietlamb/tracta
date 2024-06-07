@@ -1,7 +1,7 @@
-import Create from "@/components/create/Create";
+import Create from '@/components/create/Create'
+import { getTemplateJsonServer } from '@/lib/get/template/getTemplateJsonServer'
 
-export default function page() {
-  return (
-    <Create />
-  )
+export default async function page() {
+  const json = await getTemplateJsonServer('default')
+  return <Create json={json} />
 }

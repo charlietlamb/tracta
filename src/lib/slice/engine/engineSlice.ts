@@ -5,7 +5,7 @@ export interface EngineState {
 }
 
 const initialState: EngineState = {
-  engineStatus: 0,
+  engineStatus: 1,
 }
 
 const engineSlice = createSlice({

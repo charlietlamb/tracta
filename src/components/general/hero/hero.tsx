@@ -2,10 +2,11 @@
 
 import MovingGrid from '@/components/grid/MovingGrid'
 import { Button } from '@/components/ui/button'
-import { gen } from '@/contracts/gen'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Hero() {
+  const router = useRouter()
   return (
     <div
       className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden bg-white"
@@ -20,11 +21,7 @@ export default function Hero() {
         <p className="text-lg font-normal leading-relaxed md:text-xl lg:text-2xl lg:leading-relaxed">
           Create your first contract within minutes.
           <br /> Start{' '}
-          <Link
-            href="/create"
-            className="font-heading underline"
-            variant="link"
-          >
+          <Link href="/create" className="font-heading underline">
             building
           </Link>{' '}
           now.
@@ -32,7 +29,7 @@ export default function Hero() {
         <Button
           size="lg"
           className="w-fit text-base font-heading md:text-lg lg:h-14 lg:text-xl"
-          onClick={() => gen()}
+          onClick={() => router.push('/create')}
         >
           Get started
         </Button>

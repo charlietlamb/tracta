@@ -1,13 +1,13 @@
-import AccountProfileActions from "../AccountProfileActions";
-import AccountProfileMore from "./AccountProfileMore";
-import AccountProfilePicture from "./AccountProfilePicture";
+import AccountProfileActions from '../AccountProfileActions'
+import AccountProfilePicture from './AccountProfilePicture'
 
 export default function AccountProfile() {
   return (
-    <div className="flex flex-col gap-4 items-center">
-        <AccountProfilePicture />
+    <div className="relative flex flex-col items-center gap-4 overflow-hidden p-4">
+      <AccountProfilePicture />
+      <div className="flex w-full flex-col">
         <AccountProfileActions />
-        <AccountProfileMore />
+      </div>
     </div>
   )
 }

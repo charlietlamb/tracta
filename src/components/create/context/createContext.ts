@@ -1,13 +1,20 @@
-import { createContext, useContext } from 'react'
+import { Dispatch, SetStateAction, createContext, useContext } from 'react'
 import { CreateMode } from '../types/CreateMode'
 
 interface CreateContext {
-    mode: CreateMode
+  json: Contract
+  setJson: Dispatch<SetStateAction<Contract>>
+  key: string
+  setKey: Dispatch<SetStateAction<string>>
+  tracta: string | null
+  setTracta: Dispatch<SetStateAction<string | null>>
+  values: string[] | null
+  setValues: Dispatch<SetStateAction<string[] | null>>
+  title: string
+  setTitle: Dispatch<SetStateAction<string>>
 }
 
-export const CreateContext = createContext<CreateContext | undefined>(
-  undefined
-)
+export const CreateContext = createContext<CreateContext | undefined>(undefined)
 export function useCreateContext() {
   const context = useContext(CreateContext)
   if (!context) {

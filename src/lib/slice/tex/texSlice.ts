@@ -28,6 +28,7 @@ const TexSlice = createSlice({
   },
 })
 
-export const { setPdfUrl } = TexSlice.actions
+export const { setPdfUrl, setCompilerLog, setShowCompilerLog } =
+  TexSlice.actions
 
 export default TexSlice.reducer

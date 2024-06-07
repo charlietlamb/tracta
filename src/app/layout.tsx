@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils'
 import StoreProvider from '@/components/redux/StoreProvider'
 import { UserProvider } from '@/lib/slice/user/UserProvider'
 import { getUserAuth } from '@/lib/get/getUserAuth'
+import { Toaster } from '@/components/ui/sonner'
+import ReactQueryProvider from '@/components/query/ReactQueryProvider'
 
 export const metadata: Metadata = {
   title: 'Tracta',
@@ -21,13 +23,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={cn('flex min-h-screen flex-col', GeistSans.className)}>
-        <StoreProvider>
-          <UserProvider user={user}>
-            <Nav />
-            {children}
-            <Footer />
-          </UserProvider>
-        </StoreProvider>
+        <Toaster />
+        <ReactQueryProvider>
+          <StoreProvider>
+            <UserProvider user={user}>
+              <Nav />
+              {children}
+              <Footer />
+            </UserProvider>
+          </StoreProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

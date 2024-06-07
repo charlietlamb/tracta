@@ -21,11 +21,12 @@ const buttonVariants = cva(
           'text-xl font-semibold italic text-white hover:underline underline-offset-4',
         whiteOutlineBlack:
           'text-xl font-black italic text-white hover:underline underline-offset-4',
-          sidebar: 'bg-white'
+        sidebar: 'bg-white',
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 px-3',
+        xs: 'h-6 px-2',
         lg: 'h-11 px-8 text-base',
         icon: 'h-10 w-10',
         tight: 'h-10 p-0',

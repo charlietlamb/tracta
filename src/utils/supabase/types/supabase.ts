@@ -9,26 +9,59 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      components: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          key: string
+          native: boolean
+          preview_image_url: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          key: string
+          native?: boolean
+          preview_image_url: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          key?: string
+          native?: boolean
+          preview_image_url?: string
+          title?: string
+        }
+        Relationships: []
+      }
       users: {
         Row: {
           created_at: string
-          first_name: string
+          email: string
+          first_name: string | null
           id: string
-          last_name: string
+          last_name: string | null
           profile_pic_url: string | null
         }
         Insert: {
           created_at?: string
-          first_name: string
+          email: string
+          first_name?: string | null
           id?: string
-          last_name: string
+          last_name?: string | null
           profile_pic_url?: string | null
         }
         Update: {
           created_at?: string
-          first_name?: string
+          email?: string
+          first_name?: string | null
           id?: string
-          last_name?: string
+          last_name?: string | null
           profile_pic_url?: string | null
         }
         Relationships: []
