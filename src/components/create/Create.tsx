@@ -15,18 +15,12 @@ import {
   compileLatex,
   initializeLatexEngines,
 } from '@/swift-latex/latexCompilation'
-import { getTracta } from '@/lib/contract/functions/getTracta'
-import { getValues } from '@/lib/contract/functions/getValues'
 
 export default function Create({ json: jsonInit }: { json: Contract }) {
   const [json, setJson] = useState<Contract>(jsonInit)
   const [key, setKey] = useState<string>('1')
-  const [values, setValues] = useState<string[] | null>(
-    getValues(json.content, key),
-  )
-  const [tracta, setTracta] = useState<string | null>(
-    getTracta(json.content, key),
-  )
+  const [values, setValues] = useState<string[] | null>(json['1'].values)
+  const [tracta, setTracta] = useState<string | null>(json['1'].tracta)
   const [title, setTitle] = useState(values ? values[0] : 'Title')
   const dispatch = useAppDispatch()
   initializeLatexEngines(dispatch)

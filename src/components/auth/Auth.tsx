@@ -38,14 +38,14 @@ export default function Auth() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const response = await supabase.auth.signInWithPassword(values)
-      if(!!response.data.user) return router.push('/account')
+      if (!!response.data.user) return router.push('/account')
       // const res = await supabase.auth.signUp(values)
     } catch {
       const response = await supabase.auth.signUp(values)
-      if (response.error || !response.data.user){
+      if (response.error || !response.data.user) {
         setError('Invalid email or password')
-      }else{
-        if(!response.data.user.email) return setError('Invalid email')
+      } else {
+        if (!response.data.user.email) return setError('Invalid email')
         insertUser(response.data.user.id, response.data.user.email)
       }
     }
@@ -69,6 +69,7 @@ export default function Auth() {
                     <Input
                       placeholder="example@mail.com"
                       type="email"
+                      className="shadow-none"
                       {...field}
                     />
                   </FormControl>
@@ -82,7 +83,12 @@ export default function Auth() {
                 <FormItem className="w-full">
                   <FormLabel className="text-xl">Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="password" type="password" {...field} />
+                    <Input
+                      placeholder="password"
+                      type="password"
+                      className="shadow-none"
+                      {...field}
+                    />
                   </FormControl>
                 </FormItem>
               )}

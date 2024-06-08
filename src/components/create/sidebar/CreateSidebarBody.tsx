@@ -5,9 +5,8 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 
 export default function CreateSidebarBody() {
   const { json, setJson } = useCreateContext()
-  const contract = json.content
-  console.log(contract)
-
+  const { title, author, date, ...contract } = json
+  const contractArray = Object.entries(contract)
   return (
     <div>
       <DragDropContext
@@ -16,19 +15,15 @@ export default function CreateSidebarBody() {
         <Droppable droppableId="body">
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
-              {contract.map((child, index) => (
-                <Draggable
-                  draggableId={child.key}
-                  index={index}
-                  key={child.key}
-                >
+              {contractArray.map((c, index) => (
+                <Draggable draggableId={c[0]} index={index} key={c[0]}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <CreateSidebarWidget contract={child} />
+                      <CreateSidebarWidget contract={c} />
                     </div>
                   )}
                 </Draggable>

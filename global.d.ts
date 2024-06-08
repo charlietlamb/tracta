@@ -10,19 +10,14 @@ declare global {
   type Component = DB['public']['Tables']['components']['Row']
 
   interface Contract {
-    meta: Meta
-    content: Tracta[]
-  }
-
-  interface Meta {
+    [key: string]: Tracta
     title: string
-    description: string
+    author: string
     date: string
   }
+
   interface Tracta {
-    key: string
     tracta: string
     values: string[]
-    children?: Tracta[]
   }
 }
