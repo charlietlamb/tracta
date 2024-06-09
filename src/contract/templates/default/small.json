@@ -1,0 +1,25 @@
+{
+  "title": "Extended Contract",
+  "author": "This extended contract is between",
+  "date": "2024-06-07",
+  "1": {
+    "tracta": "clause",
+    "values": ["Introduction", "This is a basic clause."]
+  },
+  "1.1": {
+    "tracta": "clause",
+    "values": ["Subclause", "This is a subclause."]
+  },
+  "1.2": {
+    "tracta": "clause",
+    "values": ["Subsubclause 2", "This is a subsubclause 2."]
+  },
+  "2": {
+    "tracta": "clause",
+    "values": ["Second Clause", "This is the second clause."]
+  },
+  "3": {
+    "tracta": "clause",
+    "values": ["Third Clause", "This is the third clause."]
+  }
+}

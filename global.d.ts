@@ -9,15 +9,27 @@ declare global {
   type User = DB['public']['Tables']['users']['Row']
   type Component = DB['public']['Tables']['components']['Row']
 
-  interface Contract {
-    [key: string]: Tracta
+  type Contract = ContractMeta & ContractTree
+
+  interface ContractMeta {
     title: string
     author: string
     date: string
   }
 
+  interface ContractTree {
+    [key: string]: Tracta
+  }
+
   interface Tracta {
     tracta: string
     values: string[]
+  }
+
+  interface TractaDraggable {
+    key: string
+    tracta: string
+    values: string[]
+    children: TractaDraggable[] | null
   }
 }

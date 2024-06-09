@@ -26,9 +26,12 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/swift-latex/XeTeXEngine.js",
     "config-overrides.js",
-    "src/swift-latex/latexCompilation.js"
+    "src/swift-latex/latexCompilation.js",
+    "src/swift-latex/XeTeXEngine.js",
+    "src/swift-latex/DvipdfmxEngine.js",
+    "src/swift-latex/swiftlatexdvipdfm.js",
+    "src/swift-latex/swiftlatexxetex.js"
   ],
   "exclude": ["node_modules"]
 }

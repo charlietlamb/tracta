@@ -3,7 +3,7 @@ import CreateSidebarHeader from './CreateSidebarHeader'
 
 export default function CreateSidebar() {
   return (
-    <div className="flex h-full flex-col divide-y-2 divide-black">
+    <div className="no-scrollbar flex h-full max-h-full flex-col overflow-auto">
       <CreateSidebarHeader />
       <CreateSidebarBody />
     </div>

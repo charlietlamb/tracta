@@ -48,6 +48,10 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   //   }
   //   getLatex()
   // }, [])
+
+  useEffect(() => {
+    console.log(json)
+  }, [json])
   return (
     <CreateContext.Provider
       value={{
@@ -65,8 +69,8 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
     >
       <ResizablePanelGroup
         direction="horizontal"
-        className="flex h-full min-h-full flex-grow divide-x divide-black"
-        style={{ minHeight: 'calc(100vh - 58px)' }}
+        className="flex flex-grow divide-x divide-black"
+        style={{ height: 'calc(100vh - 58px)' }}
       >
         <ResizablePanel minSize={5} defaultSize={15} maxSize={20}>
           <CreateSidebar />
