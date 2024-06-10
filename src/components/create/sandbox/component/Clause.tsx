@@ -3,7 +3,7 @@ import { useCreateContext } from '../../context/createContext'
 import { Textarea } from '@/components/ui/textarea'
 
 export default function Clause() {
-  const { values } = useCreateContext()
+  const { values, setValues } = useCreateContext()
   if (!values) return null
   const [description, setDescription] = useState(values[1])
   return (
@@ -12,7 +12,10 @@ export default function Clause() {
       <Textarea
         placeholder="Clause content"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => {
+          setDescription(e.target.value)
+          setValues([values[0], e.target.value])
+        }}
       />
     </>
   )

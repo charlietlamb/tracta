@@ -1,10 +1,12 @@
 import { sandboxMap } from '@/lib/contract/maps/sandboxMap'
 import { useCreateContext } from '../context/createContext'
 import { Input } from '@/components/ui/input'
+import { saveJson } from '@/lib/contract/functions/saveJson'
 
 export default function CreateSandbox() {
-  const { tracta, key, title, setTitle } = useCreateContext()
-
+  const { json, setJson, tracta, key, title, setTitle, values, setValues } =
+    useCreateContext()
+  const otherValues = values?.slice(1) || []
   if (!tracta) return null
   return (
     <div className="flex h-full w-full flex-col divide-y-2 divide-black">
@@ -16,7 +18,17 @@ export default function CreateSandbox() {
         <Input
           placeholder="Clause name"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+            setTitle(e.target.value)
+            setValues([e.target.value, ...otherValues])
+            saveJson(
+              json,
+              setJson,
+              key,
+              [e.target.value, ...otherValues],
+              tracta,
+            )
+          }}
         />
         {sandboxMap.get(tracta)}
       </div>

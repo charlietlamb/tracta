@@ -1,12 +1,14 @@
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import CreateSidebarDropzone from './CreateSidebarDropzone'
 import { useCreateContext } from '../context/createContext'
-import { getTargetRank } from '@/lib/contract/functions/getTargetRank'
 import { buildNestedArrays } from '@/lib/contract/functions/buildNestedArrays'
 import { changeNestedArray } from '@/lib/contract/functions/changeNestedArray'
 import { getNewJson } from '@/lib/contract/functions/getNewJson'
 import { getTree } from '@/lib/contract/functions/getTree'
+import { changeTree } from '@/lib/contract/functions/changeTree'
+import { handleWidgetClick } from '@/lib/contract/functions/handleWidgetClick'
 
 export default function CreateSidebarWidget({
   contract,
@@ -15,7 +17,17 @@ export default function CreateSidebarWidget({
   contract: TractaDraggable
   children?: React.ReactNode
 }) {
-  const { json, setJson } = useCreateContext()
+  const {
+    json,
+    setJson,
+    key,
+    setKey,
+    setTitle,
+    tracta,
+    setTracta,
+    values,
+    setValues,
+  } = useCreateContext()
   const { title, author, date, ...contractData } = json
   const [active, setActive] = useState(false)
   const keys = Object.keys(contractData)
@@ -37,9 +49,9 @@ export default function CreateSidebarWidget({
     const { element } = getNearestIndicator(e, indicators)
 
     const dropKey = element.dataset.key || '-1'
-    const changedNestedArray = changeNestedArray(nestedArray, dragKey, dropKey)
-    console.log(changedNestedArray)
-    setJson(getNewJson(json, changedNestedArray))
+    const changedTree = changeTree(tree, dragKey, dropKey)
+    console.log(changedTree)
+    setJson(getNewJson(json, changedTree))
   }
 
   const clearHighlights = (els?: HTMLElement[]) => {
@@ -101,13 +113,32 @@ export default function CreateSidebarWidget({
     setActive(true)
   }
   return (
-    <div
-      className={cn('flex flex-col border border-black bg-bg p-2')}
+    <motion.div
+      className={cn(
+        'flex cursor-pointer flex-col border border-black bg-bg p-2',
+      )}
       draggable
+      layout
+      layoutId={contract.key}
       onDragStart={(e: any) => handleDragStart(e, contract)}
       onDrop={(e: any) => handleDragEnd(e)}
       onDragOver={(e: any) => handleDragOver(e)}
       onDragLeave={handleDragLeave}
+      onClick={(e) =>
+        handleWidgetClick(
+          e,
+          json,
+          contract,
+          key,
+          setKey,
+          setTitle,
+          tracta,
+          setTracta,
+          values,
+          setValues,
+          setJson,
+        )
+      }
     >
       <p>
         <span className={cn('font-bold', active && 'animate-pulse')}>
@@ -117,6 +148,6 @@ export default function CreateSidebarWidget({
       </p>
       <CreateSidebarDropzone contract={contract} />
       {children}
-    </div>
+    </motion.div>
   )
 }

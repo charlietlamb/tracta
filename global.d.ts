@@ -29,6 +29,8 @@ declare global {
   }
 
   interface TractaDraggable {
+    id: any
+    data: Tracta
     key: string
     tracta: string
     values: string[]

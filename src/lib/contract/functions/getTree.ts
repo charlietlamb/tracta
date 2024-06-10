@@ -49,5 +49,5 @@ export function getTree(contract: ContractTree) {
     .map((key) => createTree(contractArray, key))
     .filter(Boolean) as TractaDraggable[]
 
-  return trees
+  return trees as TractaDraggable[]
 }

@@ -1,16 +1,15 @@
+import { addToTree } from './addToTree'
 import { removeFromTree } from './removeFromTree'
 
-export function (
-  tree: TractaDraggable,
+export function changeTree (
+  tree: TractaDraggable[],
   dragKey: string,
   dropKey: string,
 ) {
   let newTree = tree
   console.log('-- CHANGING TREE --')
-  console.log(tree)
   const data = removeFromTree(dragKey, newTree)
+  addToTree(dropKey, data, newTree)
   console.log(newTree)
-  console.log(data)
-  //   addToDropIndex(dropKey, data, newTree)
   return newTree
 }
