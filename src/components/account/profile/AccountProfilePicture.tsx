@@ -2,9 +2,10 @@
 
 import { useUser } from '@/lib/slice/user/useUser'
 import Image from 'next/image'
+import { useAccountContext } from '../context/accountContext'
 
 export default function AccountProfilePicture() {
-  const user = useUser()
+  const { user } = useAccountContext()
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="relative size-16 rounded-full lg:size-24">

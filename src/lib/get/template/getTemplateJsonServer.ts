@@ -3,7 +3,7 @@ import { createClient } from '@/utils/supabase/client'
 export async function getTemplateJsonServer(key: string) {
   const supabase = createClient()
   const { data, error } = await supabase
-    .from('templates')
+    .from('contracts')
     .select()
     .eq('key', key)
     .single()

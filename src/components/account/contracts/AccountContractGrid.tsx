@@ -1,18 +1,20 @@
-import InfiniteLoader from '@/components/query/InfiniteLoader'
 import { useScroll } from '@/hooks/scroll/useScroll'
-import { getComponents } from '@/lib/query/components/getComponents'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
-import CreateComponent from './CreateComponent'
+import { useAccountContext } from '../context/accountContext'
+import { getAccountContracts } from '@/lib/get/account/contract/getAccountContracts'
+import Contract from './Contract'
 import { Input } from '@/components/ui/input'
 import InfiniteEmpty from '@/components/query/InfiniteEmpty'
+import InfiniteLoader from '@/components/query/InfiniteLoader'
 
-export default function CreateComponentGrid() {
-  const [components, setComponents] = useState<Component[]>([])
+export default function AccountContractGrid() {
+  const { user } = useAccountContext()
+  const [contracts, setComponents] = useState<Component[]>([])
   const [search, setSearch] = useState('')
   const bottom = useRef<HTMLDivElement>(null)
   const {
-    data: userPages,
+    data: contractPages,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -20,7 +22,8 @@ export default function CreateComponentGrid() {
     refetch,
   } = useInfiniteQuery({
     queryKey: ['users'],
-    queryFn: ({ pageParam = 1 }) => getComponents(pageParam, search),
+    queryFn: ({ pageParam = 1 }) =>
+      getAccountContracts(pageParam, user, search),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       if (!lastPage || lastPage.length === 0) return undefined
@@ -28,8 +31,9 @@ export default function CreateComponentGrid() {
     },
   })
   useEffect(() => {
-    if (userPages && status === 'success') setComponents(userPages.pages.flat())
-  }, [userPages])
+    if (contractPages && status === 'success')
+      setComponents(contractPages.pages.flat())
+  }, [contractPages])
 
   useEffect(() => {
     refetch()
@@ -38,16 +42,16 @@ export default function CreateComponentGrid() {
   return (
     <>
       <Input
-        placeholder="Search components"
+        placeholder="Search contracts"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-        {components.map((component: Component) => (
-          <CreateComponent key={component.id} component={component} />
+        {contracts.map((contract: Component) => (
+          <Contract key={contract.id} contract={contract} />
         ))}
       </div>
-      <InfiniteEmpty empty={components.length === 0 && search.length !== 0} />
+      <InfiniteEmpty empty={contracts.length === 0 && search.length !== 0} />
       <InfiniteLoader isFetchingNextPage={isFetchingNextPage} />
       <div ref={bottom}></div>
     </>

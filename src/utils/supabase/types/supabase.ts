@@ -14,30 +14,110 @@ export type Database = {
           created_at: string
           description: string
           id: string
+          image: string
           key: string
           native: boolean
-          preview_image_url: string
+          rank: number
           title: string
         }
         Insert: {
           created_at?: string
           description: string
           id?: string
+          image: string
           key: string
           native?: boolean
-          preview_image_url: string
+          rank: number
           title: string
         }
         Update: {
           created_at?: string
           description?: string
           id?: string
+          image?: string
           key?: string
           native?: boolean
-          preview_image_url?: string
+          rank?: number
           title?: string
         }
         Relationships: []
+      }
+      contracts: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          json: Json
+          key: string
+          template: boolean | null
+          title: string
+          user: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          id?: string
+          json: Json
+          key: string
+          template?: boolean | null
+          title?: string
+          user: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          json?: Json
+          key?: string
+          template?: boolean | null
+          title?: string
+          user?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "templates_user_fkey"
+            columns: ["user"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      saved: {
+        Row: {
+          contract: string
+          created_at: string
+          id: string
+          user: string
+        }
+        Insert: {
+          contract?: string
+          created_at?: string
+          id?: string
+          user?: string
+        }
+        Update: {
+          contract?: string
+          created_at?: string
+          id?: string
+          user?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_contract_fkey"
+            columns: ["contract"]
+            isOneToOne: false
+            referencedRelation: "contracts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "saved_user_fkey"
+            columns: ["user"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       users: {
         Row: {

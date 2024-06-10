@@ -24,7 +24,6 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [title, setTitle] = useState(values ? values[0] : 'Title')
   const dispatch = useAppDispatch()
   initializeLatexEngines(dispatch)
-  console.log(json)
   // const engine = useAppSelector((state) => state.engine)
   // useEffect(() => {
   //   async function getLatex() {

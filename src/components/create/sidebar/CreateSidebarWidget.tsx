@@ -2,8 +2,11 @@ import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import CreateSidebarDropzone from './CreateSidebarDropzone'
 import { useCreateContext } from '../context/createContext'
-import { getNextRank } from '@/lib/contract/functions/getNextRank'
 import { getTargetRank } from '@/lib/contract/functions/getTargetRank'
+import { buildNestedArrays } from '@/lib/contract/functions/buildNestedArrays'
+import { changeNestedArray } from '@/lib/contract/functions/changeNestedArray'
+import { getNewJson } from '@/lib/contract/functions/getNewJson'
+import { getTree } from '@/lib/contract/functions/getTree'
 
 export default function CreateSidebarWidget({
   contract,
@@ -15,7 +18,9 @@ export default function CreateSidebarWidget({
   const { json, setJson } = useCreateContext()
   const { title, author, date, ...contractData } = json
   const [active, setActive] = useState(false)
-
+  const keys = Object.keys(contractData)
+  const nestedArray = buildNestedArrays(keys)
+  const tree = getTree(contractData)
   const handleDragStart = (e: DragEvent, tracta: TractaDraggable) => {
     e.stopPropagation()
     if (!e.dataTransfer) return
@@ -32,22 +37,9 @@ export default function CreateSidebarWidget({
     const { element } = getNearestIndicator(e, indicators)
 
     const dropKey = element.dataset.key || '-1'
-    console.log(dragKey)
-    console.log(dropKey)
-    const keys = Object.keys(contractData)
-    let newContract: any = {
-      author,
-      date,
-      title,
-    }
-
-    for (const key of keys) {
-      let newKey = getTargetRank(key, dragKey, dropKey)
-      let keyTracta = contractData[key]
-      let newObject = { ...keyTracta, key: newKey }
-      newContract[newKey] = keyTracta
-    }
-    console.log(newContract)
+    const changedNestedArray = changeNestedArray(nestedArray, dragKey, dropKey)
+    console.log(changedNestedArray)
+    setJson(getNewJson(json, changedNestedArray))
   }
 
   const clearHighlights = (els?: HTMLElement[]) => {
