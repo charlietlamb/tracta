@@ -16,7 +16,7 @@ export default function Community() {
       <MovingGrid />
       <div className="relative z-10 mx-auto w-container max-w-full px-5 py-20 lg:py-[100px]">
         <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
-          Loved by the community
+          Loved by our community
         </h2>
         <div className="grid grid-cols-3 gap-4 lg:gap-8 w900:grid-cols-1 w900:gap-0">
           {[

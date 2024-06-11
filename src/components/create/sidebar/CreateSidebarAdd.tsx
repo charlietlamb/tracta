@@ -10,12 +10,13 @@ import { useScrollbar } from '@/hooks/dialog/useScrollbar'
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
 import CreateComponentGrid from '../component/CreateComponentGrid'
+import { useCreateContext } from '../context/createContext'
 
 export default function CreateSidebarAdd() {
-  const [open, setOpen] = useState(false)
-  useScrollbar(open)
+  const { addOpen, setAddOpen } = useCreateContext()
+  useScrollbar(addOpen)
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={addOpen} onOpenChange={setAddOpen}>
       <DialogTrigger asChild>
         <Button size="xs">
           <Plus className="size-4" />

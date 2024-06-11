@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import HeroMarquee from '../general/hero/HeroMarquee'
+import { faq } from '@/lib/data/faq/faq'
 
 export default function Faq() {
   return (
@@ -16,38 +17,12 @@ export default function Faq() {
 
         <div className="mx-auto grid w-[700px] max-w-full px-5">
           <Accordion className="text-base sm:text-lg" type="single" collapsible>
-            <AccordionItem className="mb-2" value="item-1">
-              <AccordionTrigger>Lorem ipsum dolor sit amet</AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Accusantium suscipit sed nihil fuga sapiente facere dolore
-                corrupti labore illum reiciendis?
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem className="mb-2" value="item-2">
-              <AccordionTrigger>Lorem ipsum dolor sit amet</AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Accusantium suscipit sed nihil fuga sapiente facere dolore
-                corrupti labore illum reiciendis?
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem className="mb-2" value="item-3">
-              <AccordionTrigger>Lorem ipsum dolor sit amet</AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Accusantium suscipit sed nihil fuga sapiente facere dolore
-                corrupti labore illum reiciendis?
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>Lorem ipsum dolor sit amet</AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Accusantium suscipit sed nihil fuga sapiente facere dolore
-                corrupti labore illum reiciendis?
-              </AccordionContent>
-            </AccordionItem>
+            {faq.map((f, i) => (
+              <AccordionItem className="mb-2" value={`item-${i}`}>
+                <AccordionTrigger>{f.question}</AccordionTrigger>
+                <AccordionContent>{f.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
         </div>
       </section>

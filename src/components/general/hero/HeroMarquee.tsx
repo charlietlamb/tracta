@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Marquee from 'react-fast-marquee'
 
 export default function HeroMarquee() {
@@ -12,12 +13,14 @@ export default function HeroMarquee() {
           return (
             <div className="flex items-center" key={id}>
               <span className="mx-10 text-xl font-heading sm:text-2xl lg:text-4xl">
-                Neobrutalism components
+                Create your first contract today for free.
               </span>
-              <img
+              <Image
                 className="w-[35px] sm:w-[45px]"
                 src={'/neobrutalism-icons/star3.svg'}
                 alt="star"
+                width={45}
+                height={45}
               />
             </div>
           )

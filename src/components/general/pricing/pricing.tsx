@@ -3,7 +3,7 @@ import PricingPlan from './pricing-plan'
 
 export default function Pricing() {
   return (
-    <section className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden border-b-2 border-b-black bg-white font-base">
+    <section className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden bg-white font-base">
       <MovingGrid />
       <div className="relative z-10 mx-auto w-container max-w-full px-5 py-20 lg:py-[100px]">
         <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
@@ -11,41 +11,27 @@ export default function Pricing() {
         </h2>
         <div className="grid grid-cols-3 gap-8 w900:mx-auto w900:w-2/3 w900:grid-cols-1 w500:w-full">
           <PricingPlan
-            planName="Basic"
-            description="Lorem ipsum dolor sit amet"
-            price="10"
+            planName="Free"
+            description="Let's get started."
+            price="0"
             perks={[
-              '5 products',
-              'Up to 1,000 subscribers',
-              'Basic analytics',
+              '5 Contracts At One Time',
+              'Community Templates',
               '48-hour support response time',
             ]}
           />
           <PricingPlan
-            planName="Essential"
-            description="Lorem ipsum dolor sit amet"
-            price="25"
-            perks={[
-              '25 products',
-              'Up to 10,000 subscribers',
-              'Advanced analytics',
-              '24-hour support response time',
-              'Marketing automations',
-            ]}
+            planName="Basic"
+            description="Essential for professionals."
+            price="10"
+            perks={['50 Projects', 'Remove Watermark', 'Share Templates']}
             mostPopular
           />
           <PricingPlan
-            planName="Growth"
-            description="Lorem ipsum dolor sit amet"
+            planName="Enterprise"
+            description="For businesses that need more."
             price="50"
-            perks={[
-              'Unlimited products',
-              'Unlimited subscribers',
-              'Advanced analytics',
-              '1-hour, dedicated support response time',
-              'Marketing automations',
-              'Custom reporting tools',
-            ]}
+            perks={['Export LaTeX', 'Advanced Analytics', 'Custom Branding']}
           />
         </div>
       </div>

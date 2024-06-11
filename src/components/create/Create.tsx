@@ -19,9 +19,11 @@ import {
 export default function Create({ json: jsonInit }: { json: Contract }) {
   const [json, setJson] = useState<Contract>(jsonInit)
   const [key, setKey] = useState<string>('1')
+  const [newKey, setNewKey] = useState<string>('-1')
   const [values, setValues] = useState<string[] | null>(json['1'].values)
   const [tracta, setTracta] = useState<string | null>(json['1'].tracta)
   const [title, setTitle] = useState(values ? values[0] : 'Title')
+  const [addOpen, setAddOpen] = useState(false)
   const dispatch = useAppDispatch()
   initializeLatexEngines(dispatch)
   // const engine = useAppSelector((state) => state.engine)
@@ -58,12 +60,16 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setJson,
         key,
         setKey,
+        newKey,
+        setNewKey,
         tracta,
         setTracta,
         values,
         setValues,
         title,
         setTitle,
+        addOpen,
+        setAddOpen,
       }}
     >
       <ResizablePanelGroup

@@ -8,6 +8,7 @@ export default function CreateSandbox() {
     useCreateContext()
   const otherValues = values?.slice(1) || []
   if (!tracta) return null
+  console.log(tracta)
   return (
     <div className="flex h-full w-full flex-col divide-y-2 divide-black">
       <h4 className="w-full bg-bg p-4 py-2 text-2xl font-heading">

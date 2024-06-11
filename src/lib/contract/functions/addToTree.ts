@@ -7,6 +7,12 @@ export function addToTree(
     return
   }
 
+  if (dropKey === '-1') {
+    tree.unshift(data)
+    return
+  }
+
+  console.log('dropKey', dropKey)
   const keys = dropKey.split('.')
   const indices = keys.map((key) => parseInt(key) - 1)
   let currentNode: TractaDraggable[] | null = tree
@@ -16,10 +22,15 @@ export function addToTree(
     if (currentNode) {
       if (i === indices.length - 1) {
         if (currentNode[index]) {
-          currentNode[index].children ? currentNode[index].children.splice(index, 0, data) : currentNode[index].children = [data]
+          currentNode[index].children
+            ? currentNode[index].children.splice(index, 0, data)
+            : (currentNode[index].children = [data])
         }
       } else {
-        currentNode = currentNode[index] && currentNode[index].children ? currentNode[index].children : []
+        currentNode =
+          currentNode[index] && currentNode[index].children
+            ? currentNode[index].children
+            : []
       }
     } else {
       break

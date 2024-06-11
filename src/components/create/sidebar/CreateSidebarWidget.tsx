@@ -3,8 +3,6 @@ import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import CreateSidebarDropzone from './CreateSidebarDropzone'
 import { useCreateContext } from '../context/createContext'
-import { buildNestedArrays } from '@/lib/contract/functions/buildNestedArrays'
-import { changeNestedArray } from '@/lib/contract/functions/changeNestedArray'
 import { getNewJson } from '@/lib/contract/functions/getNewJson'
 import { getTree } from '@/lib/contract/functions/getTree'
 import { changeTree } from '@/lib/contract/functions/changeTree'
@@ -30,8 +28,6 @@ export default function CreateSidebarWidget({
   } = useCreateContext()
   const { title, author, date, ...contractData } = json
   const [active, setActive] = useState(false)
-  const keys = Object.keys(contractData)
-  const nestedArray = buildNestedArrays(keys)
   const tree = getTree(contractData)
   const handleDragStart = (e: DragEvent, tracta: TractaDraggable) => {
     e.stopPropagation()
@@ -50,7 +46,6 @@ export default function CreateSidebarWidget({
 
     const dropKey = element.dataset.key || '-1'
     const changedTree = changeTree(tree, dragKey, dropKey)
-    console.log(changedTree)
     setJson(getNewJson(json, changedTree))
   }
 

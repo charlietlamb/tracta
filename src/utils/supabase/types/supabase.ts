@@ -19,6 +19,7 @@ export type Database = {
           native: boolean
           rank: number
           title: string
+          values: string[]
         }
         Insert: {
           created_at?: string
@@ -29,6 +30,7 @@ export type Database = {
           native?: boolean
           rank: number
           title: string
+          values?: string[]
         }
         Update: {
           created_at?: string
@@ -39,6 +41,7 @@ export type Database = {
           native?: boolean
           rank?: number
           title?: string
+          values?: string[]
         }
         Relationships: []
       }

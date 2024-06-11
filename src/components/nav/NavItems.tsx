@@ -10,10 +10,7 @@ export default async function NavItems() {
   } = await supabase.auth.getUser()
   return (
     <div className="flex items-center gap-4">
-      <NavLink href="/">Features</NavLink>
-      <NavLink href="/">Features</NavLink>
-      <NavLink href="/">Features</NavLink>
-      <NavLink href="/">Features</NavLink>
+      <NavLink href="/templates">Templates</NavLink>
       {!!user ? <AccountButton /> : <AccountDialog />}
     </div>
   )

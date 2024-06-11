@@ -6,12 +6,16 @@ interface CreateContext {
   setJson: Dispatch<SetStateAction<Contract>>
   key: string
   setKey: Dispatch<SetStateAction<string>>
+  newKey: string
+  setNewKey: Dispatch<SetStateAction<string>>
   tracta: string | null
   setTracta: Dispatch<SetStateAction<string | null>>
   values: string[] | null
   setValues: Dispatch<SetStateAction<string[] | null>>
   title: string
   setTitle: Dispatch<SetStateAction<string>>
+  addOpen: boolean
+  setAddOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const CreateContext = createContext<CreateContext | undefined>(undefined)

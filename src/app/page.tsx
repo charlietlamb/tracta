@@ -1,18 +1,5 @@
-import Faq from '@/components/faq/faq'
-import Footer from '@/components/footer/footer'
-import Community from '@/components/general/community/community'
-import Features from '@/components/general/features/features'
-import Hero from '@/components/general/hero/hero'
-import Pricing from '@/components/general/pricing/pricing'
+import Home from '@/components/general/Home'
 
-export default function Home() {
-  return (
-    <>
-      <Hero />
-      <Features />
-      <Community />
-      <Faq />
-      <Pricing />
-    </>
-  )
+export default function page() {
+  return <Home />
 }
