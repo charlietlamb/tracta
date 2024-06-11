@@ -1,3 +1,5 @@
+import { addToEnd } from './addToEnd'
+
 export function addToTree(
   dropKey: string,
   data: TractaDraggable | null,
@@ -6,13 +8,15 @@ export function addToTree(
   if (!data) {
     return
   }
-
   if (dropKey === '-1') {
     tree.unshift(data)
     return
   }
 
-  console.log('dropKey', dropKey)
+  if (dropKey === '0') {
+    addToEnd(tree, data)
+    return
+  }
   const keys = dropKey.split('.')
   const indices = keys.map((key) => parseInt(key) - 1)
   let currentNode: TractaDraggable[] | null = tree

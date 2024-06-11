@@ -75,7 +75,7 @@ export default function Table() {
                   <Textarea
                     value={item}
                     onChange={(e) => handleCellChange(0, index, e.target.value)}
-                    className="border-none bg-transparent p-0 font-medium text-white shadow-none"
+                    className="min-h-[60px] border-none bg-transparent p-0 font-medium text-white shadow-none"
                   />
                 </TableHead>
               ))}
@@ -83,7 +83,13 @@ export default function Table() {
           </TableHeader>
           <TableBody>
             {dataArray.map((data: string[], rowIndex: number) => (
-              <TableRow key={rowIndex} className="divide-x divide-black bg-bg">
+              <TableRow
+                key={rowIndex}
+                className={cn(
+                  'divide-x divide-black bg-bg',
+                  rowIndex % 2 !== 0 && 'bg-white',
+                )}
+              >
                 {data.map((d: string, cellIndex: number) => (
                   <TableCell key={cellIndex} className="p-2">
                     <Textarea
@@ -95,7 +101,7 @@ export default function Table() {
                           e.target.value,
                         )
                       }
-                      className="border-none bg-transparent p-0 shadow-none"
+                      className="min-h-[60px] border-none bg-transparent p-0 shadow-none"
                     />
                   </TableCell>
                 ))}

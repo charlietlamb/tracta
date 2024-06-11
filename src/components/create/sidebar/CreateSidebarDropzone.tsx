@@ -1,13 +1,17 @@
 export default function CreateSidebarDropzone({
   contract,
+  under = false,
 }: {
   contract: TractaDraggable | null
+  under?: boolean
 }) {
   return (
     <div
-      data-key={contract ? contract.key : '-1'}
+      data-key={
+        under && contract ? 'u:' + contract.key : contract ? contract.key : '-1'
+      }
       data-indicator
-      className="my-0.5 h-0.5 w-full bg-violet-400 opacity-0"
+      className="h-0.5 w-full bg-violet-400 opacity-0"
     />
   )
 }

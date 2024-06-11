@@ -10,11 +10,11 @@ export default function CreateSandbox() {
   if (!tracta) return null
   console.log(tracta)
   return (
-    <div className="flex h-full w-full flex-col divide-y-2 divide-black">
+    <div className="flex h-full w-full flex-col divide-y-2 divide-black ">
       <h4 className="w-full bg-bg p-4 py-2 text-2xl font-heading">
         {key}. {title}
       </h4>
-      <div className="flex flex-col p-4">
+      <div className="no-scrollbar flex flex-col overflow-y-auto p-4">
         <h5 className="text-lg font-heading">Title</h5>
         <Input
           placeholder="Clause name"

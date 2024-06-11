@@ -18,6 +18,7 @@ export default function CreateSidebarDrag({
                 <CreateSidebarDrag contractArray={c.children} />
               ) : null}
             </CreateSidebarWidget>
+            <CreateSidebarDropzone contract={c} under />
           </React.Fragment>
         )
       })}
