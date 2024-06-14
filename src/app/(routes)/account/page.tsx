@@ -10,6 +10,5 @@ export default async function page() {
     data: { user },
   } = await supabase.auth.getUser()
   if (!user) redirect('/')
-  const userData = getUserAuth()
-  return <Account userInit={userData} />
+  return <Account userId={user.id} />
 }

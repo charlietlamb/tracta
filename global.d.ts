@@ -17,6 +17,8 @@ declare global {
     title: string
     author: string
     date: string
+    variables: { [key: string]: string }
+    settings: { title: string; template: boolean }
   }
 
   interface ContractTree {
@@ -29,8 +31,6 @@ declare global {
   }
 
   interface TractaDraggable {
-    id: any
-    data: Tracta
     key: string
     tracta: string
     values: string[]

@@ -14,9 +14,10 @@ export function handleWidgetClick(
   setValues: Dispatch<SetStateAction<string[] | null>>,
   setJson: Dispatch<SetStateAction<Contract>>,
 ) {
+  console.log('handleWidgetClick')
+  console.log(json)
   e.stopPropagation()
   saveJson(json, setJson, key, values, tracta)
-  console.log(contract.values)
   setKey(contract.key)
   setValues(contract.values)
   setTracta(contract.tracta)

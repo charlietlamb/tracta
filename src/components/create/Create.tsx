@@ -24,6 +24,9 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [tracta, setTracta] = useState<string | null>(json['1'].tracta)
   const [title, setTitle] = useState(values ? values[0] : 'Title')
   const [addOpen, setAddOpen] = useState(false)
+  const [varOpen, setVarOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [sidebarSelected, setSidebarSelected] = useState<string | null>(null)
   const dispatch = useAppDispatch()
   initializeLatexEngines(dispatch)
   // const engine = useAppSelector((state) => state.engine)
@@ -70,6 +73,12 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setTitle,
         addOpen,
         setAddOpen,
+        varOpen,
+        setVarOpen,
+        settingsOpen,
+        setSettingsOpen,
+        sidebarSelected,
+        setSidebarSelected,
       }}
     >
       <ResizablePanelGroup

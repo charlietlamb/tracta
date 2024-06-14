@@ -19,7 +19,7 @@ export default function CreateComponentGrid() {
     status,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ['users'],
+    queryKey: ['components'],
     queryFn: ({ pageParam = 1 }) => getComponents(pageParam, search),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

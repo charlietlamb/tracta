@@ -8,9 +8,12 @@ export async function getAccountContracts(
   const supabase = createClient()
   const startIndex = (pageParam - 1) * 16
   const endIndex = startIndex + 16
-  let query = supabase.from('contracts').select()
+  let query = supabase.from('contracts').select('*,user(*)')
   query = query.eq('user', user.id)
-  if (search !== '') query = query.ilike('title', `%${search}%`)
+  if (search !== '')
+    query = query.or(
+      `title.ilike.%${search}%,description.ilike.%${search}%,tags.ilike.%${search}%`,
+    )
   query = query.range(startIndex, endIndex)
   const { data, error } = await query
   if (error) throw error

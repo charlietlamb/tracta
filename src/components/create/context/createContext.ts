@@ -16,6 +16,12 @@ interface CreateContext {
   setTitle: Dispatch<SetStateAction<string>>
   addOpen: boolean
   setAddOpen: Dispatch<SetStateAction<boolean>>
+  varOpen: boolean
+  setVarOpen: Dispatch<SetStateAction<boolean>>
+  settingsOpen: boolean
+  setSettingsOpen: Dispatch<SetStateAction<boolean>>
+  sidebarSelected: string | null
+  setSidebarSelected: Dispatch<SetStateAction<string | null>>
 }
 
 export const CreateContext = createContext<CreateContext | undefined>(undefined)

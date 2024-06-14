@@ -1,9 +1,9 @@
 let newContractData: any = {}
 export function getNewJson(json: Contract, tree: TractaDraggable[]) {
   newContractData = {}
-  const { title, author, date, ...contractData } = json
+  const { title, author, variables, date, settings } = json
   navigateTree(tree, [])
-  return { title, author, date, ...newContractData }
+  return { title, author, variables, date, settings, ...newContractData }
 }
 
 function navigateTree(tree: TractaDraggable[], indexArray: number[]) {

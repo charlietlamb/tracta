@@ -68,7 +68,7 @@ export default function Table() {
                 <TableHead
                   key={index}
                   className={cn(
-                    'p-2',
+                    'p-2 align-top',
                     index === headers.length - 1 && 'border-r border-black',
                   )}
                 >
@@ -91,7 +91,7 @@ export default function Table() {
                 )}
               >
                 {data.map((d: string, cellIndex: number) => (
-                  <TableCell key={cellIndex} className="p-2">
+                  <TableCell key={cellIndex} className="p-2 align-top">
                     <Textarea
                       value={d}
                       onChange={(e) =>
@@ -101,7 +101,7 @@ export default function Table() {
                           e.target.value,
                         )
                       }
-                      className="min-h-[60px] border-none bg-transparent p-0 shadow-none"
+                      className="h-full min-h-[60px] border-none bg-transparent p-0 shadow-none"
                     />
                   </TableCell>
                 ))}

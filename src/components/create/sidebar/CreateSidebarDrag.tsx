@@ -1,27 +1,26 @@
 import React from 'react'
 import CreateSidebarWidget from './CreateSidebarWidget'
-import CreateSidebarDropzone from './CreateSidebarDropzone'
+import { Accordion } from '@/components/ui/accordion'
 
 export default function CreateSidebarDrag({
-  contractArray,
+  contractTree,
 }: {
-  contractArray: TractaDraggable[]
+  contractTree: TractaDraggable[]
 }) {
+  console.log(contractTree)
   return (
-    <>
-      {contractArray.map((c) => {
+    <Accordion type="multiple" className="w-full">
+      {contractTree.map((c) => {
         return (
           <React.Fragment key={c.key}>
-            <CreateSidebarDropzone contract={c} />
             <CreateSidebarWidget contract={c}>
               {c.children ? (
-                <CreateSidebarDrag contractArray={c.children} />
+                <CreateSidebarDrag contractTree={c.children} />
               ) : null}
             </CreateSidebarWidget>
-            <CreateSidebarDropzone contract={c} under />
           </React.Fragment>
         )
       })}
-    </>
+    </Accordion>
   )
 }

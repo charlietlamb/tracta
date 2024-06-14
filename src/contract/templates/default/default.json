@@ -2,6 +2,18 @@
   "title": "Extended Contract",
   "author": "This extended contract is between",
   "date": "2024-06-07",
+  "variables": {
+    "party1": "Party 1",
+    "party2": "Party 2",
+    "party1_address": "123 Main St, Anytown, USA",
+    "party2_address": "456 Elm St, Othertown, USA",
+    "party1_phone": "555-123-4567",
+    "party2_phone": "555-987-6543"
+  },
+  "settings": {
+    "title": "Extended Contract",
+    "template": false
+  },
   "1": {
     "tracta": "clause",
     "values": ["Introduction", "This is a basic clause."]

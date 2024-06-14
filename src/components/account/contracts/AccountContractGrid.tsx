@@ -21,7 +21,7 @@ export default function AccountContractGrid() {
     status,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ['users'],
+    queryKey: ['accountContract'],
     queryFn: ({ pageParam = 1 }) =>
       getAccountContracts(pageParam, user, search),
     initialPageParam: 1,

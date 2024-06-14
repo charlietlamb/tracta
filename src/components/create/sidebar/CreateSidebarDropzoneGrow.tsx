@@ -5,8 +5,8 @@ import { useCreateContext } from '../context/createContext'
 import { getTree } from '@/lib/contract/functions/getTree'
 
 export default function CreateSidebarDropzoneGrow() {
-  const { json, setJson } = useCreateContext()
-  const { title, author, date, ...contractData } = json
+  const { json, setJson, setSidebarSelected, key, setKey } = useCreateContext()
+  const { title, author, date, variables, settings, ...contractData } = json
   const [active, setActive] = useState(false)
   const tree = getTree(contractData)
 
@@ -20,11 +20,14 @@ export default function CreateSidebarDropzoneGrow() {
         e.preventDefault()
         setActive(false)
       }}
-      onDrop={(e: any) => handleDragEnd(e, tree, json, setJson, true)}
+      onDrop={(e: any) =>
+        handleDragEnd(e, tree, json, setJson, key, setKey, true)
+      }
       className={cn(
-        'min-h-0.5 flex-grow bg-violet-400',
+        'min-h-16 flex-grow bg-violet-400',
         active && 'animate-pulse',
       )}
+      onClick={() => setSidebarSelected(null)}
     />
   )
 }

@@ -11,6 +11,7 @@ export default async function NavItems() {
   return (
     <div className="flex items-center gap-4">
       <NavLink href="/templates">Templates</NavLink>
+      <NavLink href="/create">Create</NavLink>
       {!!user ? <AccountButton /> : <AccountDialog />}
     </div>
   )

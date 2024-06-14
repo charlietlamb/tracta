@@ -22,6 +22,8 @@ const buttonVariants = cva(
         whiteOutlineBlack:
           'text-xl font-black italic text-white hover:underline underline-offset-4',
         sidebar: 'bg-white',
+        danger:
+          'bg-red-200 hover:bg-red-400  border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
       },
       size: {
         default: 'h-10 px-4 py-2',

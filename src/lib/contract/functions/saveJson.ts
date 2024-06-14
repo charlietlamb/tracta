@@ -7,8 +7,6 @@ export function saveJson(
   values: string[] | null,
   tracta: string | null,
 ) {
-  console.log(key)
-  console.log(values)
   json[key] = { tracta: tracta || '', values: values || [] }
   setJson(json)
 }
