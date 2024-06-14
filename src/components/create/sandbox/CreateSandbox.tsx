@@ -2,7 +2,8 @@ import { sandboxMap } from '@/lib/contract/maps/sandboxMap'
 import { useCreateContext } from '../context/createContext'
 import { Input } from '@/components/ui/input'
 import { saveJson } from '@/lib/contract/functions/saveJson'
-import TiptapEditor from './TiptapEditor'
+import Editor from '@monaco-editor/react'
+import TractaEditor from './editor/TractaEditor'
 
 export default function CreateSandbox() {
   const {
@@ -28,22 +29,16 @@ export default function CreateSandbox() {
       </h4>
       <div className="no-scrollbar flex flex-col overflow-y-auto p-4">
         <h5 className="text-lg font-heading">Title</h5>
-        <TiptapEditor content={title} setContent={setTitle} />
-        <Input
-          placeholder="Clause name"
+        <TractaEditor
           value={title}
           onChange={(e) => {
-            setTitle(e.target.value)
-            setValues([e.target.value, ...otherValues])
-            saveJson(
-              json,
-              setJson,
-              key,
-              [e.target.value, ...otherValues],
-              tracta,
-            )
+            if (!e) return
+            setTitle(e)
+            setValues([e, ...otherValues])
+            saveJson(json, setJson, key, [e, ...otherValues], tracta)
           }}
         />
+
         {sandboxMap.get(tracta)}
       </div>
     </div>
