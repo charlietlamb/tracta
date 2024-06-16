@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './slice/user/userSlice'
 import texReducer from './slice/tex/texSlice'
 import engineReducer from './slice/engine/engineSlice'
+import authReducer from './slice/auth/authSlice'
 
 export const makeStore = () => {
   return configureStore({
@@ -9,6 +10,7 @@ export const makeStore = () => {
       user: userReducer,
       tex: texReducer,
       engine: engineReducer,
+      auth: authReducer,
     },
   })
 }

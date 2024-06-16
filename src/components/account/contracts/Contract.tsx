@@ -4,14 +4,17 @@ import { useUser } from '@/lib/slice/user/useUser'
 import { Bookmark, Dot } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { handleContractSavedClick } from './functions/handleContractSavedClick'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import ContractUser from './ContractUser'
+import { useAppDispatch } from '@/lib/hooks'
+import { setOpen } from '@/lib/slice/auth/authSlice'
 
 export default function Contract({ contract }: { contract: ContractData }) {
   const [saved, setSaved] = useState(false)
   const [loading, setLoading] = useState(false)
   const user = useUser()
   const router = useRouter()
+  const dispatch = useAppDispatch()
   useEffect(() => {
     async function getContactSaved() {
       if (user) setSaved(await getContractSaved(user, contract))
@@ -32,13 +35,15 @@ export default function Contract({ contract }: { contract: ContractData }) {
         <Button
           onClick={(e) => {
             e.stopPropagation()
-            handleContractSavedClick(
-              user,
-              contract,
-              saved,
-              setSaved,
-              setLoading,
-            )
+            user
+              ? handleContractSavedClick(
+                  user,
+                  contract,
+                  saved,
+                  setSaved,
+                  setLoading,
+                )
+              : dispatch(setOpen(true))
           }}
           disabled={loading}
         >

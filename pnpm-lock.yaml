@@ -122,6 +122,12 @@ importers:
       mammoth:
         specifier: ^1.7.2
         version: 1.7.2
+      monaco-editor:
+        specifier: ^0.49.0
+        version: 0.49.0
+      monaco-types:
+        specifier: ^0.1.0
+        version: 0.1.0
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5)
@@ -3172,6 +3178,9 @@ packages:
 
   monaco-editor@0.49.0:
     resolution: {integrity: sha512-2I8/T3X/hLxB2oPHgqcNYUVdA/ZEFShT7IAujifIPMfKkNbLOqY8XCoyHCXrsdjb36dW9MwoTwBCFpXKMwNwaQ==}
+
+  monaco-types@0.1.0:
+    resolution: {integrity: sha512-aWK7SN9hAqNYi0WosPoMjenMeXJjwCxDibOqWffyQ/qXdzB/86xshGQobRferfmNz7BSNQ8GB0MD0oby9/5fTQ==}
 
   ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -7884,6 +7893,8 @@ snapshots:
     optional: true
 
   monaco-editor@0.49.0: {}
+
+  monaco-types@0.1.0: {}
 
   ms@2.1.2: {}
 

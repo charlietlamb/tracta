@@ -9,6 +9,7 @@ import { UserProvider } from '@/lib/slice/user/UserProvider'
 import { getUserAuth } from '@/lib/get/getUserAuth'
 import { Toaster } from '@/components/ui/sonner'
 import ReactQueryProvider from '@/components/query/ReactQueryProvider'
+import { AuthProvider } from '@/lib/slice/auth/AuthProvider'
 
 export const metadata: Metadata = {
   title: 'Tracta',
@@ -27,9 +28,11 @@ export default async function RootLayout({
         <ReactQueryProvider>
           <StoreProvider>
             <UserProvider user={user}>
-              <Nav />
-              {children}
-              <Footer />
+              <AuthProvider>
+                <Nav />
+                {children}
+                <Footer />
+              </AuthProvider>
             </UserProvider>
           </StoreProvider>
         </ReactQueryProvider>

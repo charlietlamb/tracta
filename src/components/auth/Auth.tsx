@@ -18,10 +18,17 @@ import AuthHeading from './AuthHeading'
 import { createClient } from '@/utils/supabase/client'
 import { useState } from 'react'
 import { insertUser } from '@/lib/insert/insertUser'
+import { checkEmail } from '@/lib/check/email/checkEmail'
 
 const formSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z
+    .string()
+    .min(8)
+    .refine((password) => /[\W]/.test(password), {
+      message:
+        'Password must include a special character and at least 8 characters.',
+    }),
 })
 
 export default function Auth() {
@@ -36,14 +43,13 @@ export default function Auth() {
     },
   })
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
+    if (await checkEmail(values.email)) {
       const response = await supabase.auth.signInWithPassword(values)
       if (!!response.data.user) return router.push('/account')
-      // const res = await supabase.auth.signUp(values)
-    } catch {
+    } else {
       const response = await supabase.auth.signUp(values)
       if (response.error || !response.data.user) {
-        setError('Invalid email or password')
+        setError(response.error?.message || JSON.stringify(response.error))
       } else {
         if (!response.data.user.email) return setError('Invalid email')
         insertUser(response.data.user.id, response.data.user.email)

@@ -1,5 +1,5 @@
-import React from 'react'
-import Editor from '@monaco-editor/react'
+import React, { useEffect } from 'react'
+import Editor, { useMonaco } from '@monaco-editor/react'
 
 // This config defines how the language is displayed in the editor.
 // This config defines how the language is displayed in the editor.
@@ -24,15 +24,6 @@ const configuration = {
   ],
 }
 
-const editorWillMount = (monaco) => {
-  // Register a new language
-  monaco.languages.register({ id: 'tracta' })
-  // Register a tokens provider for the language
-  monaco.languages.setMonarchTokensProvider('tracta', languageDef)
-  // Set the editing configuration for the language
-  monaco.editor.defineTheme('tracta', configuration)
-}
-
 export default function TractaEditor({
   value,
   onChange,
@@ -40,6 +31,17 @@ export default function TractaEditor({
   value: string
   onChange: (value: string | undefined) => void
 }) {
+  const monaco = useMonaco()
+
+  useEffect(() => {
+    if (!monaco) return
+    // Register a new language
+    monaco.languages.register({ id: 'tracta' })
+    // Register a tokens provider for the language
+    monaco.languages.setMonarchTokensProvider('tracta', languageDef)
+    // Set the editing configuration for the language
+    monaco.editor.defineTheme('tracta', configuration)
+  }, [monaco])
   return (
     <Editor
       defaultLanguage="tracta"
@@ -61,10 +63,6 @@ export default function TractaEditor({
         glyphMargin: false,
         renderLineHighlight: 'none',
         overviewRulerBorder: false,
-      }}
-      editorWillMount={editorWillMount}
-      editorDidMount={(editor) => {
-        editor.focus()
       }}
       className="flex max-h-[120px] min-h-[80px] w-full rounded-base border-2 border-black bg-white px-3 py-2 text-sm font-base shadow-base ring-offset-white placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
     />
