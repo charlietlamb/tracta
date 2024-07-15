@@ -11,10 +11,6 @@ import CreatePreview from './preview/CreatePreview'
 import CreateSandbox from './sandbox/CreateSandbox'
 import CreateSidebar from './sidebar/CreateSidebar'
 import { useEffect, useState } from 'react'
-import {
-  compileLatex,
-  initializeLatexEngines,
-} from '@/swift-latex/latexCompilation'
 
 export default function Create({ json: jsonInit }: { json: Contract }) {
   const [json, setJson] = useState<Contract>(jsonInit)
@@ -27,31 +23,6 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [varOpen, setVarOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [sidebarSelected, setSidebarSelected] = useState<string | null>(null)
-  const dispatch = useAppDispatch()
-  initializeLatexEngines(dispatch)
-  // const engine = useAppSelector((state) => state.engine)
-  // useEffect(() => {
-  //   async function getLatex() {
-  //     const latexDocument = `\\documentclass{article}
-  //   \\usepackage{graphicx} % Required for inserting images
-
-  //   \\title{contract}
-  //   \\author{charlielamb20 }
-  //   \\date{June 2024}
-
-  //   \\begin{document}
-
-  //   \\maketitle
-
-  //   \\section{Introduction}
-
-  //   \\end{document}
-  //   `
-  //     console.log(engine.engineStatus)
-  //     const pdf = await compileLatex(latexDocument, dispatch)
-  //   }
-  //   getLatex()
-  // }, [])
 
   useEffect(() => {
     console.log(json)
