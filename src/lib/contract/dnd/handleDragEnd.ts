@@ -12,6 +12,7 @@ export function handleDragEnd(
   setJson: Dispatch<SetStateAction<Contract>>,
   key: string,
   setKey: Dispatch<SetStateAction<string>>,
+  setLastChange: Dispatch<SetStateAction<number>>,
   end: boolean = false,
 ) {
   e.preventDefault()
@@ -27,6 +28,6 @@ export function handleDragEnd(
   const pos = yPercentage <= 25 ? 'top' : yPercentage < 75 ? 'middle' : 'bottom'
   const changedTree = changeTree(tree, dragKey, dropKey, pos)
   setJson(getNewJson(json, changedTree))
-  console.log(key)
   setKey(getChangedKey(key, dragKey, dropKey))
+  setLastChange(Date.now)
 }

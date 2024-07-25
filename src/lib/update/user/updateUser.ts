@@ -11,7 +11,6 @@ export async function updateUser(
   },
 ) {
   const supabase = createClient()
-  console.log(values)
   const { error } = await supabase
     .from('users')
     .update(values)

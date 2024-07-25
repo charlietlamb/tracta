@@ -7,7 +7,6 @@ export default function CreateSidebarDrag({
 }: {
   contractTree: TractaDraggable[]
 }) {
-  console.log(contractTree)
   return (
     <Accordion type="multiple" className="w-full">
       {contractTree.map((c) => {

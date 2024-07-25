@@ -51,3 +51,7 @@ body::-webkit-scrollbar-thumb {
 .body-no-margin.body-no-margin {
   margin-right: 0 !important;
 }
+
+:root {
+  --font-contract: 'Playfair Display', serif;
+}

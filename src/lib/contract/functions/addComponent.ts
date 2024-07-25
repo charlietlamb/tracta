@@ -7,10 +7,12 @@ export function addComponent(
   component: Component,
   newKey: string,
   setAddOpen: Dispatch<SetStateAction<boolean>>,
+  setLastChange: Dispatch<SetStateAction<number>>,
 ) {
   const key = newKey === '-1' ? getNextKey(json) : newKey
   let newJson = json
   newJson[key] = { tracta: component.key, values: component.values }
   setJson(newJson)
   setAddOpen(false)
+  setLastChange(Date.now())
 }

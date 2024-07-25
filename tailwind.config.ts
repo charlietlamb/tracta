@@ -33,6 +33,9 @@ const config: Config = {
         base: '400',
         heading: '600',
       },
+      fontFamily: {
+        contract: ['var(--font-contract)'],
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

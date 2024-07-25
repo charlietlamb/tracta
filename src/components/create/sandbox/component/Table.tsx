@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 import { useState } from 'react'
 
 export default function Table() {
-  const { values, setValues } = useCreateContext()
+  const { values, setValues, setLastChange } = useCreateContext()
   if (!values) return null
   const tableData = JSON.parse(values[1].replace(/'/g, '"'))
   const [headers, ...dataArray] = tableData
@@ -28,17 +28,20 @@ export default function Table() {
     const newTableData = [...tableData]
     newTableData[rowIndex][cellIndex] = newValue
     setValues([values[0], JSON.stringify(newTableData)])
+    setLastChange(Date.now())
   }
 
   const handleAddRow = () => {
     const newTableData = [...tableData]
     newTableData.push(new Array(headers.length).fill('')) // Add a new row with empty strings
     setValues([values[0], JSON.stringify(newTableData)])
+    setLastChange(Date.now())
   }
 
   const handleAddColumn = () => {
     const newTableData = tableData.map((row: string[]) => [...row, '']) // Add a new column with empty strings
     setValues([values[0], JSON.stringify(newTableData)])
+    setLastChange(Date.now())
   }
 
   const handleDeleteRow = (rowIndex: number) => {
@@ -47,6 +50,7 @@ export default function Table() {
       (_: string, index: number) => index !== rowIndex,
     ) // Remove the row at rowIndex
     setValues([values[0], JSON.stringify(newTableData)])
+    setLastChange(Date.now())
   }
 
   const handleDeleteColumn = (columnIndex: number) => {
@@ -55,6 +59,7 @@ export default function Table() {
       row.filter((_, index) => index !== columnIndex),
     ) // Remove the column at columnIndex
     setValues([values[0], JSON.stringify(newTableData)])
+    setLastChange(Date.now())
   }
 
   return (

@@ -33,6 +33,7 @@ export function handleDragLogic(
   drop: string,
   json: Contract,
   setJson: Dispatch<SetStateAction<Contract>>,
+  setLastChange: Dispatch<SetStateAction<Date>>,
 ): void {
   if (!json || !json.content) {
     return
@@ -63,4 +64,5 @@ export function handleDragLogic(
 
   // Update the JSON state
   setJson({ ...json })
+  setLastChange(new Date())
 }

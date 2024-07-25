@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { saveJson } from '@/lib/contract/functions/saveJson'
 import Editor from '@monaco-editor/react'
 import TractaEditor from './editor/TractaEditor'
+import { useEffect } from 'react'
 
 export default function CreateSandbox() {
   const {
@@ -16,8 +17,10 @@ export default function CreateSandbox() {
     values,
     setValues,
     setSidebarSelected,
+    setLastChange,
   } = useCreateContext()
   const otherValues = values?.slice(1) || []
+
   if (!tracta) return null
   return (
     <div
@@ -36,6 +39,7 @@ export default function CreateSandbox() {
             setTitle(e)
             setValues([e, ...otherValues])
             saveJson(json, setJson, key, [e, ...otherValues], tracta)
+            setLastChange(Date.now())
           }}
         />
 

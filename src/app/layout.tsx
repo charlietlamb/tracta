@@ -10,6 +10,12 @@ import { getUserAuth } from '@/lib/get/getUserAuth'
 import { Toaster } from '@/components/ui/sonner'
 import ReactQueryProvider from '@/components/query/ReactQueryProvider'
 import { AuthProvider } from '@/lib/slice/auth/AuthProvider'
+import { Playfair_Display } from '@next/font/google'
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-contract',
+})
 
 export const metadata: Metadata = {
   title: 'Tracta',

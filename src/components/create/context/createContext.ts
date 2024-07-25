@@ -22,6 +22,12 @@ interface CreateContext {
   setSettingsOpen: Dispatch<SetStateAction<boolean>>
   sidebarSelected: string | null
   setSidebarSelected: Dispatch<SetStateAction<string | null>>
+  lastChange: number
+  setLastChange: Dispatch<SetStateAction<number>>
+  pdfUrl: string | null
+  setPdfUrl: Dispatch<SetStateAction<string | null>>
+  loading: boolean
+  setLoading: Dispatch<SetStateAction<boolean>>
 }
 
 export const CreateContext = createContext<CreateContext | undefined>(undefined)

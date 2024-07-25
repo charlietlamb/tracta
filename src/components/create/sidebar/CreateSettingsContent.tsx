@@ -4,21 +4,22 @@ import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
 
 export default function CreateSettingsContent() {
-  const { json, setJson } = useCreateContext()
+  const { json, setJson, lastChange, setLastChange } = useCreateContext()
   const { settings } = json
-  const [title, setTitle] = useState(settings.title)
+  const [title, setTitle] = useState(json.title)
   const [template, setTemplate] = useState(settings.template)
 
   useEffect(() => {
+    console.log(title)
     setJson({
       ...json,
+      title,
       settings: {
         ...json.settings,
-        title: title,
         template: template,
       },
     } as Contract)
-  }, [title, template])
+  }, [lastChange])
 
   return (
     <div className="flex flex-col gap-4">
@@ -27,7 +28,10 @@ export default function CreateSettingsContent() {
         <Input
           placeholder="Title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+            setTitle(e.target.value)
+            setLastChange(Date.now())
+          }}
         />
       </div>
       <div className="flex  items-center gap-2">

@@ -10,6 +10,9 @@
     "party1_phone": "555-123-4567",
     "party2_phone": "555-987-6543"
   },
+  "settings": {
+    "template": false
+  },
   "1": {
     "tracta": "clause",
     "values": ["Introduction", "This is a basic clause."]

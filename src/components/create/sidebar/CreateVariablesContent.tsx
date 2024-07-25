@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { X, Plus } from 'lucide-react'
 
 export default function CreateVariablesContent() {
-  const { json, setJson } = useCreateContext()
+  const { json, setJson, setLastChange } = useCreateContext()
   const { variables } = json
   const [keys, setKeys] = useState(Object.keys(variables))
   const [values, setValues] = useState(Object.values(variables))
@@ -18,6 +18,7 @@ export default function CreateVariablesContent() {
       ...json,
       variables: Object.fromEntries(keys.map((key, i) => [key, newValues[i]])),
     } as Contract)
+    setLastChange(Date.now)
   }
 
   function handleKeyChange(i: number, key: string) {
@@ -28,6 +29,7 @@ export default function CreateVariablesContent() {
       ...json,
       variables: Object.fromEntries(newKeys.map((key, i) => [key, values[i]])),
     } as Contract)
+    setLastChange(Date.now)
   }
 
   function removeVariable(i: number) {
@@ -45,11 +47,13 @@ export default function CreateVariablesContent() {
         newKeys.map((key, i) => [key, newValues[i]]),
       ),
     } as Contract)
+    setLastChange(Date.now)
   }
 
   function addVariable() {
     setKeys([...keys, ''])
     setValues([...values, ''])
+    setLastChange(Date.now)
   }
 
   return (
@@ -58,18 +62,18 @@ export default function CreateVariablesContent() {
         return (
           <div
             key={`${key}-${i}`}
-            className="flex w-full items-center justify-between gap-4"
+            className="flex w-full items-center justify-between gap-4 py-2"
           >
-            <div className="grid flex-grow grid-cols-1 items-center md:grid-cols-2 md:gap-4">
+            <div className="grid flex-grow grid-cols-1 items-center gap-4 md:grid-cols-2">
               <Input
                 value={key}
                 onChange={(e) => handleKeyChange(i, e.target.value)}
-                className="w-full max-w-none flex-grow shadow-none"
+                className="mb-0 w-full max-w-none flex-grow shadow-none"
               />
               <Input
                 value={values[i]}
                 onChange={(e) => handleValueChange(i, e.target.value)}
-                className="max-w-none flex-grow bg-bg shadow-none"
+                className="mb-0 max-w-none flex-grow bg-bg shadow-none"
               />
             </div>
             <Button

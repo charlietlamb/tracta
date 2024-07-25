@@ -30,6 +30,7 @@ export default function CreateSidebarWidget({
     setValues,
     sidebarSelected,
     setSidebarSelected,
+    setLastChange,
   } = useCreateContext()
   const { title, author, date, variables, settings, ...contractData } = json
   const [active, setActive] = useState(false)
@@ -37,16 +38,20 @@ export default function CreateSidebarWidget({
   const width = contract.key.includes('.')
     ? contract.key.split('.').length - 1
     : 0
-  console.log(key)
   return (
     <motion.div
-      className={cn('border-t border-black shadow-none')}
+      className={cn(
+        'border-t border-black shadow-none',
+        !width && 'border-t-2',
+      )}
       data-key={contract.key}
       data-indicator
       draggable
       onDragStart={(e: any) => handleDragStart(e, contract)}
       onDragOver={(e: any) => handleDragOver(e, setActive)}
-      onDrop={(e: any) => handleDragEnd(e, tree, json, setJson, key, setKey)}
+      onDrop={(e: any) =>
+        handleDragEnd(e, tree, json, setJson, key, setKey, setLastChange)
+      }
       onDragLeave={(e: any) => handleDragLeave(e, setActive)}
       onClick={(e) => {
         setSidebarSelected(contract.key)

@@ -1,6 +1,5 @@
 'use client'
 
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import {
   ResizableHandle,
   ResizablePanel,
@@ -10,7 +9,7 @@ import { CreateContext } from './context/createContext'
 import CreatePreview from './preview/CreatePreview'
 import CreateSandbox from './sandbox/CreateSandbox'
 import CreateSidebar from './sidebar/CreateSidebar'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Create({ json: jsonInit }: { json: Contract }) {
   const [json, setJson] = useState<Contract>(jsonInit)
@@ -23,10 +22,9 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [varOpen, setVarOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [sidebarSelected, setSidebarSelected] = useState<string | null>(null)
-
-  useEffect(() => {
-    console.log(json)
-  }, [json])
+  const [lastChange, setLastChange] = useState<number>(Date.now())
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
   return (
     <CreateContext.Provider
       value={{
@@ -50,6 +48,12 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setSettingsOpen,
         sidebarSelected,
         setSidebarSelected,
+        lastChange,
+        setLastChange,
+        pdfUrl,
+        setPdfUrl,
+        loading,
+        setLoading,
       }}
     >
       <ResizablePanelGroup
@@ -57,15 +61,20 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         className="flex flex-grow divide-x divide-black"
         style={{ height: 'calc(100vh - 58px)' }}
       >
-        <ResizablePanel minSize={5} defaultSize={15} maxSize={20}>
+        <ResizablePanel
+          minSize={5}
+          defaultSize={15}
+          maxSize={20}
+          className="relative z-50"
+        >
           <CreateSidebar />
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel minSize={5}>
+        <ResizablePanel minSize={20} className="relative z-50">
           <CreateSandbox />
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel minSize={5}>
+        <ResizablePanel minSize={5} className="relative z-50">
           <CreatePreview />
         </ResizablePanel>
       </ResizablePanelGroup>
