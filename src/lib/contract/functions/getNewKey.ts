@@ -1,13 +1,6 @@
-import { getBottomKey } from './getBottomKey'
-import { getMiddleKey } from './getMiddleKey'
+import getDropKey from './getDropKey'
 
-export function getNewKey(
-  tree: TractaDraggable[],
-  dropKey: string,
-  dragKey: string,
-  pos: string,
-) {
-  if (pos === 'top') return dropKey
-  if (pos === 'middle') return getMiddleKey(tree, dropKey, dragKey)
-  return getBottomKey(dropKey)
+export function getNewKey(dropKey: string, dropIndex: number) {
+  if (dropKey.includes('b-')) return getDropKey(dropKey)
+  return `${dropKey}.${dropIndex + 1}`
 }

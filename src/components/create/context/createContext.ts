@@ -28,6 +28,8 @@ interface CreateContext {
   setPdfUrl: Dispatch<SetStateAction<string | null>>
   loading: boolean
   setLoading: Dispatch<SetStateAction<boolean>>
+  isDragging: boolean
+  setIsDragging: Dispatch<SetStateAction<boolean>>
 }
 
 export const CreateContext = createContext<CreateContext | undefined>(undefined)

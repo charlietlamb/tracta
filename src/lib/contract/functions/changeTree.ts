@@ -6,12 +6,12 @@ export function changeTree(
   tree: TractaDraggable[],
   dragKey: string,
   dropKey: string,
-  pos: string,
-) {
+  dropIndex: number,
+): TractaDraggable[] {
   if (dragKey === dropKey) return tree
   let newTree = tree
   const data = removeFromTree(dragKey, newTree)
-  const key = getNewKey(tree, dropKey, dragKey, pos)
+  const key = getNewKey(dropKey, dropIndex)
   addToTree(key, data, newTree)
   return newTree
 }

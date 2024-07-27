@@ -25,6 +25,7 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [lastChange, setLastChange] = useState<number>(Date.now())
   const [pdfUrl, setPdfUrl] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
+  const [isDragging, setIsDragging] = useState<boolean>(false)
   return (
     <CreateContext.Provider
       value={{
@@ -54,6 +55,8 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setPdfUrl,
         loading,
         setLoading,
+        isDragging,
+        setIsDragging,
       }}
     >
       <ResizablePanelGroup

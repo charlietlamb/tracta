@@ -10,7 +10,6 @@ export default function CreateSettingsContent() {
   const [template, setTemplate] = useState(settings.template)
 
   useEffect(() => {
-    console.log(title)
     setJson({
       ...json,
       title,
