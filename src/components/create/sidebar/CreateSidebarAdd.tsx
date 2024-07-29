@@ -18,7 +18,7 @@ export default function CreateSidebarAdd() {
   return (
     <Dialog open={addOpen} onOpenChange={setAddOpen}>
       <DialogTrigger asChild>
-        <Button size="xs">
+        <Button size="xs" variant="ghost">
           <Plus className="size-4" />
         </Button>
       </DialogTrigger>

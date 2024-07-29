@@ -16,7 +16,7 @@ export default function CreateSidebarSettings() {
   return (
     <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
       <DialogTrigger asChild>
-        <Button size="xs">
+        <Button size="xs" variant="ghost">
           <Cog className="size-4" />
         </Button>
       </DialogTrigger>

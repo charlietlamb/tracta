@@ -16,7 +16,7 @@ export default function CreateSidebarVariables() {
   return (
     <Dialog open={varOpen} onOpenChange={setVarOpen}>
       <DialogTrigger asChild>
-        <Button size="xs">
+        <Button size="xs" variant="ghost">
           <Code className="size-4" />
         </Button>
       </DialogTrigger>

@@ -24,6 +24,7 @@ const buttonVariants = cva(
         sidebar: 'bg-white',
         danger:
           'bg-red-200 hover:bg-red-400  border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+        ghost: 'bg-transparent border-2 hover:border-black border-white',
       },
       size: {
         default: 'h-10 px-4 py-2',
@@ -32,6 +33,7 @@ const buttonVariants = cva(
         lg: 'h-11 px-8 text-base',
         icon: 'h-10 w-10',
         tight: 'h-10 p-0',
+        auto: 'h-auto p-2',
       },
     },
     defaultVariants: {

@@ -7,9 +7,10 @@ export default async function page({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const id: string =
-    searchParams.id && typeof searchParams.id === 'string'
-      ? searchParams.id
+    searchParams.template && typeof searchParams.template === 'string'
+      ? searchParams.template
       : '2b6527ba-6229-42fa-8811-5cb95b701966'
+
   const json = await getTemplateJsonServer(id)
   return <Create json={json} />
 }
