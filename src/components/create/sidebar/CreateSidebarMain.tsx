@@ -6,8 +6,6 @@ import { changeTree } from '@/lib/contract/functions/changeTree'
 import { useCreateContext } from '../context/createContext'
 import { getTree } from '@/lib/contract/functions/getTree'
 import { getNewJson } from '@/lib/contract/functions/getNewJson'
-import CreateSidebarDropper from './CreateSidebarDropper'
-import getDropKey from '@/lib/contract/functions/getDropKey'
 import { Accordion } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
 
@@ -37,18 +35,18 @@ export default function CreateSidebarMain({
       onDragStart={() => setIsDragging(true)}
       onDragEnd={(e) => onDragEnd(e)}
     >
-      <div className="flex flex-grow flex-col items-center justify-start bg-bg p-2">
+      <div className="flex flex-grow flex-col items-center justify-start">
         <Droppable droppableId={'main'}>
           {(dropProvided, dropSnapshot) => (
             <div
               className={cn(
-                'user-select-none flex h-full w-full flex-col gap-4 transition focus:outline-none focus:ring-2 focus:ring-offset-2',
+                'flex h-full w-full flex-col gap-4 transition focus:outline-none focus:ring-2 focus:ring-offset-2',
                 dropSnapshot.isDraggingOver && 'animate-pulse',
               )}
               ref={dropProvided.innerRef}
               {...dropProvided.droppableProps}
             >
-              <Accordion type="multiple" className="flex w-full flex-col gap-2">
+              <Accordion type="multiple" className="flex flex-col">
                 {initialList.map((item: TractaDraggable, index: number) => (
                   <Draggable
                     draggableId={item.key}

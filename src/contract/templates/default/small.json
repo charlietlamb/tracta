@@ -13,24 +13,18 @@
   "settings": {
     "template": false
   },
-  "1": {
-    "tracta": "clause",
-    "values": ["Introduction", "This is a basic clause."]
-  },
-  "1.1": {
-    "tracta": "clause",
-    "values": ["Subclause", "This is a subclause."]
-  },
-  "1.2": {
-    "tracta": "clause",
-    "values": ["Subsubclause 2", "This is a subsubclause 2."]
-  },
-  "2": {
-    "tracta": "clause",
-    "values": ["Second Clause", "This is the second clause."]
-  },
-  "3": {
-    "tracta": "clause",
-    "values": ["Third Clause", "This is the third clause."]
-  }
+  "1": [
+    {
+      "tracta": "heading",
+      "values": ["Introduction"]
+    },
+    { "tracta": "text", "values": ["This is some basic text"] },
+    { "tracta": "section", "values": ["1.1"] }
+  ],
+  "1.1": [
+    {
+      "tracta": "heading",
+      "values": ["Sub of the intro"]
+    }
+  ]
 }

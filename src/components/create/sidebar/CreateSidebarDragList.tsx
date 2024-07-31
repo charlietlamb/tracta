@@ -18,14 +18,14 @@ export default function CreateSidebarDragList({
   parent: string
 }) {
   if (!list) return null
-  const { isDragging } = useCreateContext()
+  const { isDragging, key } = useCreateContext()
   return (
     <Droppable droppableId={!parent.length ? 'main' : parent}>
       {(dropProvided, dropSnapshot) => (
         <div
           className={cn(
-            'user-select-none flex w-full flex-col gap-4 overflow-visible p-0 transition focus:outline-none focus:ring-2 focus:ring-offset-2',
-            dropSnapshot.isDraggingOver && 'animate-pulse',
+            'flex w-full flex-col gap-4 overflow-visible p-0 transition focus:outline-none focus:ring-2 focus:ring-offset-2',
+            dropSnapshot.isDraggingOver && 'bg-main',
           )}
           ref={dropProvided.innerRef}
           {...dropProvided.droppableProps}
@@ -35,17 +35,20 @@ export default function CreateSidebarDragList({
               value={parent.length === 0 ? 'main' : parent}
               className="flex flex-col overflow-visible border-0 p-0 shadow-none"
             >
-              <AccordionTrigger className="overflow-hidden border-0 bg-transparent p-0 pr-2 [&[data-state=open]]:border-b">
+              <AccordionTrigger
+                className={cn(
+                  'max-w-full border-y border-bg bg-bg bg-transparent p-0 pr-1 transition hover:border-black hover:bg-main [&[data-state=open]]:border-b',
+                  key === parent && 'border-black bg-main',
+                )}
+              >
                 <CreateSidebarDraggable parent={parent} />
               </AccordionTrigger>
               <AccordionContent
-                className="flex flex-grow flex-col gap-2 overflow-visible bg-bg px-0 py-2"
+                className="flex flex-grow flex-col overflow-visible bg-bg p-0"
                 innerClassName={
                   isDragging ? 'overflow-visible' : 'overflow-hidden'
                 }
               >
-                {' '}
-                {/* div with overflow */}
                 {list.map((item: TractaDraggable, index: number) => (
                   <Draggable
                     draggableId={item.key}
@@ -75,8 +78,9 @@ export default function CreateSidebarDragList({
               </AccordionContent>
             </AccordionItem>
           ) : (
-            <div className="overflow-hidden">
+            <div className="group flex justify-center overflow-hidden border-y border-bg bg-bg transition hover:border-black hover:bg-main">
               <CreateSidebarDraggable parent={parent} />
+              <div className="min-w-6 flex-shrink-0 bg-bg transition group-hover:bg-main" />
             </div>
           )}
           {dropProvided.placeholder}

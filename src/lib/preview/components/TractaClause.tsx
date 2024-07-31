@@ -1,4 +1,4 @@
-import { getVariableText } from '@/lib/tracta/getVariableText'
+import getVariableText from '@/lib/tracta/getVariableText'
 import TractaClauseText from './TractaClauseText'
 import TractaHeading from './TractaHeading'
 

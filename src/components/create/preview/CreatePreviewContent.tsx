@@ -16,11 +16,12 @@ export default function CreatePreviewContent({
   const { json, lastChange } = useCreateContext()
   const [loading, setLoading] = useState(false)
   const [markup, setMarkup] = useState<React.ReactNode | null>(null)
+  let [length, setLength] = useState(0)
 
   useEffect(() => {
     async function update() {
       setLoading(true)
-      await getJsonMarkup(json, setMarkup)
+      await getJsonMarkup(json, setMarkup, length, setLength)
       setLoading(false)
     }
     update()
@@ -28,7 +29,7 @@ export default function CreatePreviewContent({
 
   return (
     <div
-      className={cn('w-full px-8 py-4 font-contract', className)}
+      className={cn('w-[794px] pb-2 font-contract', className)}
       ref={targetRef}
     >
       {loading || !markup ? <Loader /> : markup}

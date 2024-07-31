@@ -18,8 +18,8 @@ export default function CreateSidebarAdd() {
   return (
     <Dialog open={addOpen} onOpenChange={setAddOpen}>
       <DialogTrigger asChild>
-        <Button size="xs" variant="ghost">
-          <Plus className="size-4" />
+        <Button size="xs" variant="ghost" className="group mx-auto w-fit p-1">
+          <Plus className="size-4 min-h-4 min-w-4 group-hover:animate-spin" />
         </Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-0">

@@ -22,7 +22,7 @@ declare global {
   }
 
   interface ContractTree {
-    [key: string]: Tracta
+    [key: string]: Tracta[]
   }
 
   interface Tracta {

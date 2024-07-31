@@ -1,10 +1,8 @@
 import { sandboxMap } from '@/lib/contract/maps/sandboxMap'
 import { useCreateContext } from '../context/createContext'
-import { Input } from '@/components/ui/input'
 import { saveJson } from '@/lib/contract/functions/saveJson'
-import Editor from '@monaco-editor/react'
 import TractaEditor from './editor/TractaEditor'
-import { useEffect } from 'react'
+import { ReceiptText } from 'lucide-react'
 
 export default function CreateSandbox() {
   const {
@@ -27,9 +25,12 @@ export default function CreateSandbox() {
       className="flex h-full w-full flex-col divide-y-2 divide-black "
       onClick={() => setSidebarSelected(null)}
     >
-      <h4 className="w-full bg-bg p-4 py-2 text-2xl font-heading">
-        {key}. {title}
-      </h4>
+      <div className="flex w-full items-center justify-between bg-bg p-4 py-2 ">
+        <h4 className="flex-grow text-2xl font-heading">
+          {key}. {title}
+        </h4>
+        <ReceiptText className="size-6" />
+      </div>
       <div className="no-scrollbar flex flex-col overflow-y-auto p-4">
         <h5 className="text-lg font-heading">Title</h5>
         <TractaEditor

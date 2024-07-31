@@ -7,7 +7,7 @@ export default function CreateSidebarHeader() {
   const { setSidebarSelected } = useCreateContext()
   return (
     <div
-      className="grid grid-cols-3 gap-4 p-2"
+      className="grid grid-cols-3 gap-4 py-1"
       onClick={() => setSidebarSelected(null)}
     >
       <CreateSidebarAdd />

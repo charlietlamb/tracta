@@ -1,3 +1,3 @@
 export default function TractaClauseText({ text }: { text: string }) {
-  return <div>{text}</div>
+  return <div dangerouslySetInnerHTML={{ __html: text }} />
 }

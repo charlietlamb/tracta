@@ -16,8 +16,8 @@ export default function CreateSidebarVariables() {
   return (
     <Dialog open={varOpen} onOpenChange={setVarOpen}>
       <DialogTrigger asChild>
-        <Button size="xs" variant="ghost">
-          <Code className="size-4" />
+        <Button size="xs" variant="ghost" className="group mx-auto w-fit p-1">
+          <Code className="size-4 min-h-4 min-w-4 group-hover:animate-spin" />
         </Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-0">

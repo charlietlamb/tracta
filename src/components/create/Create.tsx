@@ -67,7 +67,7 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         <ResizablePanel
           minSize={5}
           defaultSize={15}
-          maxSize={20}
+          maxSize={40}
           className="relative z-50"
         >
           <CreateSidebar />

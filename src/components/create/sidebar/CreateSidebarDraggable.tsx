@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { useCreateContext } from '../context/createContext'
-import { GripVertical } from 'lucide-react'
+import { ReceiptText } from 'lucide-react'
 
 export default function CreateSidebarDraggable({
   parent,
@@ -10,20 +10,26 @@ export default function CreateSidebarDraggable({
   className?: string
 }) {
   const { json, setKey, setTitle } = useCreateContext()
+  const size = parent.split('.').length
   return (
-    <div className="flex w-full items-center justify-between">
+    <div
+      className="flex min-w-0 flex-shrink flex-grow items-center justify-start transition"
+      style={{ paddingLeft: `${20 * (size - 1) + 8}px` }}
+      onClick={(e) => {
+        e.stopPropagation()
+        setKey(parent)
+        setTitle(json[parent].values[0])
+      }}
+    >
+      <ReceiptText className="mr-1 size-4 min-h-4 min-w-4" />
       <h4
         className={cn(
-          'flex flex-grow justify-start overflow-ellipsis whitespace-nowrap px-2 font-bold',
+          'flex min-w-0 flex-shrink items-center justify-start truncate font-semibold',
           className,
         )}
-        onClick={(e) => {
-          e.stopPropagation()
-          setKey(parent)
-          setTitle(json[parent].values[0])
-        }}
-      >{`${!parent.length ? 'main' : parent} ${parent.length && json[parent].values[0]}`}</h4>
-      {/* <GripVertical className="cursor-grab active:cursor-grabbing" /> */}
+      >
+        {`${parent.length && json[parent].values[0]}`}
+      </h4>
     </div>
   )
 }

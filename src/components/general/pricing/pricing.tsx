@@ -15,23 +15,31 @@ export default function Pricing() {
             description="Let's get started."
             price="0"
             perks={[
-              '5 Contracts At One Time',
-              'Community Templates',
-              '48-hour support response time',
+              'Full creative control',
+              'Unlimited Community Templates',
+              'Watermark hidden on paid templates',
             ]}
           />
           <PricingPlan
             planName="Basic"
             description="Essential for professionals."
             price="10"
-            perks={['50 Projects', 'Remove Watermark', 'Share Templates']}
+            perks={[
+              'Unlimited Projects',
+              'Remove Watermark',
+              'Monetize Templates',
+            ]}
             mostPopular
           />
           <PricingPlan
             planName="Enterprise"
             description="For businesses that need more."
             price="50"
-            perks={['Export LaTeX', 'Advanced Analytics', 'Custom Branding']}
+            perks={[
+              'Mass Variable Exports',
+              'Advanced Analytics',
+              'White Label',
+            ]}
           />
         </div>
       </div>
