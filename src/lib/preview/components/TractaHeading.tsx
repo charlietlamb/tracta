@@ -1,13 +1,17 @@
+import getVariableText from '@/lib/tracta/getVariableText'
 import { tractaClassNameMap } from '@/lib/tracta/tractaClassNameMap'
 import { cn } from '@/lib/utils'
-import React from 'react'
 
 export default function TractaHeading({
-  text,
+  json,
   num,
+  value,
+  variables,
 }: {
-  text: string
+  json: Contract
   num: string
+  value: string
+  variables: { [key: string]: string }
 }) {
   const className = tractaClassNameMap.get(num.split('.').length)
   return (
@@ -15,7 +19,7 @@ export default function TractaHeading({
       {num}
       <div
         dangerouslySetInnerHTML={{
-          __html: text,
+          __html: getVariableText(value, variables),
         }}
       />
     </div>

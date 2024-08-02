@@ -20,6 +20,6 @@ export default function getVariableText(
   newText = newText.replace(/\\b(.*?)\\b/g, '<strong>$1</strong>')
   newText = newText.replace(/\\u(.*?)\\u/g, '<u>$1</u>')
   newText = newText.replace(/\\i(.*?)\\i/g, '<em>$1</em>')
-
+  newText = newText.replace(/&apos;/g, "'")
   return newText
 }

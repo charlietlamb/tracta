@@ -14,10 +14,10 @@ export default function CreateSidebarMain({
 }: {
   initialList: TractaDraggable[]
 }) {
-  const { json, setJson, setLastChange, setIsDragging } = useCreateContext()
+  const { json, setJson, setLastChange, setIsDragging, setSidebarSelected } =
+    useCreateContext()
   const { title, author, date, variables, settings, ...contract } = json
   function onDragEnd(result: DropResult): void {
-    console.log(result)
     setIsDragging(false)
     if (!result.destination) return
     const tree = getTree(contract)
@@ -35,7 +35,9 @@ export default function CreateSidebarMain({
       onDragStart={() => setIsDragging(true)}
       onDragEnd={(e) => onDragEnd(e)}
     >
-      <div className="flex flex-grow flex-col items-center justify-start">
+      <div
+        className={cn('flex flex-grow flex-col items-center justify-start ')}
+      >
         <Droppable droppableId={'main'}>
           {(dropProvided, dropSnapshot) => (
             <div
@@ -75,6 +77,10 @@ export default function CreateSidebarMain({
                 ))}
               </Accordion>
               {dropProvided.placeholder}
+              <div
+                className="w-full flex-grow"
+                onClick={() => setSidebarSelected(null)}
+              />
             </div>
           )}
         </Droppable>

@@ -18,13 +18,19 @@ export default function CreateSidebarAdd() {
   return (
     <Dialog open={addOpen} onOpenChange={setAddOpen}>
       <DialogTrigger asChild>
-        <Button size="xs" variant="ghost" className="group mx-auto w-fit p-1">
-          <Plus className="size-4 min-h-4 min-w-4 group-hover:animate-spin" />
+        <Button
+          size="xs"
+          variant="ghost"
+          className="group w-fit p-1 text-white"
+        >
+          <Plus className="size-5 min-h-5 min-w-5 transition group-hover:text-bg" />
         </Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-0">
-        <div className="flex w-full flex-col gap-2 border-b-4 border-black bg-main p-8">
-          <DialogHeader>Add To Your Contract</DialogHeader>
+        <div className="flex w-full flex-col border-b-2 border-black bg-bg p-4">
+          <DialogHeader className="font-larken font-bold">
+            Add To Your Contract
+          </DialogHeader>
           Select a Component to add to your contract.
         </div>
         <div className="relative flex-grow overflow-hidden p-4">

@@ -56,6 +56,7 @@
     "install": "^0.13.0",
     "latex.js": "^0.12.6",
     "libreoffice-convert": "^1.5.1",
+    "local": "link:next/font/local",
     "lowlight": "^3.1.0",
     "lucide-react": "^0.378.0",
     "mammoth": "^1.7.2",

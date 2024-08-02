@@ -15,11 +15,13 @@ const config: Config = {
       },
       colors: {
         bg: '#daf5f0',
+        bgDark: '#2c3130',
+        sidebar: '#99aca8',
         main: '#7fbc8c',
         mainAccent: '#58a769',
       },
       borderRadius: {
-        base: '0px',
+        base: '4px',
       },
       boxShadow: {
         base: '4px 4px 0px 0px rgba(0,0,0,1)',
@@ -35,6 +37,7 @@ const config: Config = {
       },
       fontFamily: {
         contract: ['var(--font-contract)'],
+        larken: ['var(--font-larken)'],
       },
       keyframes: {
         'accordion-down': {

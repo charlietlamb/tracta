@@ -12,12 +12,10 @@ export default function Community() {
   }
 
   return (
-    <section className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden border-b-2 border-b-black bg-white font-base">
+    <section className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden bg-white font-base">
       <MovingGrid />
-      <div className="relative z-10 mx-auto w-container max-w-full px-5 py-20 lg:py-[100px]">
-        <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
-          Loved by our community
-        </h2>
+      <div className="relative z-10 mx-auto flex w-container max-w-full flex-col gap-8 px-5 lg:py-24">
+        <h2 className="subheading mb-14 text-center">Loved by our community</h2>
         <div className="grid grid-cols-3 gap-4 lg:gap-8 w900:grid-cols-1 w900:gap-0">
           {[
             [review(), review()],
@@ -38,7 +36,9 @@ export default function Community() {
                     />
 
                     <div>
-                      <h4 className="text-lg font-heading">{fullName}</h4>
+                      <h4 className="font-larken text-lg font-heading">
+                        {fullName}
+                      </h4>
                       <p className="text-sm font-base">{jobTitle}</p>
                     </div>
                   </div>

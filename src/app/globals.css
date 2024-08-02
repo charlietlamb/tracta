@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 * {
   padding: 0;
@@ -8,29 +9,37 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   --sb-track-color: #ffffff00;
   --sb-thumb-color: #000000;
   overflow: overlay;
+} */
+
+.h1-text {
+  @apply font-larken text-3xl font-heading md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl;
 }
 
-body::-webkit-scrollbar {
+.subheading {
+  @apply font-larken text-2xl font-heading md:text-3xl lg:text-4xl xl:text-5xl;
+}
+
+.h2-text {
+  @apply text-lg font-light md:text-xl lg:text-2xl;
+}
+
+/* body::-webkit-scrollbar {
   width: 16px;
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+body::-webkit-scrollbar-thumb {
   background: var(--sb-track-color);
 }
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-}
-
 @supports not selector(::-webkit-scrollbar) {
   body {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
-}
+} */
 
 @screen md {
   .dialog-content-md {
@@ -38,12 +47,14 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-.no-scrollbar::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar,
+.rpv-core__inner-pages::-webkit-scrollbar {
   display: none;
   width: 0px;
 }
 
-.no-scrollbar {
+.no-scrollbar,
+.rpv-core__inner-pages {
   -ms-overflow-style: none; /* Internet Explorer and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -54,5 +65,147 @@ body::-webkit-scrollbar-thumb {
 
 :root {
   --font-contract: 'Playfair Display', serif;
-  --rpv-default-layout__container-border-color: #ff0000;
+  --font-larken: 'Larken', sans-serif;
+}
+
+@layer base {
+  img {
+    @apply inline-block;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Light-Italic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Medium-Italic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Bold-Italic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Bold-Italic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Extra-Bold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Extra-Bold-Italic.ttf')
+      format('truetype');
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Larken';
+    src: url('../../public/larken/Larken-Black-Italic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+  }
+}
+
+.equal-space-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+}
+
+.pdf-viewer {
+  --rpv-default-layout__body-background-color: rgba(256, 256, 256, 1);
+  --rpv-default-layout__container-border-color: rgba(218, 245, 240, 1);
+  --rpv-default-layout__toolbar-background-color: rgba(218, 245, 240, 1);
+  --rpv-core__textbox-background-color: rgba(218, 245, 240, 1);
+}
+
+.pdf-viewer .rpv-core__viewer--dark {
+  --rpv-default-layout__toolbar-background-color: rgba(218, 245, 240, 1);
+  --rpv-core__textbox-color: rgba(0, 0, 0, 1);
+  --rpv-core__minimal-button-color: rgba(0, 0, 0, 1);
+  --rpv-toolbar__label--color: rgba(0, 0, 0, 1);
+  --rpv-zoom__popover-target-arrow-border-color: rgba(0, 0, 0, 1);
+  --rpv-core__textbox-background-color: rgba(218, 245, 240, 1);
+  --rpv-core__minimal-button--hover-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pdf-viewer .rpv-default-layout__toolbar {
+  align-items: center;
+  background-color: var(--rpv-default-layout__toolbar-background-color);
+  border-bottom: 1px solid
+    var(--rpv-default-layout__toolbar-border-bottom-color);
+  display: flex;
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 2.5rem;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 2px solid black;
+  height: 40px;
 }

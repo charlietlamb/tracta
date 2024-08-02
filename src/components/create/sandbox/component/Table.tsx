@@ -1,5 +1,4 @@
 import { useCreateContext } from '../../context/createContext'
-import { Textarea } from '@/components/ui/textarea'
 import {
   Table as TableComponent,
   TableBody,
@@ -8,79 +7,118 @@ import {
   TableRow,
   TableCell,
 } from '@/components/ui/table'
-import { Button } from '@/components/ui/button' // Import the Button component
-import { Trash, Trash2 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Trash2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import TractaEditor from '../editor/TractaEditor'
 
-export default function Table() {
-  const { values, setValues, setLastChange } = useCreateContext()
-  if (!values) return null
-  const tableData = JSON.parse(values[1].replace(/'/g, '"'))
+export default function Table({
+  index,
+  tracta,
+  num,
+}: {
+  index: number
+  tracta: string
+  num: string
+}) {
+  const { json, setJson, setLastChange } = useCreateContext()
+  const validJSON = json[num][index].value.replace(/'/g, '"')
+  const [tableData, setTableData] = useState<string[][]>(JSON.parse(validJSON))
   const [headers, ...dataArray] = tableData
   const [deleteButtons, setDeleteButtons] = useState(false)
+
+  useEffect(() => {
+    setJson((prevJson) => {
+      const newJson = { ...prevJson }
+      newJson[num][index].value = JSON.stringify(tableData).replace(
+        /'/g,
+        '&apos;',
+      )
+      return newJson
+    })
+    setLastChange(Date.now())
+  }, [tableData])
 
   const handleCellChange = (
     rowIndex: number,
     cellIndex: number,
     newValue: string,
   ) => {
-    const newTableData = [...tableData]
-    newTableData[rowIndex][cellIndex] = newValue
-    setValues([values[0], JSON.stringify(newTableData)])
-    setLastChange(Date.now())
+    setTableData((prevTableData) => {
+      const newTableData = [...prevTableData]
+      newTableData[rowIndex][cellIndex] = newValue
+      setJson((prevJson) => {
+        const newJson = { ...prevJson }
+        newJson[num][index].value = JSON.stringify(newTableData).replace(
+          /'/g,
+          '&apos;',
+        )
+        return newJson
+      })
+      setLastChange(Date.now())
+      return newTableData
+    })
   }
 
   const handleAddRow = () => {
-    const newTableData = [...tableData]
-    newTableData.push(new Array(headers.length).fill('')) // Add a new row with empty strings
-    setValues([values[0], JSON.stringify(newTableData)])
-    setLastChange(Date.now())
+    setTableData((prevTableData) => {
+      const newTableData = [
+        ...prevTableData,
+        new Array(prevTableData[0].length).fill(''),
+      ]
+      return newTableData
+    })
   }
 
   const handleAddColumn = () => {
-    const newTableData = tableData.map((row: string[]) => [...row, '']) // Add a new column with empty strings
-    setValues([values[0], JSON.stringify(newTableData)])
-    setLastChange(Date.now())
+    setTableData((prevTableData) => {
+      const newTableData = prevTableData.map((row) => [...row, ''])
+      return newTableData
+    })
   }
 
   const handleDeleteRow = (rowIndex: number) => {
-    if (tableData.length <= 2) return // Do not delete if only one row left
-    const newTableData = tableData.filter(
-      (_: string, index: number) => index !== rowIndex,
-    ) // Remove the row at rowIndex
-    setValues([values[0], JSON.stringify(newTableData)])
+    setTableData((prevTableData) => {
+      if (prevTableData.length <= 2) return prevTableData // Do not delete if only one row left
+      const newTableData = prevTableData.filter(
+        (_, index) => index !== rowIndex,
+      )
+      return newTableData
+    })
     setLastChange(Date.now())
   }
 
   const handleDeleteColumn = (columnIndex: number) => {
-    if (tableData[0].length <= 1) return // Do not delete if only one column left
-    const newTableData = tableData.map((row: string[]) =>
-      row.filter((_, index) => index !== columnIndex),
-    ) // Remove the column at columnIndex
-    setValues([values[0], JSON.stringify(newTableData)])
-    setLastChange(Date.now())
+    setTableData((prevTableData) => {
+      if (prevTableData[0].length <= 1) return prevTableData // Do not delete if only one column left
+      const newTableData = prevTableData.map((row) =>
+        row.filter((_, index) => index !== columnIndex),
+      )
+      return newTableData
+    })
   }
 
   return (
-    <>
-      <h5 className="text-lg font-heading">Content</h5>
-      <div className="flex flex-col gap-2">
-        <TableComponent>
+    <div className="w-full max-w-full">
+      <h5 className="font-larken text-xl font-bold">Table</h5>
+      <div className="flex w-full flex-col gap-2 overflow-hidden">
+        <TableComponent className="rounded-base">
           <TableHeader>
-            <TableRow className="divide-x divide-black">
+            <TableRow className="divide-x divide-black border border-black bg-white">
               {headers.map((item: string, index: number) => (
                 <TableHead
                   key={index}
                   className={cn(
-                    'p-2 align-top',
+                    'border border-black p-2 align-top',
                     index === headers.length - 1 && 'border-r border-black',
                   )}
                 >
-                  <Textarea
+                  <TractaEditor
                     value={item}
-                    onChange={(e) => handleCellChange(0, index, e.target.value)}
-                    className="min-h-[60px] border-none bg-transparent p-0 font-medium text-white shadow-none"
+                    onChange={(e) => handleCellChange(0, index, e || '')}
+                    className="max-h-[40px] min-h-[20px] border-none bg-transparent p-0 font-medium text-white shadow-none"
+                    theme="tractaTheme-main"
                   />
                 </TableHead>
               ))}
@@ -91,22 +129,21 @@ export default function Table() {
               <TableRow
                 key={rowIndex}
                 className={cn(
-                  'divide-x divide-black bg-bg',
+                  'divide-x divide-black bg-white',
                   rowIndex % 2 !== 0 && 'bg-white',
                 )}
               >
                 {data.map((d: string, cellIndex: number) => (
                   <TableCell key={cellIndex} className="p-2 align-top">
-                    <Textarea
+                    <TractaEditor
                       value={d}
                       onChange={(e) =>
-                        handleCellChange(
-                          rowIndex + 1,
-                          cellIndex,
-                          e.target.value,
-                        )
+                        handleCellChange(rowIndex + 1, cellIndex, e || '')
                       }
-                      className="h-full min-h-[60px] border-none bg-transparent p-0 shadow-none"
+                      className="h-full max-h-[40px] min-h-[20px] border-none bg-transparent p-0 shadow-none"
+                      theme={
+                        rowIndex % 2 !== 0 ? 'tractaTheme' : 'tractaTheme-bg'
+                      }
                     />
                   </TableCell>
                 ))}
@@ -149,25 +186,28 @@ export default function Table() {
         </TableComponent>
         <div className="flex gap-2">
           <Button
+            variant="noShadow"
             onClick={handleAddRow}
-            className="shadow-none hover:translate-x-0 hover:translate-y-0"
+            className="bg-bg shadow-none hover:bg-main"
           >
             Add Row
           </Button>
           <Button
+            variant="noShadow"
             onClick={handleAddColumn}
-            className="shadow-none hover:translate-x-0 hover:translate-y-0"
+            className="bg-bg shadow-none hover:bg-main"
           >
             Add Column
           </Button>
           <Button
-            className="bg-red-200 shadow-none hover:translate-x-0 hover:translate-y-0 hover:bg-red-400"
+            variant="noShadow"
+            className="bg-red-200 shadow-none hover:bg-red-400"
             onClick={() => setDeleteButtons(!deleteButtons)}
           >
             <Trash2 />
           </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }

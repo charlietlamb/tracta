@@ -24,8 +24,8 @@ const buttonVariants = cva(
         sidebar: 'bg-white',
         danger:
           'bg-red-200 hover:bg-red-400  border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
-        ghost:
-          'bg-transparent text-black border border-bg hover:border-black hover:bg-main',
+        dangerNoShadow: 'bg-red-200 hover:bg-red-400  border-2 border-black',
+        ghost: 'bg-transparent text-black hover:bg-main',
       },
       size: {
         default: 'h-10 px-4 py-2',

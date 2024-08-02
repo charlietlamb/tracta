@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
 import './globals.css'
+import type { Metadata } from 'next'
 import Footer from '@/components/footer/footer'
 import Nav from '@/components/nav/Nav'
 import { GeistSans } from 'geist/font/sans'
@@ -10,12 +10,6 @@ import { getUserAuth } from '@/lib/get/getUserAuth'
 import { Toaster } from '@/components/ui/sonner'
 import ReactQueryProvider from '@/components/query/ReactQueryProvider'
 import { AuthProvider } from '@/lib/slice/auth/AuthProvider'
-import { Playfair_Display } from '@next/font/google'
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-contract',
-})
 
 export const metadata: Metadata = {
   title: 'Tracta',
@@ -28,8 +22,13 @@ export default async function RootLayout({
 }>) {
   const user = await getUserAuth()
   return (
-    <html lang="en">
-      <body className={cn('flex min-h-screen flex-col', GeistSans.className)}>
+    <html lang="en" className="no-scrollbar">
+      <body
+        className={cn(
+          'relative flex min-h-screen flex-col',
+          GeistSans.className,
+        )}
+      >
         <Toaster />
         <ReactQueryProvider>
           <StoreProvider>

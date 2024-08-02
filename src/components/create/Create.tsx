@@ -6,6 +6,7 @@ import {
   ResizablePanelGroup,
 } from '../ui/resizable'
 import { CreateContext } from './context/createContext'
+import CreateHeader from './header/CreateHeader'
 import CreatePreview from './preview/CreatePreview'
 import CreateSandbox from './sandbox/CreateSandbox'
 import CreateSidebar from './sidebar/CreateSidebar'
@@ -14,18 +15,21 @@ import { useState } from 'react'
 export default function Create({ json: jsonInit }: { json: Contract }) {
   const [json, setJson] = useState<Contract>(jsonInit)
   const [key, setKey] = useState<string>('1')
-  const [newKey, setNewKey] = useState<string>('-1')
-  const [values, setValues] = useState<string[] | null>(json['1'].values)
-  const [tracta, setTracta] = useState<string | null>(json['1'].tracta)
-  const [title, setTitle] = useState(values ? values[0] : 'Title')
+  const [index, setIndex] = useState<number>(0)
+  let initTitle = 'Tracta'
+  try {
+    initTitle = json[key][index].value
+  } catch (e) {}
+  const [title, setTitle] = useState(initTitle)
   const [addOpen, setAddOpen] = useState(false)
   const [varOpen, setVarOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const [sidebarSelected, setSidebarSelected] = useState<string | null>(null)
+  const [sidebarSelected, setSidebarSelected] = useState<string | null>('1')
   const [lastChange, setLastChange] = useState<number>(Date.now())
   const [pdfUrl, setPdfUrl] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [isDragging, setIsDragging] = useState<boolean>(false)
+  const [dnd, setDnd] = useState<boolean>(false)
   return (
     <CreateContext.Provider
       value={{
@@ -33,12 +37,8 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setJson,
         key,
         setKey,
-        newKey,
-        setNewKey,
-        tracta,
-        setTracta,
-        values,
-        setValues,
+        index,
+        setIndex,
         title,
         setTitle,
         addOpen,
@@ -57,30 +57,35 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setLoading,
         isDragging,
         setIsDragging,
+        dnd,
+        setDnd,
       }}
     >
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="flex flex-grow divide-x divide-black"
-        style={{ height: 'calc(100vh - 58px)' }}
-      >
-        <ResizablePanel
-          minSize={5}
-          defaultSize={15}
-          maxSize={40}
-          className="relative z-50"
+      <div className="flex h-screen flex-col divide-y-2 divide-black">
+        <CreateHeader />
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="flex flex-grow divide-x divide-black"
+          // style={{ height: 'calc(100vh - 58px)' }}
         >
-          <CreateSidebar />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel minSize={20} className="relative z-50">
-          <CreateSandbox />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel minSize={5} className="relative z-50">
-          <CreatePreview />
-        </ResizablePanel>
-      </ResizablePanelGroup>
+          <ResizablePanel
+            minSize={10}
+            defaultSize={15}
+            maxSize={40}
+            className="relative z-50"
+          >
+            <CreateSidebar />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel minSize={20}>
+            <CreateSandbox />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel minSize={5}>
+            <CreatePreview />
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
     </CreateContext.Provider>
   )
 }

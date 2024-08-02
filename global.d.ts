@@ -27,13 +27,13 @@ declare global {
 
   interface Tracta {
     tracta: string
-    values: string[]
+    value: string
   }
 
   interface TractaDraggable {
     key: string
     tracta: string
-    values: string[]
+    values: string
     children: TractaDraggable[] | null
   }
 }

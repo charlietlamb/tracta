@@ -79,7 +79,7 @@ export default function CreateVariablesContent() {
             <Button
               onClick={() => removeVariable(i)}
               className="w-auto"
-              variant="danger"
+              variant="dangerNoShadow"
             >
               <X />
             </Button>

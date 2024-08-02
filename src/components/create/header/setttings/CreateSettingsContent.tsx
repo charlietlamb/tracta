@@ -24,7 +24,7 @@ export default function CreateSettingsContent() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-2">
-        <h4 className="flex-shrink-0 truncate text-xl font-heading">
+        <h4 className="font-larken flex-shrink-0 truncate text-xl font-bold">
           Contract Title
         </h4>
         <Input
@@ -38,11 +38,11 @@ export default function CreateSettingsContent() {
         />
       </div>
       <div className="flex  items-center gap-2">
-        <h4 className="text-xl font-heading">Template</h4>
+        <h4 className="font-larken text-xl font-bold">Template</h4>
         <Checkbox checked={template} onClick={() => setTemplate(!template)} />
       </div>
       <div className="flex  items-center gap-2">
-        <h4 className="text-xl font-heading">Font</h4>
+        <h4 className="font-larken text-xl font-bold">Font</h4>
         <FontPicker />
       </div>
     </div>

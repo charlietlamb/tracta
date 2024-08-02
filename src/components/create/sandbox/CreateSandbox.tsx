@@ -1,50 +1,79 @@
 import { sandboxMap } from '@/lib/contract/maps/sandboxMap'
 import { useCreateContext } from '../context/createContext'
-import { saveJson } from '@/lib/contract/functions/saveJson'
-import TractaEditor from './editor/TractaEditor'
-import { ReceiptText } from 'lucide-react'
+import { ArrowUp, ArrowUpDown, Check, Plus } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import CreateSandboxComponents from './CreateSandboxComponents'
 
 export default function CreateSandbox() {
   const {
     json,
-    setJson,
-    tracta,
     key,
+    setKey,
     title,
-    setTitle,
-    values,
-    setValues,
     setSidebarSelected,
-    setLastChange,
+    setAddOpen,
+    dnd,
+    setDnd,
   } = useCreateContext()
-  const otherValues = values?.slice(1) || []
 
-  if (!tracta) return null
+  const parentKey = key.split('.').slice(0, -1).join('.')
+  const headingComponentFunction = sandboxMap.get('heading')
+  const HeadingComponent = headingComponentFunction
+    ? headingComponentFunction(0, key)
+    : null
   return (
-    <div
-      className="flex h-full w-full flex-col divide-y-2 divide-black "
-      onClick={() => setSidebarSelected(null)}
-    >
-      <div className="flex w-full items-center justify-between bg-bg p-4 py-2 ">
-        <h4 className="flex-grow text-2xl font-heading">
+    <div className="flex h-full w-full flex-col divide-y-2 divide-black">
+      <div className="flex h-[39px] w-full items-center justify-between bg-bg px-2">
+        <h4 className="font-larken flex-grow text-2xl font-bold">
           {key}. {title}
         </h4>
-        <ReceiptText className="size-6" />
+        {key.split('.').length > 1 && (
+          <Button
+            className="flex h-auto items-center gap-2 border border-black bg-bg p-1 py-0"
+            variant="ghost"
+            onClick={(e) => {
+              e.stopPropagation()
+              setSidebarSelected(parentKey)
+              setKey(parentKey)
+            }}
+          >
+            <ArrowUp />
+            {parentKey + '. ' + json[parentKey][0].value}
+          </Button>
+        )}
       </div>
-      <div className="no-scrollbar flex flex-col overflow-y-auto p-4">
-        <h5 className="text-lg font-heading">Title</h5>
-        <TractaEditor
-          value={title}
-          onChange={(e) => {
-            if (!e) return
-            setTitle(e)
-            setValues([e, ...otherValues])
-            saveJson(json, setJson, key, [e, ...otherValues], tracta)
-            setLastChange(Date.now())
+      <div className="no-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
+        {HeadingComponent}
+        <CreateSandboxComponents />
+        <Button
+          className="flex items-center gap-2"
+          onClick={(e) => {
+            e.stopPropagation()
+            setSidebarSelected(key)
+            setAddOpen(true)
           }}
-        />
-
-        {sandboxMap.get(tracta)}
+        >
+          Add Component <Plus />{' '}
+        </Button>
+        {json[key].length > 2 && (
+          <Button
+            className="flex items-center gap-2"
+            onClick={(e) => {
+              e.stopPropagation()
+              setDnd(!dnd)
+            }}
+          >
+            {dnd ? (
+              <>
+                Finish <Check />
+              </>
+            ) : (
+              <>
+                Rearrange <ArrowUpDown />
+              </>
+            )}
+          </Button>
+        )}
       </div>
     </div>
   )

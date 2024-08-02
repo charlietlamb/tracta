@@ -4,9 +4,10 @@ export function saveJson(
   json: Contract,
   setJson: Dispatch<SetStateAction<Contract>>,
   key: string,
-  values: string[] | null,
-  tracta: string | null,
+  value: string,
+  tracta: string,
+  index: number,
 ) {
-  json[key] = { tracta: tracta || '', values: values || [] }
+  json[key][index] = { tracta, value }
   setJson(json)
 }

@@ -1,6 +1,5 @@
 import MovingGrid from '@/components/grid/MovingGrid'
 import { useCreateContext } from '../context/createContext'
-import CreatePreviewHeader from './CreatePreviewHeader'
 import { usePDF } from 'react-to-pdf'
 import generatePDF, { Resolution, Options, Margin } from 'react-to-pdf'
 
@@ -23,7 +22,7 @@ export default function CreatePreview() {
     filename: 'contract.pdf',
     resolution: Resolution.HIGH,
     method: 'build',
-    page: { margin: 12 },
+    page: { margin: 4 },
   }
   const { targetRef } = usePDF(options)
   let firstCall = false
@@ -69,13 +68,12 @@ export default function CreatePreview() {
     <div className="relative flex h-full w-full flex-col">
       <div
         className="absolute inset-0 z-10 flex h-full w-full flex-grow flex-col items-center overflow-hidden bg-white"
-        onClick={() => setSidebarSelected(null)}
+        // onClick={() => setSidebarSelected(null)}
       >
-        {/* <CreatePreviewHeader targetRef={targetRef} toPDF={createPDF} /> */}
         <MovingGrid />
         {pdfUrl && !loading ? (
           <div
-            className="relative z-10 h-full w-full"
+            className="no-scrollbar pdf-viewer relative z-10 h-full w-full"
             style={{ height: '100%' }}
           >
             <CreatePreviewViewer pdfUrl={pdfUrl} />

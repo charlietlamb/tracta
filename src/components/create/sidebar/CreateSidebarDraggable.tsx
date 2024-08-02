@@ -9,16 +9,25 @@ export default function CreateSidebarDraggable({
   parent: string
   className?: string
 }) {
-  const { json, setKey, setTitle } = useCreateContext()
+  const { json, setKey, setTitle, index, setSidebarSelected } =
+    useCreateContext()
   const size = parent.split('.').length
+  let text = ''
+  try {
+    text = json[parent][index].value
+  } catch (e) {}
+
   return (
     <div
-      className="flex min-w-0 flex-shrink flex-grow items-center justify-start transition"
+      className={cn(
+        'flex min-w-0 flex-shrink flex-grow items-center justify-start transition',
+      )}
       style={{ paddingLeft: `${20 * (size - 1) + 8}px` }}
       onClick={(e) => {
         e.stopPropagation()
         setKey(parent)
-        setTitle(json[parent].values[0])
+        setSidebarSelected(parent)
+        setTitle(text)
       }}
     >
       <ReceiptText className="mr-1 size-4 min-h-4 min-w-4" />
@@ -28,7 +37,7 @@ export default function CreateSidebarDraggable({
           className,
         )}
       >
-        {`${parent.length && json[parent].values[0]}`}
+        {`${parent.length && text}`}
       </h4>
     </div>
   )

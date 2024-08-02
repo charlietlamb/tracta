@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react'
 import Editor, { useMonaco } from '@monaco-editor/react'
+import { cn } from '@/lib/utils'
 
 export default function TractaEditor({
   value,
   onChange,
+  className,
+  theme = 'tractaTheme',
 }: {
   value: string
   onChange: (value: string | undefined) => void
+  className?: string
+  theme?: string
 }) {
   const monaco = useMonaco()
   useEffect(() => {
@@ -49,6 +54,48 @@ export default function TractaEditor({
       ],
       colors: {
         'editor.foreground': '#000000',
+        'editor.background': '#ffffff',
+      },
+    })
+
+    monaco.editor.defineTheme('tractaTheme-bg', {
+      base: 'vs',
+      inherit: false,
+      rules: [
+        { token: 'curly-brace', foreground: '#0000ff' }, // Existing style
+        { token: 'unclosed-curly-brace', foreground: '#ff0000' },
+        // New styles for bold, italic, and underlined text
+        { token: 'bold', foreground: '#0099ff' },
+        { token: 'italic', foreground: '#0099ff' },
+        { token: 'underline', foreground: '#0099ff' },
+        // Styles for unclosed backslash syntax
+        { token: 'unclosed-bold', foreground: '#ff0000' },
+        { token: 'unclosed-italic', foreground: '#ff0000' },
+        { token: 'unclosed-underline', foreground: '#ff0000' },
+      ],
+      colors: {
+        'editor.foreground': '#000000',
+        'editor.background': '#daf5f0',
+      },
+    })
+    monaco.editor.defineTheme('tractaTheme-main', {
+      base: 'vs',
+      inherit: false,
+      rules: [
+        { token: 'curly-brace', foreground: '#0000ff' }, // Existing style
+        { token: 'unclosed-curly-brace', foreground: '#ff0000' },
+        // New styles for bold, italic, and underlined text
+        { token: 'bold', foreground: '#0099ff' },
+        { token: 'italic', foreground: '#0099ff' },
+        { token: 'underline', foreground: '#0099ff' },
+        // Styles for unclosed backslash syntax
+        { token: 'unclosed-bold', foreground: '#ff0000' },
+        { token: 'unclosed-italic', foreground: '#ff0000' },
+        { token: 'unclosed-underline', foreground: '#ff0000' },
+      ],
+      colors: {
+        'editor.foreground': '#000000',
+        'editor.background': '#7fbc8c',
       },
     })
     try {
@@ -88,7 +135,10 @@ export default function TractaEditor({
         scrollBeyondLastLine: false,
         useShadowDOM: false,
       }}
-      className="flex max-h-[120px] min-h-[80px] w-full rounded-base border-2 border-black bg-white p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+      className={cn(
+        'flex max-h-[120px] min-h-[80px] w-full rounded-base border-2 border-black bg-white p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+      )}
     />
   )
 }
