@@ -11,15 +11,17 @@ export default function Section({
   tracta: string
   num: string
 }) {
-  const { json, setKey, setTitle } = useCreateContext()
+  const { json, setKey, setTitle, setIndex } = useCreateContext()
   const key = json[num][index].value
   return (
     <Button
       onClick={() => {
         setKey(key)
         setTitle(json[json[num][index].value][0].value)
+        setIndex(0)
       }}
-      className="flex w-full items-center gap-2 bg-bg"
+      className="flex w-full items-center gap-2"
+      variant="appOutline"
     >
       <ArrowDown />
       {key} {json[key][0].value}

@@ -67,10 +67,9 @@ export default function CreatePreview() {
   return (
     <div className="relative flex h-full w-full flex-col">
       <div
-        className="absolute inset-0 z-10 flex h-full w-full flex-grow flex-col items-center overflow-hidden bg-white"
+        className="bg-bgDark absolute inset-0 z-10 flex h-full w-full flex-grow flex-col items-center overflow-hidden"
         // onClick={() => setSidebarSelected(null)}
       >
-        <MovingGrid />
         {pdfUrl && !loading ? (
           <div
             className="no-scrollbar pdf-viewer relative z-10 h-full w-full"
@@ -79,7 +78,7 @@ export default function CreatePreview() {
             <CreatePreviewViewer pdfUrl={pdfUrl} />
           </div>
         ) : (
-          <Loader />
+          <Loader innerClassName="text-white" />
         )}
       </div>
       <CreatePreviewContent targetRef={targetRef} />

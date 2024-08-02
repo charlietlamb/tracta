@@ -3,6 +3,7 @@ import { useCreateContext } from '../context/createContext'
 import { ArrowUp, ArrowUpDown, Check, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import CreateSandboxComponents from './CreateSandboxComponents'
+import CreateSandboxHeader from './CreateSandboxHeader'
 
 export default function CreateSandbox() {
   const {
@@ -22,58 +23,44 @@ export default function CreateSandbox() {
     ? headingComponentFunction(0, key)
     : null
   return (
-    <div className="flex h-full w-full flex-col divide-y-2 divide-black">
-      <div className="flex h-[39px] w-full items-center justify-between bg-bg px-2">
-        <h4 className="font-larken flex-grow text-2xl font-bold">
-          {key}. {title}
-        </h4>
-        {key.split('.').length > 1 && (
-          <Button
-            className="flex h-auto items-center gap-2 border border-black bg-bg p-1 py-0"
-            variant="ghost"
-            onClick={(e) => {
-              e.stopPropagation()
-              setSidebarSelected(parentKey)
-              setKey(parentKey)
-            }}
-          >
-            <ArrowUp />
-            {parentKey + '. ' + json[parentKey][0].value}
-          </Button>
-        )}
-      </div>
+    <div className="bg-bgDark divide-darkBorder flex h-full w-full flex-col divide-y-2 text-white">
+      <CreateSandboxHeader parentKey={parentKey} />
       <div className="no-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
         {HeadingComponent}
         <CreateSandboxComponents />
-        <Button
-          className="flex items-center gap-2"
-          onClick={(e) => {
-            e.stopPropagation()
-            setSidebarSelected(key)
-            setAddOpen(true)
-          }}
-        >
-          Add Component <Plus />{' '}
-        </Button>
-        {json[key].length > 2 && (
+        <div className="flex w-full flex-col items-center gap-4 md:flex-row">
           <Button
-            className="flex items-center gap-2"
+            variant="appOutline"
+            className="flex w-full items-center gap-2"
             onClick={(e) => {
               e.stopPropagation()
-              setDnd(!dnd)
+              setSidebarSelected(key)
+              setAddOpen(true)
             }}
           >
-            {dnd ? (
-              <>
-                Finish <Check />
-              </>
-            ) : (
-              <>
-                Rearrange <ArrowUpDown />
-              </>
-            )}
+            Add Component <Plus />{' '}
           </Button>
-        )}
+          {json[key].length > 2 && (
+            <Button
+              variant="appOutline"
+              className="flex w-full items-center gap-2"
+              onClick={(e) => {
+                e.stopPropagation()
+                setDnd(!dnd)
+              }}
+            >
+              {dnd ? (
+                <>
+                  Finish <Check />
+                </>
+              ) : (
+                <>
+                  Rearrange <ArrowUpDown />
+                </>
+              )}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   )

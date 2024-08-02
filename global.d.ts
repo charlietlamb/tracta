@@ -28,6 +28,7 @@ declare global {
   interface Tracta {
     tracta: string
     value: string
+    style: { [key: string]: string }
   }
 
   interface TractaDraggable {

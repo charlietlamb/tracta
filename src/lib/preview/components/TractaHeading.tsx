@@ -7,15 +7,20 @@ export default function TractaHeading({
   num,
   value,
   variables,
+  style,
 }: {
   json: Contract
   num: string
   value: string
   variables: { [key: string]: string }
+  style: { [key: string]: string }
 }) {
   const className = tractaClassNameMap.get(num.split('.').length)
   return (
-    <div className={cn('flex flex-row items-center gap-1', className)}>
+    <div
+      className={cn('flex flex-row items-center gap-1', className)}
+      style={style}
+    >
       {num}
       <div
         dangerouslySetInnerHTML={{

@@ -6,35 +6,35 @@
     "template": false
   },
   "variables": {
-    "party1": "Party 1",
-    "party2": "Party 2",
-    "party1_phone": "555-123-4567",
-    "party2_phone": "555-987-6543",
-    "party1_address": "123 Main St, Anytown, USA",
-    "party2_address": "456 Elm St, Othertown, USA"
+    "name": "Charlie"
   },
   "1": [
     {
       "value": "Introduction",
-      "tracta": "heading"
+      "tracta": "heading",
+      "style": {}
     },
     {
       "value": "This is some basic text",
-      "tracta": "text"
+      "tracta": "text",
+      "style": {}
     },
     {
       "value": "1.1",
-      "tracta": "section"
+      "tracta": "section",
+      "style": {}
     },
     {
       "value": "[['Heading 1', 'Heading 2'],['Data 1', 'Data 2']]",
-      "tracta": "table"
+      "tracta": "table",
+      "style": {}
     }
   ],
   "1.1": [
     {
       "value": "Sub of the intro",
-      "tracta": "heading"
+      "tracta": "heading",
+      "style": {}
     }
   ]
 }

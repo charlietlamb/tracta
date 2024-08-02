@@ -61,11 +61,11 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setDnd,
       }}
     >
-      <div className="flex h-screen flex-col divide-y-2 divide-black">
+      <div className="divide-darkBorder flex h-screen flex-col divide-y-2">
         <CreateHeader />
         <ResizablePanelGroup
           direction="horizontal"
-          className="flex flex-grow divide-x divide-black"
+          className="divide-darkBorder flex flex-grow divide-x"
           // style={{ height: 'calc(100vh - 58px)' }}
         >
           <ResizablePanel

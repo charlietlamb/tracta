@@ -25,7 +25,14 @@ const buttonVariants = cva(
         danger:
           'bg-red-200 hover:bg-red-400  border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         dangerNoShadow: 'bg-red-200 hover:bg-red-400  border-2 border-black',
-        ghost: 'bg-transparent text-black hover:bg-main',
+        ghost:
+          'bg-transparent text-black hover:bg-transparent hover:text-darkBorder',
+        appOutline:
+          'border-darkBorder border-2 text-white shadow-smallBorder hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+        appSmall: 'border-darkBorder border-2 text-white',
+        appGhost: 'border border-darkBorder text-white hover:bg-darkBorder',
+        appDanger:
+          'text-red-200 hover:text-red-400 border border-darkBorder hover:bg-darkBorder',
       },
       size: {
         default: 'h-10 px-4 py-2',

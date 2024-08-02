@@ -19,13 +19,18 @@ const config: Config = {
         sidebar: '#99aca8',
         main: '#7fbc8c',
         mainAccent: '#58a769',
+        darkBorder: '#576260',
       },
       borderRadius: {
         base: '4px',
       },
       boxShadow: {
         base: '4px 4px 0px 0px rgba(0,0,0,1)',
+        baseWhite: '4px 4px 0px 0px rgba(255,255,255,1)',
+        baseBorder: '4px 4px 0px 0px rgba(87,98,96,1)',
         small: '2px 2px 0px 0px rgba(0,0,0,1)',
+        smallWhite: '2px 2px 0px 0px rgba(255,255,255,1)',
+        smallBorder: '2px 2px 0px 0px rgba(87,98,96,1)',
       },
       translate: {
         boxShadowX: '4px',

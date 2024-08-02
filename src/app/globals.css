@@ -178,27 +178,34 @@ body::-webkit-scrollbar-thumb {
 }
 
 .pdf-viewer {
-  --rpv-default-layout__body-background-color: rgba(256, 256, 256, 1);
-  --rpv-default-layout__container-border-color: rgba(218, 245, 240, 1);
-  --rpv-default-layout__toolbar-background-color: rgba(218, 245, 240, 1);
-  --rpv-core__textbox-background-color: rgba(218, 245, 240, 1);
+  --rpv-default-layout__body-background-color: rgba(44, 49, 48, 1);
+  --rpv-default-layout__container-border-color: rgba(87, 98, 96, 1);
+  --rpv-default-layout__toolbar-border-bottom-color: rgba(87, 98, 96, 1);
+  --rpv-default-layout__toolbar-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__textbox-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__inner-page-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__textbox-color: rgba(255, 255, 255, 1);
+  --rpv-core__minimal-button-color: rgba(255, 255, 255, 1);
+  --rpv-toolbar__label--color: rgba(255, 255, 255, 1);
+  --rpv-zoom__popover-target-arrow-border-color: rgba(255, 255, 255, 1);
 }
 
 .pdf-viewer .rpv-core__viewer--dark {
-  --rpv-default-layout__toolbar-background-color: rgba(218, 245, 240, 1);
-  --rpv-core__textbox-color: rgba(0, 0, 0, 1);
-  --rpv-core__minimal-button-color: rgba(0, 0, 0, 1);
-  --rpv-toolbar__label--color: rgba(0, 0, 0, 1);
-  --rpv-zoom__popover-target-arrow-border-color: rgba(0, 0, 0, 1);
-  --rpv-core__textbox-background-color: rgba(218, 245, 240, 1);
-  --rpv-core__minimal-button--hover-background-color: rgba(0, 0, 0, 0.1);
+  --rpv-default-layout__body-background-color: rgba(44, 49, 48, 1);
+  --rpv-default-layout__container-border-color: rgba(87, 98, 96, 1);
+  --rpv-default-layout__toolbar-border-bottom-color: rgba(87, 98, 96, 1);
+  --rpv-default-layout__toolbar-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__textbox-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__inner-page-background-color: rgba(44, 49, 48, 1);
+  --rpv-core__textbox-color: rgba(255, 255, 255, 1);
+  --rpv-core__minimal-button-color: rgba(255, 255, 255, 1);
+  --rpv-toolbar__label--color: rgba(255, 255, 255, 1);
+  --rpv-zoom__popover-target-arrow-border-color: rgba(255, 255, 255, 1);
 }
 
 .pdf-viewer .rpv-default-layout__toolbar {
   align-items: center;
   background-color: var(--rpv-default-layout__toolbar-background-color);
-  border-bottom: 1px solid
-    var(--rpv-default-layout__toolbar-border-bottom-color);
   display: flex;
   left: 0;
   position: absolute;
@@ -206,6 +213,7 @@ body::-webkit-scrollbar-thumb {
   height: 2.5rem;
   width: 100%;
   z-index: 1;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid
+    var(--rpv-default-layout__toolbar-border-bottom-color);
   height: 40px;
 }

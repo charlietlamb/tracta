@@ -12,14 +12,14 @@ export default function Text({
   tracta: string
   num: string
 }) {
-  const { setLastChange, json, setJson, key } = useCreateContext()
+  const { setLastChange, json, setJson, key, setIndex } = useCreateContext()
   const [text, setText] = useState(json[key][index].value)
 
   useEffect(() => {
     setText(json[key][index].value)
   }, [key])
   return (
-    <div>
+    <div onClick={() => setIndex(index)}>
       <h5 className="font-larken text-xl font-bold">Text</h5>
       <TractaEditor
         value={text}

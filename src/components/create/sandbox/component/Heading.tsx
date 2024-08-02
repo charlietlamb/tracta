@@ -12,7 +12,8 @@ export default function Heading({
   tracta: string
   num: string
 }) {
-  const { setLastChange, json, setJson, setTitle, key } = useCreateContext()
+  const { setLastChange, json, setJson, setTitle, key, setIndex } =
+    useCreateContext()
   const [heading, setHeading] = useState(json[key][index].value)
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function Heading({
   }, [key])
 
   return (
-    <div>
+    <div onClick={() => setIndex(index)}>
       <h5 className="font-larken text-xl font-bold">Heading</h5>
       <TractaEditor
         value={heading}

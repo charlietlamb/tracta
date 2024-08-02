@@ -59,7 +59,7 @@ export default function CreateSidebarMain({
                       return (
                         <div
                           className={cn(
-                            'bg-bg transition-all',
+                            'transition-all',
                             dragSnapshot.isDragging && 'shadow-base',
                           )}
                           ref={dragProvided.innerRef}

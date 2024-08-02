@@ -20,7 +20,10 @@ export default function CreateSidebar() {
       )}
       layout
     >
-      <ResizablePanelGroup direction="vertical" className="flex flex-grow">
+      <ResizablePanelGroup
+        direction="vertical"
+        className="divide-darkBorder flex flex-grow divide-y"
+      >
         <ResizablePanel minSize={10} defaultSize={50} maxSize={90}>
           <CreateSidebarStyles />
         </ResizablePanel>

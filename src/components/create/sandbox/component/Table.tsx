@@ -22,7 +22,7 @@ export default function Table({
   tracta: string
   num: string
 }) {
-  const { json, setJson, setLastChange } = useCreateContext()
+  const { json, setJson, setLastChange, setIndex } = useCreateContext()
   const validJSON = json[num][index].value.replace(/'/g, '"')
   const [tableData, setTableData] = useState<string[][]>(JSON.parse(validJSON))
   const [headers, ...dataArray] = tableData
@@ -100,18 +100,19 @@ export default function Table({
   }
 
   return (
-    <div className="w-full max-w-full">
+    <div className="w-full max-w-full" onClick={() => setIndex(index)}>
       <h5 className="font-larken text-xl font-bold">Table</h5>
       <div className="flex w-full flex-col gap-2 overflow-hidden">
-        <TableComponent className="rounded-base">
-          <TableHeader>
-            <TableRow className="divide-x divide-black border border-black bg-white">
+        <TableComponent className="border-darkBorder rounded-base border">
+          <TableHeader className="rounded-base">
+            <TableRow className="bg-bgDark border-darkBorder divide-darkBorder divide-x border">
               {headers.map((item: string, index: number) => (
                 <TableHead
                   key={index}
                   className={cn(
-                    'border border-black p-2 align-top',
-                    index === headers.length - 1 && 'border-r border-black',
+                    'border-darkBorder border p-2 align-top',
+                    index === headers.length - 1 &&
+                      'border-darkBorder border-r',
                   )}
                 >
                   <TractaEditor
@@ -129,8 +130,7 @@ export default function Table({
               <TableRow
                 key={rowIndex}
                 className={cn(
-                  'divide-x divide-black bg-white',
-                  rowIndex % 2 !== 0 && 'bg-white',
+                  'bg-bgDark divide-darkBorder border-darkBorder divide-x',
                 )}
               >
                 {data.map((d: string, cellIndex: number) => (
@@ -149,20 +149,20 @@ export default function Table({
                 ))}
                 <TableCell
                   className={cn(
-                    ' cursor-pointer bg-red-200 transition hover:bg-red-400',
+                    'border-darkBorder bg-bgDark border text-red-200 transition hover:text-red-400',
                     !deleteButtons && 'hidden',
                   )}
                   onClick={() => handleDeleteRow(rowIndex + 1)}
                 >
                   <div className="flex h-full w-full items-center justify-center">
-                    <Trash2 className="text-white" />
+                    <Trash2 />
                   </div>
                 </TableCell>
               </TableRow>
             ))}
             <TableRow
               className={cn(
-                'divide-x divide-black',
+                'divide-darkBorder border-darkBorder divide-x',
                 !deleteButtons && 'hidden',
               )}
             >
@@ -170,14 +170,14 @@ export default function Table({
                 <TableCell
                   key={columnIndex}
                   className={cn(
-                    'cursor-pointer bg-red-200 transition hover:bg-red-400',
+                    'border-darkBorder bg-bgDark border text-red-200 transition hover:text-red-400',
                     columnIndex === headers.length - 1 &&
-                      'border-r border-black',
+                      'border-darkBorder border-r',
                   )}
                   onClick={() => handleDeleteColumn(columnIndex)}
                 >
                   <div className="flex h-full w-full items-center justify-center">
-                    <Trash2 className="text-white" />
+                    <Trash2 />
                   </div>
                 </TableCell>
               ))}
@@ -185,23 +185,14 @@ export default function Table({
           </TableBody>
         </TableComponent>
         <div className="flex gap-2">
-          <Button
-            variant="noShadow"
-            onClick={handleAddRow}
-            className="bg-bg shadow-none hover:bg-main"
-          >
+          <Button variant="appGhost" onClick={handleAddRow}>
             Add Row
           </Button>
-          <Button
-            variant="noShadow"
-            onClick={handleAddColumn}
-            className="bg-bg shadow-none hover:bg-main"
-          >
+          <Button variant="appGhost" onClick={handleAddColumn}>
             Add Column
           </Button>
           <Button
-            variant="noShadow"
-            className="bg-red-200 shadow-none hover:bg-red-400"
+            variant="appDanger"
             onClick={() => setDeleteButtons(!deleteButtons)}
           >
             <Trash2 />

@@ -30,6 +30,7 @@ export function getJsonMarkup(
                   num={key}
                   value={tracta.value}
                   variables={json.variables}
+                  style={tracta.style}
                 />
               )
             })}
