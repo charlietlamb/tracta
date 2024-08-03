@@ -29,7 +29,7 @@ export default function CreateComponent({
         <h4 className="font-larken text-2xl font-bold">{component.title}</h4>
         <p>{component.description}</p>
       </div>
-      <div className="size-40 w-full">
+      <div className="bg-bgDark size-40 w-full text-white">
         <Image
           //   src={component.image}
           src={''}

@@ -6,7 +6,7 @@ import {
   ResizablePanelGroup,
 } from '../ui/resizable'
 import { CreateContext } from './context/createContext'
-import CreateHeader from './header/CreateHeader'
+import CreateToolbar from './toolbar/CreateToolbar'
 import CreatePreview from './preview/CreatePreview'
 import CreateSandbox from './sandbox/CreateSandbox'
 import CreateSidebar from './sidebar/CreateSidebar'
@@ -30,6 +30,7 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
   const [loading, setLoading] = useState<boolean>(false)
   const [isDragging, setIsDragging] = useState<boolean>(false)
   const [dnd, setDnd] = useState<boolean>(false)
+  const [pdf, setPdf] = useState<boolean>(true)
   return (
     <CreateContext.Provider
       value={{
@@ -59,30 +60,27 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setIsDragging,
         dnd,
         setDnd,
+        pdf,
+        setPdf,
       }}
     >
-      <div className="divide-darkBorder flex h-screen flex-col divide-y-2">
-        <CreateHeader />
+      <div className="divide-darkBorder flex h-screen divide-x">
+        <CreateToolbar />
         <ResizablePanelGroup
           direction="horizontal"
           className="divide-darkBorder flex flex-grow divide-x"
           // style={{ height: 'calc(100vh - 58px)' }}
         >
-          <ResizablePanel
-            minSize={10}
-            defaultSize={15}
-            maxSize={40}
-            className="relative z-50"
-          >
-            <CreateSidebar />
-          </ResizablePanel>
-          <ResizableHandle withHandle />
           <ResizablePanel minSize={20}>
             <CreateSandbox />
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel minSize={5}>
             <CreatePreview />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel minSize={10} defaultSize={15} maxSize={40}>
+            <CreateSidebar />
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>

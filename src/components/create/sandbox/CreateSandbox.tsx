@@ -17,14 +17,13 @@ export default function CreateSandbox() {
     setDnd,
   } = useCreateContext()
 
-  const parentKey = key.split('.').slice(0, -1).join('.')
   const headingComponentFunction = sandboxMap.get('heading')
   const HeadingComponent = headingComponentFunction
     ? headingComponentFunction(0, key)
     : null
   return (
-    <div className="bg-bgDark divide-darkBorder flex h-full w-full flex-col divide-y-2 text-white">
-      <CreateSandboxHeader parentKey={parentKey} />
+    <div className="bg-bgDark divide-darkBorder flex h-full w-full flex-col divide-y text-white">
+      <CreateSandboxHeader />
       <div className="no-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
         {HeadingComponent}
         <CreateSandboxComponents />

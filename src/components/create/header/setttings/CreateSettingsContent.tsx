@@ -28,7 +28,7 @@ export default function CreateSettingsContent() {
           Contract Title
         </h4>
         <Input
-          className="mb-0 flex-grow shadow-none"
+          className="border-darkBorder bg-bgDark mb-0 flex-grow border shadow-none focus-visible:border-white"
           placeholder="Title"
           value={title}
           onChange={(e) => {

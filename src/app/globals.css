@@ -203,6 +203,10 @@ body::-webkit-scrollbar-thumb {
   --rpv-zoom__popover-target-arrow-border-color: rgba(255, 255, 255, 1);
 }
 
+.pdf-viewer .rpv-default-layout__container {
+  border: none;
+}
+
 .pdf-viewer .rpv-default-layout__toolbar {
   align-items: center;
   background-color: var(--rpv-default-layout__toolbar-background-color);
@@ -213,7 +217,8 @@ body::-webkit-scrollbar-thumb {
   height: 2.5rem;
   width: 100%;
   z-index: 1;
-  border-bottom: 2px solid
+  border: none;
+  border-bottom: 1px solid
     var(--rpv-default-layout__toolbar-border-bottom-color);
   height: 40px;
 }

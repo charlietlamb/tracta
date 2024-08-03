@@ -33,6 +33,7 @@ const buttonVariants = cva(
         appGhost: 'border border-darkBorder text-white hover:bg-darkBorder',
         appDanger:
           'text-red-200 hover:text-red-400 border border-darkBorder hover:bg-darkBorder',
+        align: 'p-0 text-white rounded-none',
       },
       size: {
         default: 'h-10 px-4 py-2',
@@ -42,6 +43,7 @@ const buttonVariants = cva(
         icon: 'h-10 w-10',
         tight: 'h-10 p-0',
         auto: 'h-auto p-2',
+        align: 'h-6 p-1 w-full',
       },
     },
     defaultVariants: {

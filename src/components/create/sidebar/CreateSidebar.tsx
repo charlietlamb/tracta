@@ -9,6 +9,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable'
+import CreateSidebarHeader from './CreateSidebarHeader'
 
 export default function CreateSidebar() {
   const { json } = useCreateContext()
@@ -16,10 +17,11 @@ export default function CreateSidebar() {
   return (
     <motion.div
       className={cn(
-        'no-scrollbar bg-bgDark flex h-full max-h-full flex-col overflow-auto',
+        'no-scrollbar bg-bgDark divide-darkBorder flex h-full max-h-full flex-col divide-y overflow-auto',
       )}
       layout
     >
+      <CreateSidebarHeader />
       <ResizablePanelGroup
         direction="vertical"
         className="divide-darkBorder flex flex-grow divide-y"

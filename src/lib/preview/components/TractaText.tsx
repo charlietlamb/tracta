@@ -14,11 +14,12 @@ export default function TractaText({
   style: { [key: string]: string }
 }) {
   return (
-    <div
-      style={style}
-      dangerouslySetInnerHTML={{
-        __html: getVariableText(value, variables),
-      }}
-    />
+    <div className="flex flex-col" style={style}>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: getVariableText(value, variables),
+        }}
+      />
+    </div>
   )
 }

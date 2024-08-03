@@ -28,6 +28,8 @@ interface CreateContext {
   setIsDragging: Dispatch<SetStateAction<boolean>>
   dnd: boolean
   setDnd: Dispatch<SetStateAction<boolean>>
+  pdf: boolean
+  setPdf: Dispatch<SetStateAction<boolean>>
 }
 
 export const CreateContext = createContext<CreateContext | undefined>(undefined)

@@ -17,16 +17,15 @@ export default function TractaHeading({
 }) {
   const className = tractaClassNameMap.get(num.split('.').length)
   return (
-    <div
-      className={cn('flex flex-row items-center gap-1', className)}
-      style={style}
-    >
-      {num}
-      <div
-        dangerouslySetInnerHTML={{
-          __html: getVariableText(value, variables),
-        }}
-      />
+    <div className={cn('flex flex-col', className)} style={style}>
+      <div className={cn('flex flex-row items-center gap-1')}>
+        {num}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: getVariableText(value, variables),
+          }}
+        />
+      </div>
     </div>
   )
 }

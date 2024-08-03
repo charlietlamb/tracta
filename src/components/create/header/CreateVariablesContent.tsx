@@ -68,25 +68,29 @@ export default function CreateVariablesContent() {
               <Input
                 value={key}
                 onChange={(e) => handleKeyChange(i, e.target.value)}
-                className="mb-0 w-full max-w-none flex-grow shadow-none"
+                className="bg-bgDark border-darkBorder mb-0 w-full max-w-none flex-grow border shadow-none focus-visible:border-white"
               />
               <Input
                 value={values[i]}
                 onChange={(e) => handleValueChange(i, e.target.value)}
-                className="mb-0 max-w-none flex-grow bg-bg shadow-none"
+                className="bg-bgDark border-darkBorder mb-0 max-w-none flex-grow border shadow-none focus-visible:border-white"
               />
             </div>
             <Button
               onClick={() => removeVariable(i)}
               className="w-auto"
-              variant="dangerNoShadow"
+              variant="appDanger"
             >
               <X />
             </Button>
           </div>
         )
       })}
-      <Button onClick={addVariable}>
+      <Button
+        onClick={addVariable}
+        variant="appOutline"
+        className="flex items-center gap-2"
+      >
         <Plus /> Add Variable
       </Button>
     </div>

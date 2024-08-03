@@ -11,7 +11,7 @@ export default function CreatePreviewContent({
   targetRef: React.RefObject<HTMLDivElement>
   className?: string
 }) {
-  const { json, lastChange } = useCreateContext()
+  const { json, lastChange, pdf } = useCreateContext()
   const [loading, setLoading] = useState(false)
   const [markup, setMarkup] = useState<React.ReactNode | null>(null)
 
@@ -25,11 +25,17 @@ export default function CreatePreviewContent({
   }, [lastChange])
 
   return (
-    <div
-      className={cn('w-[794px] pb-2 font-contract', className)}
-      ref={targetRef}
-    >
-      {loading || !markup ? <Loader /> : markup}
+    <div>
+      <div
+        className={cn(
+          'relative z-0 w-[794px] bg-white pb-2 font-contract',
+          className,
+          !pdf && 'z-20',
+        )}
+        ref={targetRef}
+      >
+        {loading || !markup ? <Loader /> : markup}
+      </div>
     </div>
   )
 }

@@ -12,7 +12,7 @@ import { useState } from 'react'
 import CreateComponentGrid from '../component/CreateComponentGrid'
 import { useCreateContext } from '../context/createContext'
 
-export default function CreateSidebarAdd() {
+export default function CreateToolbarAdd() {
   const { addOpen, setAddOpen } = useCreateContext()
   useScrollbar(addOpen)
   return (
@@ -33,7 +33,7 @@ export default function CreateSidebarAdd() {
           </DialogHeader>
           Select a Component to add to your contract.
         </div>
-        <div className="relative flex-grow overflow-hidden p-4">
+        <div className="bg-bgDark relative flex-grow overflow-hidden p-4">
           <MovingGrid />
           <CreateComponentGrid />
         </div>

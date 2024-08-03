@@ -1,13 +1,15 @@
 import { Accordion } from '@/components/ui/accordion'
-import CreateSidebarTypography from './CreateSidebarTypography'
+import CreateSidebarTypography from './typography/CreateSidebarTypography'
 
 export default function CreateSidebarStyles() {
   return (
-    <Accordion
-      type="multiple"
-      className="divide-darkBorder flex w-full flex-col divide-y overflow-y-auto"
-    >
-      <CreateSidebarTypography />
-    </Accordion>
+    <div className="flex flex-col">
+      <Accordion
+        type="multiple"
+        className="divide-darkBorder flex w-full flex-col divide-y overflow-y-auto"
+      >
+        <CreateSidebarTypography />
+      </Accordion>
+    </div>
   )
 }

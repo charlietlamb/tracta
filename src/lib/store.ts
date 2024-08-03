@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './slice/user/userSlice'
-import engineReducer from './slice/engine/engineSlice'
 import authReducer from './slice/auth/authSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userReducer,
-      engine: engineReducer,
       auth: authReducer,
     },
   })
