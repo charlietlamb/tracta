@@ -40,13 +40,13 @@ export default function CreateSandboxComponents() {
                       <div ref={provided.innerRef} {...provided.draggableProps}>
                         <div
                           className={cn(
-                            'bg-bgDark border-bgDark hover:border-darkBorder group relative w-full rounded-base border-2 p-4 px-2 transition',
+                            'hover:border-border border-dark bg-dark group relative w-full rounded-base border-2 p-4 px-2 transition',
                             !dnd && 'border-0 p-0',
                           )}
                         >
                           <div
                             className={cn(
-                              'bg-darkBorder absolute left-1/2 top-1 z-30 mx-auto hidden h-3 w-4 -translate-x-1/2 cursor-grab items-center justify-center rounded-base text-black transition active:cursor-grabbing group-hover:flex',
+                              'bg-border absolute left-1/2 top-1 z-30 mx-auto hidden h-3 w-4 -translate-x-1/2 cursor-grab items-center justify-center rounded-base text-black transition active:cursor-grabbing group-hover:flex',
                               droppableSnapshot.isDraggingOver &&
                                 currentId === `${index + 1}` &&
                                 'flex',

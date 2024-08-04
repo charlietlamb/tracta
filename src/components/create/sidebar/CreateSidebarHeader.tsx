@@ -12,11 +12,11 @@ export default function CreateSidebarHeader() {
 
   console.log(json[key][index].value)
   return (
-    <div className="font-larken flex h-[41px] items-center gap-2 truncate px-2 text-white">
+    <div className="flex h-[41px] items-center gap-2 truncate px-2 font-larken text-white">
       {headingIcon}{' '}
       <div className="flex flex-col leading-none">
         {headingText}{' '}
-        <span className="text-darkBorder text-xs capitalize leading-none">
+        <span className="text-border text-xs capitalize leading-none">
           {headingTracta}
         </span>
       </div>

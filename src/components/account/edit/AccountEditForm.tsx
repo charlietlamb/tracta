@@ -1,3 +1,5 @@
+'use client'
+
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -70,13 +72,15 @@ export default function AccountEditForm() {
                 control={form.control}
                 name="first_name"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel className="text-xl">First Name</FormLabel>
+                  <FormItem className="w-full space-y-1">
+                    <FormLabel className="font-larken text-xl">
+                      First Name
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="First Name"
                         type="text"
-                        className="shadow-none"
+                        className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
                         defaultValue={user.first_name}
                         {...field}
                       />
@@ -88,13 +92,15 @@ export default function AccountEditForm() {
                 control={form.control}
                 name="last_name"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel className="text-xl">Last Name</FormLabel>
+                  <FormItem className="w-full space-y-1">
+                    <FormLabel className="font-larken text-xl">
+                      Last Name
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Last Name"
                         type="text"
-                        className="shadow-none"
+                        className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
                         defaultValue={user.last_name}
                         {...field}
                       />
@@ -109,13 +115,15 @@ export default function AccountEditForm() {
                   control={form.control}
                   name="username"
                   render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormLabel className="text-xl">Username</FormLabel>
+                    <FormItem className="w-full space-y-1">
+                      <FormLabel className="font-larken text-xl">
+                        Username
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="username"
                           type="text"
-                          className="shadow-none"
+                          className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
                           {...field}
                         />
                       </FormControl>
@@ -126,13 +134,15 @@ export default function AccountEditForm() {
                   control={form.control}
                   name="email"
                   render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormLabel className="text-xl">Email</FormLabel>
+                    <FormItem className="w-full space-y-1">
+                      <FormLabel className="font-larken text-xl">
+                        Email
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="example@mail.com"
                           type="email"
-                          className="shadow-none"
+                          className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
                           {...field}
                         />
                       </FormControl>
@@ -147,25 +157,27 @@ export default function AccountEditForm() {
             control={form.control}
             name="image"
             render={({ field }) => (
-              <FormItem className="hidden w-full">
-                <FormLabel className="text-xl">Image</FormLabel>
+              <FormItem className="hidden w-full space-y-1">
+                <FormLabel className="font-larken text-xl">Image</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Image URL"
                     type="text"
-                    className="shadow-none"
+                    className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
                     {...field}
                   />
                 </FormControl>
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" variant="base">
-            Update Password
-          </Button>
-          <Button type="submit" className="w-full">
-            Save
-          </Button>
+          <div className="flex w-full flex-col gap-4">
+            <Button type="submit" className="bg-light w-full" variant="base">
+              Update Password
+            </Button>
+            <Button type="submit" className="w-full bg-accent">
+              Save
+            </Button>
+          </div>
         </form>
       </Form>
       {error && <p className="text-red-500">{error}</p>}

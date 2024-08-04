@@ -16,12 +16,12 @@ export default function PricingPlan({
   price: string
 }) {
   return (
-    <div className="flex flex-col justify-between rounded-base border-2 border-black bg-white p-5">
+    <div className="bg-dark text-light flex flex-col justify-between rounded-base border-2 border-accent p-5">
       <div>
         <div className="flex items-center justify-between">
           <h3 className="font-larken text-2xl font-heading">{planName}</h3>
           {mostPopular && (
-            <span className="font-larken rounded-base border-2 border-black bg-main px-2 py-0.5 text-sm">
+            <span className="text-dark bg-light rounded-base border-2 border-black px-2 py-0.5 font-larken text-sm">
               Most popular
             </span>
           )}
@@ -43,7 +43,7 @@ export default function PricingPlan({
       </div>
       <Button
         size={mostPopular ? 'lg' : 'default'}
-        className={cn('mt-12 w-full', mostPopular && 'bg-black text-white')}
+        className={cn('mt-12 w-full', mostPopular && 'text-light bg-accent')}
       >
         Buy Plan
       </Button>

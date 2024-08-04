@@ -5,8 +5,8 @@ import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useAppSelector } from '@/lib/hooks'
 
-export default async function NavItems() {
-  const user = useAppSelector((state) => state.user)
+export default function NavItems() {
+  const { user } = useAppSelector((state) => state.user)
 
   return (
     <>
@@ -17,9 +17,9 @@ export default async function NavItems() {
       </div>
       <Sheet>
         <SheetTrigger asChild>
-          <Menu className="flex text-white md:hidden" />
+          <Menu className="flex md:hidden" />
         </SheetTrigger>
-        <SheetContent className="flex flex-col items-center gap-4 bg-main">
+        <SheetContent className="bg-dark flex flex-col items-center gap-4">
           <NavLink href="/templates">Templates</NavLink>
           <NavLink href="/create">Create</NavLink>
           {!!user ? <AccountButton /> : <AccountDialog />}

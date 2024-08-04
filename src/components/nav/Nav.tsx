@@ -8,7 +8,7 @@ export default function Nav() {
   const pathname = usePathname()
   if (pathname.includes('create')) return null
   return (
-    <nav className="sticky top-0 z-50 flex w-full items-center justify-between border-b-2 border-black bg-main px-4 py-2">
+    <nav className="bg-dark text-light sticky top-0 z-50 flex w-full items-center justify-between border-b-2 border-accent px-4 py-2">
       <NavLogo />
       <NavItems />
     </nav>

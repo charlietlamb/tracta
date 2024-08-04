@@ -33,7 +33,7 @@ export default function CreateToolbarAdd() {
           </DialogHeader>
           Select a Component to add to your contract.
         </div>
-        <div className="bg-bgDark relative flex-grow overflow-hidden p-4">
+        <div className="bg-dark relative flex-grow overflow-hidden p-4">
           <MovingGrid />
           <CreateComponentGrid />
         </div>

@@ -17,14 +17,14 @@ export default function CreateSidebar() {
   return (
     <motion.div
       className={cn(
-        'no-scrollbar bg-bgDark divide-darkBorder flex h-full max-h-full flex-col divide-y overflow-auto',
+        'no-scrollbar divide-border bg-dark flex h-full max-h-full flex-col divide-y overflow-auto',
       )}
       layout
     >
       <CreateSidebarHeader />
       <ResizablePanelGroup
         direction="vertical"
-        className="divide-darkBorder flex flex-grow divide-y"
+        className="divide-border flex flex-grow divide-y"
       >
         <ResizablePanel minSize={10} defaultSize={50} maxSize={90}>
           <CreateSidebarStyles />

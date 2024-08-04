@@ -27,7 +27,7 @@ export default function CreateToolbarSave() {
           </DialogHeader>
           Save your contract and come back another time.
         </div>
-        <div className="bg-bgDark relative flex-grow overflow-hidden p-4"></div>
+        <div className="bg-dark relative flex-grow overflow-hidden p-4"></div>
       </DialogContent>
     </Dialog>
   )

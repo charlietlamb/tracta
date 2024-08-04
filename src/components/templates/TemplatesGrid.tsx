@@ -43,7 +43,9 @@ export default function TemplatesGrid() {
       <Input
         placeholder="Search templates"
         value={search}
+        type="text"
         onChange={(e) => setSearch(e.target.value)}
+        className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
       />
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {templates.map((template: Component) => (

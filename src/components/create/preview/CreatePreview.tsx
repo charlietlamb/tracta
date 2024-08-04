@@ -1,3 +1,5 @@
+'use client'
+
 import MovingGrid from '@/components/grid/MovingGrid'
 import { useCreateContext } from '../context/createContext'
 import { usePDF } from 'react-to-pdf'
@@ -8,8 +10,12 @@ import CreatePreviewContent from './CreatePreviewContent'
 import Loader from '@/components/general/loading/Loader'
 import CreatePreviewViewer from './CreatePreviewViewer'
 import { useEffect } from 'react'
+// import { FileforgeClient } from '@fileforge/client'
 
 export default function CreatePreview() {
+  // const ff = new FileforgeClient({
+  //   apiKey: process.env.FILEFORGE_API_KEY,
+  // })
   const {
     setSidebarSelected,
     pdfUrl,
@@ -56,18 +62,18 @@ export default function CreatePreview() {
     debounceTimer = setTimeout(() => {
       createPDF()
     }, 2000)
-
     return () => {
       if (debounceTimer) {
         clearTimeout(debounceTimer)
       }
     }
+    // generatePdf(ff)
   }, [lastChange])
 
   return (
     <div className="relative flex h-full w-full flex-col">
       <div
-        className="bg-bgDark absolute inset-0 z-10 flex h-full w-full flex-grow flex-col items-center overflow-hidden"
+        className="bg-dark absolute inset-0 z-10 flex h-full w-full flex-grow flex-col items-center overflow-hidden"
         // onClick={() => setSidebarSelected(null)}
       >
         {pdfUrl && !loading ? (

@@ -1,3 +1,5 @@
+'use client'
+
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -57,7 +59,7 @@ export default function Auth() {
     }
   }
   return (
-    <div className="flex h-full min-w-[500px] flex-col items-center justify-center gap-8 p-16 lg:w-[500px]">
+    <div className="bg-dark text-light flex h-full w-full min-w-[500px] flex-col items-center justify-center gap-8 p-16 lg:w-[500px]">
       <AuthHeading />
       <Form {...form}>
         <form
@@ -70,12 +72,12 @@ export default function Auth() {
               name="email"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-xl">Email</FormLabel>
+                  <FormLabel className="font-larken text-xl">Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="example@mail.com"
                       type="email"
-                      className="shadow-none"
+                      className="border-border selection:bg-border placeholder:text-light border bg-transparent text-white shadow-none"
                       {...field}
                     />
                   </FormControl>
@@ -87,12 +89,14 @@ export default function Auth() {
               name="password"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-xl">Password</FormLabel>
+                  <FormLabel className="font-larken text-xl">
+                    Password
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="password"
                       type="password"
-                      className="shadow-none"
+                      className="border-border selection:bg-border placeholder:text-light border bg-transparent text-white shadow-none"
                       {...field}
                     />
                   </FormControl>

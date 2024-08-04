@@ -12,11 +12,7 @@ export default function NavLink({
 }) {
   const router = useRouter()
   return (
-    <Button
-      variant="whiteOutline"
-      size="tight"
-      onClick={() => router.push(href)}
-    >
+    <Button size="tight" variant="nav" onClick={() => router.push(href)}>
       {children}
     </Button>
   )

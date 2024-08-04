@@ -19,7 +19,7 @@ export default function Upload({
   }
   const [url, setUrl] = useState<string>(preview)
   return (
-    <div className="group relative m-4 aspect-square w-full cursor-pointer">
+    <div className="group relative z-20 m-4 aspect-square w-full cursor-pointer">
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 overflow-hidden rounded-full bg-black/50 text-center text-white opacity-0 group-hover:opacity-100">
         <CloudUpload size={32} />
         Upload Image
@@ -35,7 +35,7 @@ export default function Upload({
       <input
         type="file"
         accept={image ? 'image/*' : ''}
-        className="absolute inset-0 z-20 opacity-0"
+        className="absolute inset-0 z-20 cursor-pointer opacity-0"
         onChange={(e) => handleUpload(e)}
       />
     </div>

@@ -103,16 +103,15 @@ export default function Table({
     <div className="w-full max-w-full" onClick={() => setIndex(index)}>
       <h5 className="font-larken text-xl font-bold">Table</h5>
       <div className="flex w-full flex-col gap-2 overflow-hidden">
-        <TableComponent className="border-darkBorder rounded-base border">
+        <TableComponent className="border-border rounded-base border">
           <TableHeader className="rounded-base">
-            <TableRow className="bg-bgDark border-darkBorder divide-darkBorder divide-x border">
+            <TableRow className="border-border divide-border bg-dark divide-x border">
               {headers.map((item: string, index: number) => (
                 <TableHead
                   key={index}
                   className={cn(
-                    'border-darkBorder border p-2 align-top',
-                    index === headers.length - 1 &&
-                      'border-darkBorder border-r',
+                    'border-border border p-2 align-top',
+                    index === headers.length - 1 && 'border-border border-r',
                   )}
                 >
                   <TractaEditor
@@ -129,9 +128,7 @@ export default function Table({
             {dataArray.map((data: string[], rowIndex: number) => (
               <TableRow
                 key={rowIndex}
-                className={cn(
-                  'bg-bgDark divide-darkBorder border-darkBorder divide-x',
-                )}
+                className={cn('divide-border border-border bg-dark divide-x')}
               >
                 {data.map((d: string, cellIndex: number) => (
                   <TableCell key={cellIndex} className="p-2 align-top">
@@ -149,7 +146,7 @@ export default function Table({
                 ))}
                 <TableCell
                   className={cn(
-                    'border-darkBorder bg-bgDark border text-red-200 transition hover:text-red-400',
+                    'border-border bg-dark border text-red-200 transition hover:text-red-400',
                     !deleteButtons && 'hidden',
                   )}
                   onClick={() => handleDeleteRow(rowIndex + 1)}
@@ -162,7 +159,7 @@ export default function Table({
             ))}
             <TableRow
               className={cn(
-                'divide-darkBorder border-darkBorder divide-x',
+                'divide-border border-border divide-x',
                 !deleteButtons && 'hidden',
               )}
             >
@@ -170,9 +167,9 @@ export default function Table({
                 <TableCell
                   key={columnIndex}
                   className={cn(
-                    'border-darkBorder bg-bgDark border text-red-200 transition hover:text-red-400',
+                    'border-border bg-dark border text-red-200 transition hover:text-red-400',
                     columnIndex === headers.length - 1 &&
-                      'border-darkBorder border-r',
+                      'border-border border-r',
                   )}
                   onClick={() => handleDeleteColumn(columnIndex)}
                 >

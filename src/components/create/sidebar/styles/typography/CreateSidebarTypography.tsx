@@ -39,12 +39,12 @@ export default function CreateSidebarTypography() {
   return (
     <AccordionItem
       value="typography"
-      className="bg-bgDark rounded-none border-none text-white"
+      className="bg-dark rounded-none border-none text-white"
     >
-      <AccordionTrigger className="bg-bgDark font-larken rounded-none border-none p-2 py-0">
+      <AccordionTrigger className="bg-dark rounded-none border-none p-2 py-0 font-larken">
         Typography
       </AccordionTrigger>
-      <AccordionContent className="bg-bgDark font-larken flex flex-col gap-2 rounded-none p-0 px-4">
+      <AccordionContent className="bg-dark flex flex-col gap-2 rounded-none p-0 px-4 font-larken">
         <CreateSidebarTypographySize
           size={size}
           setSize={setSize}

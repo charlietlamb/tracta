@@ -31,7 +31,7 @@ export default function CreateToolbarSettings() {
           </DialogHeader>
           Manage the settings for your contract.
         </div>
-        <div className="bg-bgDark relative flex-grow overflow-hidden p-4 text-white">
+        <div className="bg-dark relative flex-grow overflow-hidden p-4 text-white">
           <CreateSettingsContent />
         </div>
       </DialogContent>

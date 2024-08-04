@@ -39,7 +39,7 @@ export default function CreateComponentGrid() {
     <>
       <Input
         placeholder="Search components"
-        className="placeholder:text-darkBorder bg-bgDark shadow-smallWhite border-white text-white"
+        className="placeholder:text-border bg-dark border-white text-white shadow-smallWhite"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />

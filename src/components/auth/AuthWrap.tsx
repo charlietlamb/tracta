@@ -3,7 +3,7 @@ import AuthSide from './AuthSide'
 
 export default function AuthWrap() {
   return (
-    <div className="flex w-full items-center justify-center divide-black border-black md:border-4 lg:divide-x-8">
+    <div className="divide-border border-border flex w-full items-center justify-center md:border-2 lg:divide-x-4">
       <AuthSide />
       <Auth />
     </div>

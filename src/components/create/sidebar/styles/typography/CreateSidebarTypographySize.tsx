@@ -20,7 +20,7 @@ export default function CreateSidebarTypographySize({
         <h6 className="text-sm font-light">Size</h6>
         <div className="relative">
           <Input
-            className="border-darkBorder selection:bg-darkBorder mb-0 h-auto border bg-transparent p-[2px] pr-6 shadow-none"
+            className="border-border selection:bg-border mb-0 h-auto border bg-transparent p-[2px] pr-6 shadow-none"
             value={size}
             onChange={(e) => {
               setSize(e.target.value)
@@ -39,7 +39,7 @@ export default function CreateSidebarTypographySize({
         <h6 className="text-sm font-light">Height</h6>
         <div className="relative">
           <Input
-            className="border-darkBorder selection:bg-darkBorder mb-0 h-auto border bg-transparent p-[2px] pr-6 shadow-none"
+            className="border-border selection:bg-border mb-0 h-auto border bg-transparent p-[2px] pr-6 shadow-none"
             value={height}
             onChange={(e) => {
               setHeight(e.target.value)

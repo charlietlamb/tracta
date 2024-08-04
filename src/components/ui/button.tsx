@@ -11,28 +11,27 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-main border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+          'bg-light text-dark border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         noShadow: 'bg-main border-2 border-black',
+        hero: 'border-light border-2 text-white shadow-smallAccent shadow-smallLight hover:translate-x-boxShadowXSmall hover:translate-x-boxShadowXSmall hover:shadow-none',
         link: 'underline-offset-4 hover:underline',
         linkBold: 'underline-offset-4 hover:underline font-heading',
         neutral: 'bg-white border-2 border-black',
         base: 'bg-white border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
-        whiteOutline:
-          'text-xl font-semibold italic text-white hover:underline underline-offset-4',
-        whiteOutlineBlack:
-          'text-xl font-black italic text-white hover:underline underline-offset-4',
-        sidebar: 'bg-white',
+        nav: 'text-xl font-semibold italic text-light hover:underline underline-offset-4',
+        navBold:
+          'text-xl font-black italic text-light hover:underline underline-offset-4',
         danger:
           'bg-red-200 hover:bg-red-400  border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         dangerNoShadow: 'bg-red-200 hover:bg-red-400  border-2 border-black',
         ghost:
-          'bg-transparent text-black hover:bg-transparent hover:text-darkBorder',
+          'bg-transparent text-black hover:bg-transparent hover:text-border',
         appOutline:
-          'border-darkBorder border-2 text-white shadow-smallBorder hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
-        appSmall: 'border-darkBorder border-2 text-white',
-        appGhost: 'border border-darkBorder text-white hover:bg-darkBorder',
+          'border-border border-2 text-white shadow-smallBorder hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+        appSmall: 'border-border border-2 text-white',
+        appGhost: 'border border-border text-white hover:bg-border',
         appDanger:
-          'text-red-200 hover:text-red-400 border border-darkBorder hover:bg-darkBorder',
+          'text-red-200 hover:text-red-400 border border-border hover:bg-border',
         align: 'p-0 text-white rounded-none',
       },
       size: {

@@ -17,11 +17,11 @@ export default function AccountDialog() {
   return (
     <Dialog open={open} onOpenChange={(o: boolean) => dispatch(setOpen(o))}>
       <DialogTrigger asChild>
-        <Button variant="whiteOutlineBlack" size="tight">
+        <Button variant="navBold" size="tight">
           Sign In
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="border-border rounded-none shadow-baseBorder md:rounded-base">
         <AuthWrap />
       </DialogContent>
     </Dialog>

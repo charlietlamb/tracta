@@ -6,7 +6,7 @@ export default function CreateSidebarStyles() {
     <div className="flex flex-col">
       <Accordion
         type="multiple"
-        className="divide-darkBorder flex w-full flex-col divide-y overflow-y-auto"
+        className="divide-border flex w-full flex-col divide-y overflow-y-auto"
       >
         <CreateSidebarTypography />
       </Accordion>

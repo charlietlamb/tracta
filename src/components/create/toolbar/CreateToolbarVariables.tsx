@@ -31,7 +31,7 @@ export default function CreateToolbarVariables() {
           </DialogHeader>
           Add dynamic variables to your contracts so they're easily reuseable.
         </div>
-        <div className="bg-bgDark relative flex-grow overflow-hidden p-4 text-white">
+        <div className="bg-dark relative flex-grow overflow-hidden p-4 text-white">
           <CreateVariablesContent />
         </div>
       </DialogContent>

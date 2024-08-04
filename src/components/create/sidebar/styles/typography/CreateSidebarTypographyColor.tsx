@@ -25,12 +25,12 @@ export default function CreateSidebarTypographyColor({
     <div className="flex w-full items-center gap-1">
       <h6 className="text-sm font-light">Color</h6>
       <Popover>
-        <div className="border-darkBorder flex items-center overflow-hidden rounded-base border">
+        <div className="border-border flex items-center overflow-hidden rounded-base border">
           <PopoverTrigger asChild>
             <div className="size-6" style={{ backgroundColor: color }} />
           </PopoverTrigger>
           <Input
-            className="selection:bg-darkBorder mb-0 h-6 border-none bg-transparent px-1 shadow-none"
+            className="selection:bg-border mb-0 h-6 border-none bg-transparent px-1 shadow-none"
             value={color}
             onChange={(e) => setColor(e.target.value)}
           />

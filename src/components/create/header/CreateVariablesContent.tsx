@@ -68,12 +68,12 @@ export default function CreateVariablesContent() {
               <Input
                 value={key}
                 onChange={(e) => handleKeyChange(i, e.target.value)}
-                className="bg-bgDark border-darkBorder mb-0 w-full max-w-none flex-grow border shadow-none focus-visible:border-white"
+                className="border-border bg-dark mb-0 w-full max-w-none flex-grow border shadow-none focus-visible:border-white"
               />
               <Input
                 value={values[i]}
                 onChange={(e) => handleValueChange(i, e.target.value)}
-                className="bg-bgDark border-darkBorder mb-0 max-w-none flex-grow border shadow-none focus-visible:border-white"
+                className="border-border bg-dark mb-0 max-w-none flex-grow border shadow-none focus-visible:border-white"
               />
             </div>
             <Button

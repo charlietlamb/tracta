@@ -24,11 +24,11 @@ export default function CreateSettingsContent() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-2">
-        <h4 className="font-larken flex-shrink-0 truncate text-xl font-bold">
+        <h4 className="flex-shrink-0 truncate font-larken text-xl font-bold">
           Contract Title
         </h4>
         <Input
-          className="border-darkBorder bg-bgDark mb-0 flex-grow border shadow-none focus-visible:border-white"
+          className="border-border bg-dark mb-0 flex-grow border shadow-none focus-visible:border-white"
           placeholder="Title"
           value={title}
           onChange={(e) => {

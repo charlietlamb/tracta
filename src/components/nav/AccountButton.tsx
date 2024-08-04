@@ -7,7 +7,7 @@ export default function AccountButton() {
   const router = useRouter()
   return (
     <Button
-      variant="whiteOutlineBlack"
+      variant="navBold"
       size="tight"
       onClick={() => router.push('/account')}
     >

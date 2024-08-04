@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { useCreateContext } from '../context/createContext'
 import Loader from '@/components/general/loading/Loader'

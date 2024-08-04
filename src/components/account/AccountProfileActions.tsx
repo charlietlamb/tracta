@@ -18,7 +18,7 @@ export default function AccountProfileActions() {
               <Pencil />
             </Button>
           </DialogTrigger>
-          <DialogContent className="overflow-y-auto">
+          <DialogContent className="border-border rounded-none shadow-baseBorder md:rounded-base">
             <AccountEdit />
           </DialogContent>
         </Dialog>

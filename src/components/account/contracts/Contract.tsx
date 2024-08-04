@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { getContractSaved } from '@/lib/get/account/contract/getContractSaved'
 import { useUser } from '@/lib/slice/user/useUser'
@@ -24,13 +26,17 @@ export default function Contract({ contract }: { contract: ContractData }) {
   const tagArray = contract.tags.split('&')
   return (
     <div
-      className="relative z-10 flex cursor-pointer flex-col divide-y-2 divide-black border-2 border-black bg-white shadow-base transition hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
+      className="bg-light relative z-10 flex cursor-pointer flex-col divide-y-2 divide-black rounded-base border-2 border-black shadow-base transition hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
       onClick={() => router.push(`/create?template=${contract.id}`)}
     >
-      <div className="flex items-center justify-between bg-bg p-2">
-        <div>
-          <h4 className="text-2xl font-heading">{contract.title}</h4>
-          <p>{contract.description}</p>
+      <div className="flex items-center justify-between bg-accent p-2">
+        <div className="flex flex-col gap-1">
+          <h4 className="font-larken text-2xl font-medium leading-none">
+            {contract.title}
+          </h4>
+          <p className="text-dark leading-none tracking-tight">
+            {contract.description}
+          </p>
         </div>
         <Button
           onClick={(e) => {
@@ -54,7 +60,7 @@ export default function Contract({ contract }: { contract: ContractData }) {
         {tagArray.map((t: string, index: number) => {
           return (
             <React.Fragment key={t}>
-              <p key={t} className="rounded p-1 font-heading">
+              <p key={t} className="rounded font-larken font-heading">
                 {t}
               </p>
               {index !== tagArray.length - 1 && <Dot />}

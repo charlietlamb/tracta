@@ -45,6 +45,8 @@ export default function AccountContractGrid() {
         placeholder="Search contracts"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        type="text"
+        className="border-border selection:bg-border bg-dark placeholder:text-light border text-white shadow-none"
       />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {contracts.map((contract: Component) => (

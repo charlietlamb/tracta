@@ -64,11 +64,11 @@ export default function Create({ json: jsonInit }: { json: Contract }) {
         setPdf,
       }}
     >
-      <div className="divide-darkBorder flex h-screen divide-x">
+      <div className="divide-border flex h-screen divide-x">
         <CreateToolbar />
         <ResizablePanelGroup
           direction="horizontal"
-          className="divide-darkBorder flex flex-grow divide-x"
+          className="divide-border flex flex-grow divide-x"
           // style={{ height: 'calc(100vh - 58px)' }}
         >
           <ResizablePanel minSize={20}>

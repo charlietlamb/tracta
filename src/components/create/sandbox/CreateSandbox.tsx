@@ -22,7 +22,7 @@ export default function CreateSandbox() {
     ? headingComponentFunction(0, key)
     : null
   return (
-    <div className="bg-bgDark divide-darkBorder flex h-full w-full flex-col divide-y text-white">
+    <div className="divide-border bg-dark flex h-full w-full flex-col divide-y text-white">
       <CreateSandboxHeader />
       <div className="no-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
         {HeadingComponent}

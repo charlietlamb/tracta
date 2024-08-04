@@ -3,10 +3,15 @@ import PricingPlan from './pricing-plan'
 
 export default function Pricing() {
   return (
-    <section className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden bg-white font-base">
+    <section className="bg-dark text-light relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden font-base">
       <MovingGrid />
       <div className="relative z-10 mx-auto w-container max-w-full px-5 py-20 lg:py-[100px]">
-        <h2 className="subheading mb-14 text-center lg:mb-20">Pricing</h2>
+        <div className="mb-14 flex flex-col items-center gap-2">
+          <h2 className="subheading text-light px-5 text-center">Pricing.</h2>
+          <h4 className="h2-text tracking-tight text-accent">
+            Revolutionize your document creation process with tracta.
+          </h4>
+        </div>
         <div className="grid grid-cols-3 gap-8 w900:mx-auto w900:w-2/3 w900:grid-cols-1 w500:w-full">
           <PricingPlan
             planName="Free"

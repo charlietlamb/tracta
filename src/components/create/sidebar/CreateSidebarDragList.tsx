@@ -36,7 +36,7 @@ export default function CreateSidebarDragList({
             >
               <AccordionTrigger
                 className={cn(
-                  'border-darkBorder max-w-full rounded-b-none rounded-t-none bg-transparent p-0 pr-1 text-white transition [&[data-state=open]]:border-b',
+                  'border-border max-w-full rounded-b-none rounded-t-none bg-transparent p-0 pr-1 text-white transition [&[data-state=open]]:border-b',
                   // key === parent &&
                   //   sidebarSelected === parent &&
                   //   'border-black bg-main',
@@ -61,7 +61,7 @@ export default function CreateSidebarDragList({
                       return (
                         <div
                           className={cn(
-                            'bg-bgDark flex flex-col overflow-visible transition-all',
+                            'bg-dark flex flex-col overflow-visible transition-all',
                             dragSnapshot.isDragging && 'shadow-base',
                           )}
                           ref={dragProvided.innerRef}

@@ -97,7 +97,7 @@ export default function TractaEditor({
         useShadowDOM: false,
       }}
       className={cn(
-        'bg-bgDark border-darkBorder flex max-h-[120px] min-h-[80px] w-full rounded-base border p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        'border-border bg-dark flex max-h-[120px] min-h-[80px] w-full rounded-base border p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
     />

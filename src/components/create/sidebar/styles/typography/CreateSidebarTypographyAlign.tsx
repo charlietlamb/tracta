@@ -21,12 +21,12 @@ export default function CreateSidebarTypographyAlign({
   return (
     <div className="flex w-full items-center gap-1">
       <h6 className="text-sm font-light">Align</h6>
-      <div className="border-darkBorder divide-x-1 divide-darkBorder flex h-6 w-full overflow-hidden rounded-base border">
+      <div className="border-border divide-x-1 divide-border flex h-6 w-full overflow-hidden rounded-base border">
         <Button
           variant="align"
           size="align"
           onClick={() => setAlign('start')}
-          className={cn('', align === 'start' && 'bg-darkBorder')}
+          className={cn('', align === 'start' && 'bg-border')}
         >
           <AlignLeft className="size-4" />
         </Button>
@@ -34,7 +34,7 @@ export default function CreateSidebarTypographyAlign({
           variant="align"
           size="align"
           onClick={() => setAlign('center')}
-          className={cn('', align === 'center' && 'bg-darkBorder')}
+          className={cn('', align === 'center' && 'bg-border')}
         >
           <AlignCenter className="size-4" />
         </Button>
@@ -42,7 +42,7 @@ export default function CreateSidebarTypographyAlign({
           variant="align"
           size="align"
           onClick={() => setAlign('end')}
-          className={cn('', align === 'end' && 'bg-darkBorder')}
+          className={cn('', align === 'end' && 'bg-border')}
         >
           <AlignRight className="size-4" />
         </Button>
@@ -50,7 +50,7 @@ export default function CreateSidebarTypographyAlign({
           variant="align"
           size="align"
           onClick={() => setAlign('stretch')}
-          className={cn('', align === 'stretch' && 'bg-darkBorder')}
+          className={cn('', align === 'stretch' && 'bg-border')}
         >
           <AlignJustify className="size-4" />
         </Button>

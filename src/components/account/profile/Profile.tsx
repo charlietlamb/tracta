@@ -7,7 +7,7 @@ export default function Profile({ user }: { user: User }) {
   const appUser = useUser()
   const own = appUser?.id === user.id
   return (
-    <div className="relative flex flex-col items-center gap-4 overflow-hidden p-4">
+    <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden p-4">
       <div className="relative size-20 rounded-full lg:size-24">
         <Image
           src={user.image}
@@ -19,11 +19,11 @@ export default function Profile({ user }: { user: User }) {
         />
       </div>
       <div className="flex items-center gap-4">
-        <div className="flex flex-col items-center justify-center gap-1">
-          <div className="text-lg font-heading leading-none">
+        <div className="flex flex-col justify-center">
+          <div className="h2-text text-light font-larken text-lg leading-none">
             {user?.first_name || 'loading...'} {user?.last_name || 'loading...'}
           </div>
-          <div className="text-sm leading-none">
+          <div className="text-sm leading-none tracking-tight text-accent">
             {user?.email || 'loading...'}
           </div>
         </div>
