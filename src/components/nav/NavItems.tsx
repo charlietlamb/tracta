@@ -3,10 +3,10 @@ import AccountDialog from './AccountDialog'
 import NavLink from './NavLink'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { useAppSelector } from '@/lib/hooks'
+import { useUserStore } from '@/state/user/store'
 
 export default function NavItems() {
-  const { user } = useAppSelector((state) => state.user)
+  const { user } = useUserStore((state) => state)
 
   return (
     <>

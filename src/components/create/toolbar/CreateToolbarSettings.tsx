@@ -7,11 +7,11 @@ import {
 } from '@/components/ui/dialog'
 import { useScrollbar } from '@/hooks/dialog/useScrollbar'
 import { Cog } from 'lucide-react'
-import { useCreateContext } from '../context/createContext'
-import CreateSettingsContent from '../header/setttings/CreateSettingsContent'
+import CreateSettingsContent from './settings/CreateSettingsContent'
+import { useState } from 'react'
 
 export default function CreateToolbarSettings() {
-  const { settingsOpen, setSettingsOpen } = useCreateContext()
+  const [settingsOpen, setSettingsOpen] = useState(false) //need to add to store
   useScrollbar(settingsOpen)
   return (
     <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
@@ -19,7 +19,7 @@ export default function CreateToolbarSettings() {
         <Button
           size="xs"
           variant="ghost"
-          className="group w-fit p-1 text-white"
+          className="group w-full rounded-none p-1 py-4 text-white"
         >
           <Cog className="size-5 min-h-5 min-w-5 transition group-hover:animate-spin group-hover:text-bg" />
         </Button>

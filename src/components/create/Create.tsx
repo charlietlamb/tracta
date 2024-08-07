@@ -1,89 +1,22 @@
 'use client'
 
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from '../ui/resizable'
-import { CreateContext } from './context/createContext'
 import CreateToolbar from './toolbar/CreateToolbar'
-import CreatePreview from './preview/CreatePreview'
 import CreateSandbox from './sandbox/CreateSandbox'
-import CreateSidebar from './sidebar/CreateSidebar'
-import { useState } from 'react'
+import CreateStyles from './styles/CreateStyles'
+import { useEditorStore } from '@/state/editor/store'
+import CreateHeader from './header/CreateHeader'
 
-export default function Create({ json: jsonInit }: { json: Contract }) {
-  const [json, setJson] = useState<Contract>(jsonInit)
-  const [key, setKey] = useState<string>('1')
-  const [index, setIndex] = useState<number>(0)
-  let initTitle = 'Tracta'
-  try {
-    initTitle = json[key][index].value
-  } catch (e) {}
-  const [title, setTitle] = useState(initTitle)
-  const [addOpen, setAddOpen] = useState(false)
-  const [varOpen, setVarOpen] = useState(false)
-  const [settingsOpen, setSettingsOpen] = useState(false)
-  const [sidebarSelected, setSidebarSelected] = useState<string | null>('1')
-  const [lastChange, setLastChange] = useState<number>(Date.now())
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [isDragging, setIsDragging] = useState<boolean>(false)
-  const [dnd, setDnd] = useState<boolean>(false)
-  const [pdf, setPdf] = useState<boolean>(true)
+export default function Create({ editor }: { editor: EditorState | null }) {
+  const { setEditorState } = useEditorStore((state) => state)
+  if (editor) setEditorState(editor)
   return (
-    <CreateContext.Provider
-      value={{
-        json,
-        setJson,
-        key,
-        setKey,
-        index,
-        setIndex,
-        title,
-        setTitle,
-        addOpen,
-        setAddOpen,
-        varOpen,
-        setVarOpen,
-        settingsOpen,
-        setSettingsOpen,
-        sidebarSelected,
-        setSidebarSelected,
-        lastChange,
-        setLastChange,
-        pdfUrl,
-        setPdfUrl,
-        loading,
-        setLoading,
-        isDragging,
-        setIsDragging,
-        dnd,
-        setDnd,
-        pdf,
-        setPdf,
-      }}
-    >
-      <div className="divide-border flex h-screen divide-x">
+    <div className="divide-border flex h-screen flex-col divide-y overflow-hidden ">
+      <CreateHeader />
+      <div className="divide-border flex w-full max-w-full flex-grow divide-x">
         <CreateToolbar />
-        <ResizablePanelGroup
-          direction="horizontal"
-          className="divide-border flex flex-grow divide-x"
-          // style={{ height: 'calc(100vh - 58px)' }}
-        >
-          <ResizablePanel minSize={20}>
-            <CreateSandbox />
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel minSize={5}>
-            <CreatePreview />
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel minSize={10} defaultSize={15} maxSize={40}>
-            <CreateSidebar />
-          </ResizablePanel>
-        </ResizablePanelGroup>
+        <CreateSandbox />
+        <CreateStyles />
       </div>
-    </CreateContext.Provider>
+    </div>
   )
 }

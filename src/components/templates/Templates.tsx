@@ -9,11 +9,11 @@ export default function Templates() {
     >
       <div className="relative z-10 flex flex-col items-center gap-1 p-4">
         <h1 className="text-light subheading font-larken">Templates</h1>
-        <p className="text-h2 tracking-tight text-accent">
+        <p className="text-h2 text-center tracking-tight text-accent">
           The most popular templates on the platform. Use these to get started.
         </p>
       </div>
-      <div className="relative z-10 w-full flex-grow overflow-hidden p-4">
+      <div className="relative z-10 flex w-full flex-grow flex-col gap-2 overflow-hidden p-4">
         <TemplatesGrid />
       </div>
       <MovingGrid />

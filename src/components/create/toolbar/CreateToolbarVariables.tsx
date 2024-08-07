@@ -7,11 +7,11 @@ import {
 } from '@/components/ui/dialog'
 import { useScrollbar } from '@/hooks/dialog/useScrollbar'
 import { Code } from 'lucide-react'
-import { useCreateContext } from '../context/createContext'
-import CreateVariablesContent from '../header/CreateVariablesContent'
+import CreateVariablesContent from './CreateVariablesContent'
+import { useState } from 'react'
 
 export default function CreateToolbarVariables() {
-  const { varOpen, setVarOpen } = useCreateContext()
+  const [varOpen, setVarOpen] = useState(false) //need to add to store
   useScrollbar(varOpen)
   return (
     <Dialog open={varOpen} onOpenChange={setVarOpen}>
@@ -19,7 +19,7 @@ export default function CreateToolbarVariables() {
         <Button
           size="xs"
           variant="ghost"
-          className="group w-fit p-1 text-white"
+          className="group w-full rounded-none p-1 py-4 text-white"
         >
           <Code className="size-5 min-h-5 min-w-5 transition group-hover:text-bg" />
         </Button>

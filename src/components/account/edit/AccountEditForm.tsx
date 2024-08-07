@@ -15,10 +15,11 @@ import { Input } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
 import { useAccountEditContext } from './context/accountEditContext'
 import { updateUser } from '@/lib/update/user/updateUser'
-import { useUser } from '@/lib/slice/user/useUser'
 import Upload from '@/components/general/upload/Upload'
 import { uploadFile } from '@/lib/upload/file/uploadFile'
 import { checkUsername } from '@/lib/check/username/checkUsername'
+import { LoaderCircle } from 'lucide-react'
+import { useUserStore } from '@/state/user/store'
 
 const formSchema = z.object({
   first_name: z.string().min(1),
@@ -29,9 +30,10 @@ const formSchema = z.object({
 })
 
 export default function AccountEditForm() {
-  const user = useUser()
+  const user = useUserStore((state) => state.user)
   const { setOpen } = useAccountEditContext()
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
   const [image, setImage] = useState<File | null>(null)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,10 +46,12 @@ export default function AccountEditForm() {
     },
   })
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true)
     const url = image
       ? `${process.env.NEXT_PUBLIC_SUPABASE_IMAGES_URL}${await uploadFile(image, 'images', `${user.id}/image.jpg`)}?time=${Date.now()}`
       : user.image
     await updateUser(user, { ...values, image: url })
+    setLoading(false)
     setOpen(false)
   }
 
@@ -174,8 +178,14 @@ export default function AccountEditForm() {
             <Button type="submit" className="bg-light w-full" variant="base">
               Update Password
             </Button>
-            <Button type="submit" className="w-full bg-accent">
-              Save
+            <Button
+              type="submit"
+              className="w-full bg-accent"
+              onClick={() => {
+                onSubmit(form.getValues())
+              }}
+            >
+              {!loading ? 'Save' : <LoaderCircle className="animate-spin" />}
             </Button>
           </div>
         </form>

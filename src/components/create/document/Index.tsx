@@ -3,7 +3,7 @@ import * as React from 'react'
 
 export const Document = ({ props }: any) => {
   return (
-    <div>
+    <div className="">
       <PageTop>
         <span>Hello #1</span>
       </PageTop>

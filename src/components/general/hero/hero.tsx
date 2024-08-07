@@ -28,7 +28,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="hero"
-            className="bg-dark text-light shadow-smallLight w-fit text-base font-heading md:text-lg lg:h-14 lg:text-xl"
+            className="bg-dark text-light w-fit text-base font-light md:text-lg lg:h-14 lg:text-xl"
             onClick={() => router.push('/create')}
           >
             Learn More
@@ -36,7 +36,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="hero"
-            className="bg-dark text-light  w-fit text-base font-heading md:text-lg lg:h-14 lg:text-xl"
+            className="bg-dark text-light w-fit text-base font-light md:text-lg lg:h-14 lg:text-xl"
             onClick={() => router.push('/create')}
           >
             Get started

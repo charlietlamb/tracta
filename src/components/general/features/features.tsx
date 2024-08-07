@@ -25,7 +25,7 @@ export default function Features() {
           {features.map((feature, i) => {
             return (
               <div
-                className="bg-dark text-light flex flex-col gap-3 rounded-base border-2 border-black p-5 shadow-base"
+                className="bg-dark text-light border-darker shadow-baseDarker flex flex-col gap-3 rounded-base border-2 p-5"
                 key={i}
               >
                 <Image

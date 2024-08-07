@@ -1,66 +1,45 @@
-import { sandboxMap } from '@/lib/contract/maps/sandboxMap'
-import { useCreateContext } from '../context/createContext'
-import { ArrowUp, ArrowUpDown, Check, Plus } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import CreateSandboxComponents from './CreateSandboxComponents'
-import CreateSandboxHeader from './CreateSandboxHeader'
+import { useEditorStore } from '@/state/editor/store'
+import TractaComponent from './TractaComponent'
+import { useSandbox } from '@/lib/sandbox/hooks/useSandbox'
+import { useResizeDetector } from 'react-resize-detector'
+import { useSandboxStore } from '@/state/sandbox/store'
+import { Resizable } from 're-resizable'
 
 export default function CreateSandbox() {
-  const {
-    json,
-    key,
-    setKey,
-    title,
-    setSidebarSelected,
-    setAddOpen,
-    dnd,
-    setDnd,
-  } = useCreateContext()
-
-  const headingComponentFunction = sandboxMap.get('heading')
-  const HeadingComponent = headingComponentFunction
-    ? headingComponentFunction(0, key)
-    : null
+  const { editorState } = useEditorStore((state) => state)
+  const { setWidth } = useSandboxStore((state) => state)
+  const { width, height, ref } = useResizeDetector()
+  useSandbox(width, height, ref, editorState.editor.pages, setWidth)
   return (
-    <div className="divide-border bg-dark flex h-full w-full flex-col divide-y text-white">
-      <CreateSandboxHeader />
-      <div className="no-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
-        {HeadingComponent}
-        <CreateSandboxComponents />
-        <div className="flex w-full flex-col items-center gap-4 md:flex-row">
-          <Button
-            variant="appOutline"
-            className="flex w-full items-center gap-2"
-            onClick={(e) => {
-              e.stopPropagation()
-              setSidebarSelected(key)
-              setAddOpen(true)
-            }}
-          >
-            Add Component <Plus />{' '}
-          </Button>
-          {json[key].length > 2 && (
-            <Button
-              variant="appOutline"
-              className="flex w-full items-center gap-2"
-              onClick={(e) => {
-                e.stopPropagation()
-                setDnd(!dnd)
-              }}
-            >
-              {dnd ? (
-                <>
-                  Finish <Check />
-                </>
-              ) : (
-                <>
-                  Rearrange <ArrowUpDown />
-                </>
-              )}
-            </Button>
-          )}
+    <div
+      className="bg-darker no-scrollbar flex w-full flex-grow flex-col items-center overflow-y-auto px-[10vw] py-4"
+      style={{ height: 'calc(100vh - 32px)' }}
+    >
+      <Resizable
+        defaultSize={{
+          width: '80vw',
+          height: '100%',
+        }}
+        maxHeight="100%"
+        minHeight="100%"
+        enable={{
+          top: false,
+          right: true,
+          bottom: false,
+          left: false,
+          topRight: false,
+          bottomRight: false,
+          bottomLeft: false,
+          topLeft: false,
+        }}
+      >
+        <div className="w-full bg-white" ref={ref}>
+          {Array.isArray(editorState.editor.components) &&
+            editorState.editor.components.map((c) => (
+              <TractaComponent key={c.id} component={c} />
+            ))}
         </div>
-      </div>
+      </Resizable>
     </div>
   )
 }

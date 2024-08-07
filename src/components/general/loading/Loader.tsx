@@ -13,7 +13,7 @@ export default function Loader({
   return (
     <div
       className={cn(
-        'flex h-full w-full flex-grow items-center justify-center',
+        'text-light flex h-full w-full flex-grow items-center justify-center',
         className,
       )}
     >

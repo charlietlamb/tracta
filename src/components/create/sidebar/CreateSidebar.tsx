@@ -3,7 +3,7 @@ import CreateSidebarMain from './CreateSidebarMain'
 import { useCreateContext } from '../context/createContext'
 import { getTree } from '@/lib/contract/functions/getTree'
 import { cn } from '@/lib/utils'
-import CreateSidebarStyles from './styles/CreateSidebarStyles'
+import CreateSidebarStyles from '../styles/CreateSidebarStyles'
 import {
   ResizableHandle,
   ResizablePanel,

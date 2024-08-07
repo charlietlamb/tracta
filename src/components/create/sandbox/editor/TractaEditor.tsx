@@ -68,38 +68,41 @@ export default function TractaEditor({
   }, [monaco])
 
   return (
-    <Editor
-      defaultLanguage="tracta"
-      theme="tractaTheme"
-      value={value}
-      onChange={onChange}
-      line={20}
-      options={{
-        lineNumbers: 'off',
-        minimap: { enabled: false },
-        readOnly: false,
-        scrollbar: { vertical: 'hidden', horizontal: 'hidden' },
-        wordWrap: 'on',
-        wrappingIndent: 'same',
-        fontFamily: 'Geist',
-        fontSize: 14,
-        lineHeight: 20,
-        lineDecorationsWidth: 0,
-        glyphMargin: false,
-        renderLineHighlight: 'none',
-        overviewRulerBorder: false,
-        folding: false,
-        rulers: [],
-        quickSuggestions: false,
-        overviewRulerLanes: 0,
-        contextmenu: false,
-        scrollBeyondLastLine: false,
-        useShadowDOM: false,
-      }}
-      className={cn(
-        'border-border bg-dark flex max-h-[120px] min-h-[80px] w-full rounded-base border p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-        className,
-      )}
-    />
+    <div className="w-full max-w-full flex-grow">
+      <Editor
+        defaultLanguage="tracta"
+        theme="tractaTheme"
+        value={value}
+        onChange={onChange}
+        line={20}
+        options={{
+          lineNumbers: 'off',
+          minimap: { enabled: false },
+          readOnly: false,
+          scrollbar: { vertical: 'hidden', horizontal: 'hidden' },
+          wordWrap: 'on',
+          wrappingIndent: 'same',
+          fontFamily: 'Geist',
+          fontSize: 14,
+          lineHeight: 20,
+          lineDecorationsWidth: 0,
+          glyphMargin: false,
+          renderLineHighlight: 'none',
+          overviewRulerBorder: false,
+          folding: false,
+          rulers: [],
+          quickSuggestions: false,
+          overviewRulerLanes: 0,
+          contextmenu: false,
+          scrollBeyondLastLine: false,
+          useShadowDOM: false,
+          automaticLayout: true,
+        }}
+        className={cn(
+          'border-border bg-dark flex max-h-[120px] min-h-[80px] max-w-full flex-grow rounded-base border p-2 text-sm font-base ring-offset-white transition-all placeholder:text-black/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+          className,
+        )}
+      />
+    </div>
   )
 }

@@ -11,30 +11,52 @@ declare global {
   type ContractData = DB['public']['Tables']['contracts']['Row']
   type SaveData = DB['public']['Tables']['saved']['Row']
 
-  type Contract = ContractMeta & ContractTree
+  interface EditorState {
+    editor: Editor
+    history: EditorHistory
+  }
 
-  interface ContractMeta {
-    title: string
-    author: string
-    date: string
+  interface Editor {
+    settings: TractaSettings
+    components: TractaComponent[]
     variables: { [key: string]: string }
-    settings: { title: string; template: boolean }
+    selected: TractaComponent | null
+    liveMode: boolean
+    pages: number
   }
 
-  interface ContractTree {
-    [key: string]: Tracta[]
+  interface TractaSettings {
+    title: string
+    template: boolean
+  }
+  interface TractaComponent {
+    id: string
+    name: string
+    tracta: TractaComponentType
+    styles: React.CSSProperties
+    content:
+      | TractaComponent[]
+      | { href?: string; innerText?: string; src?: string }
+  }
+  type TractaComponentType =
+    | 'body'
+    | 'container'
+    | 'heading'
+    | 'text'
+    | 'table'
+    | null
+
+  interface EditorHistory {
+    editors: Editor[]
+    index: number
   }
 
-  interface Tracta {
-    tracta: string
-    value: string
-    style: { [key: string]: string }
-  }
+  type ToolbarMode = 'add' | 'preview' | null
 
-  interface TractaDraggable {
-    key: string
-    tracta: string
-    values: string
-    children: TractaDraggable[] | null
+  interface AddComponents {
+    id: string
+    text: string
+    component: TractaComponent
+    icon: React.ReactNode
   }
 }

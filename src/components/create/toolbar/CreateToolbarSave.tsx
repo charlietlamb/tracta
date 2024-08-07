@@ -15,7 +15,7 @@ export default function CreateToolbarSave() {
         <Button
           size="xs"
           variant="ghost"
-          className="group w-fit p-1 text-white"
+          className="group w-full rounded-none p-1 py-4 text-white"
         >
           <Save className="size-5 min-h-5 min-w-5 transition group-hover:text-bg" />
         </Button>

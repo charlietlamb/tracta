@@ -16,7 +16,7 @@ export default function PricingPlan({
   price: string
 }) {
   return (
-    <div className="bg-dark text-light flex flex-col justify-between rounded-base border-2 border-accent p-5">
+    <div className="bg-dark text-light border-darker shadow-baseDarker flex flex-col justify-between rounded-base border-2 p-5">
       <div>
         <div className="flex items-center justify-between">
           <h3 className="font-larken text-2xl font-heading">{planName}</h3>

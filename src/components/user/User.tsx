@@ -6,6 +6,7 @@ import Loader from '../general/loading/Loader'
 import { UserContext } from './context/userContext'
 import UserContracts from './contract/UserContracts'
 import Profile from '../account/profile/Profile'
+import MovingGrid from '../grid/MovingGrid'
 
 export default function User({ userId }: { userId: string }) {
   const [user, setUser] = useState(null)
@@ -21,10 +22,13 @@ export default function User({ userId }: { userId: string }) {
     <UserContext.Provider value={{ user, setUser }}>
       <div
         style={{ minHeight: 'calc(100vh - 58px)' }}
-        className="flex h-full w-full flex-col divide-y-4 divide-black"
+        className="divide-border bg-dark  flex h-full w-full flex-col divide-y"
       >
-        <Profile user={user} />
-        <UserContracts />
+        <div className="relative z-10 flex w-full flex-col">
+          <Profile user={user} />
+          <UserContracts />
+        </div>
+        <MovingGrid />
       </div>
     </UserContext.Provider>
   )

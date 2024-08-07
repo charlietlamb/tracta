@@ -1,0 +1,30 @@
+export const defaultStyles: React.CSSProperties = {
+  backgroundPosition: 'center',
+  objectFit: 'cover',
+  backgroundRepeat: 'no-repeat',
+  textAlign: 'left',
+  opacity: '100%',
+  fontSize: '16px',
+  lineHeight: '16px',
+  fontWeight: '400',
+  fontFamily: 'Larken',
+  color: '#000000',
+  width: '100%',
+  height: '100%',
+}
+
+export const defaultTextStyles: React.CSSProperties = {
+  backgroundPosition: 'center',
+  objectFit: 'cover',
+  backgroundRepeat: 'no-repeat',
+  textAlign: 'left',
+  opacity: '100%',
+  fontSize: '16px',
+  lineHeight: '16px',
+  fontWeight: '400',
+  fontFamily: 'Larken',
+  color: '#000000',
+  padding: '4px',
+  width: '100%',
+  height: '100%',
+}

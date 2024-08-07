@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import AccountProfileActions from '../AccountProfileActions'
-import { useUser } from '@/lib/slice/user/useUser'
 import UserProfileActions from '@/components/user/profile/UserProfileActions'
+import { useUserStore } from '@/state/user/store'
 
 export default function Profile({ user }: { user: User }) {
-  const appUser = useUser()
+  const appUser = useUserStore((state) => state.user)
   const own = appUser?.id === user.id
   return (
     <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden p-4">

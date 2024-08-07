@@ -12,8 +12,8 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-light text-dark border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
-        noShadow: 'bg-main border-2 border-black',
-        hero: 'border-light border-2 text-white shadow-smallAccent shadow-smallLight hover:translate-x-boxShadowXSmall hover:translate-x-boxShadowXSmall hover:shadow-none',
+        noShadow: 'bg-light text-dark border-2 border-black',
+        hero: 'border-darker border-2 text-white shadow-smallDarker hover:translate-x-boxShadowXSmall hover:translate-x-boxShadowXSmall hover:shadow-none',
         link: 'underline-offset-4 hover:underline',
         linkBold: 'underline-offset-4 hover:underline font-heading',
         neutral: 'bg-white border-2 border-black',
@@ -32,7 +32,7 @@ const buttonVariants = cva(
         appGhost: 'border border-border text-white hover:bg-border',
         appDanger:
           'text-red-200 hover:text-red-400 border border-border hover:bg-border',
-        align: 'p-0 text-white rounded-none',
+        align: 'p-0 text-white rounded-none bg-border',
       },
       size: {
         default: 'h-10 px-4 py-2',
@@ -42,7 +42,7 @@ const buttonVariants = cva(
         icon: 'h-10 w-10',
         tight: 'h-10 p-0',
         auto: 'h-auto p-2',
-        align: 'h-6 p-1 w-full',
+        align: 'h-[22px] p-[2px] w-full',
       },
     },
     defaultVariants: {
