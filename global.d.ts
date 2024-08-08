@@ -51,7 +51,7 @@ declare global {
     index: number
   }
 
-  type ToolbarMode = 'add' | 'preview' | null
+  type ToolbarMode = 'add' | 'preview' | 'order' | null
 
   interface AddComponents {
     id: string
@@ -59,4 +59,6 @@ declare global {
     component: TractaComponent
     icon: React.ReactNode
   }
+
+  type Metric = 'px' | '%'
 }

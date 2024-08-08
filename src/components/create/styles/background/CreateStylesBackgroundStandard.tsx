@@ -6,23 +6,19 @@ import {
 } from '@/components/ui/popover'
 import { updateStyles } from '@/lib/sandbox/styles/updateStyles'
 import { useEditorStore } from '@/state/editor/store'
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react'
+import { useEffect, useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
-export default function CreateStylesTypographyColor() {
+export default function CreateStylesBackgroundStandard() {
   const { editorState, updateComponent, getComponent } = useEditorStore(
     (state) => state,
   )
   const selected = editorState.editor.selected
-  const [color, setColor] = useState(selected?.styles?.color || '#000000')
+  const [color, setColor] = useState(
+    selected?.styles?.backgroundColor || '#00000000',
+  )
   if (!selected) return null
   useEffect(() => {
-    setColor(selected?.styles?.color || '#000000')
+    setColor(selected?.styles?.color || '#00000000')
   }, [selected])
 
   function handleColorChange(e: string) {
@@ -31,7 +27,7 @@ export default function CreateStylesTypographyColor() {
     updateStyles(
       editorState,
       selected.id,
-      { color: e },
+      { backgroundColor: e },
       getComponent,
       updateComponent,
     )

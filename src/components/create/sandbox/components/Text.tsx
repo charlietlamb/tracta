@@ -19,18 +19,19 @@ export default function Text({ component }: { component: TractaComponent }) {
     changeClickedComponent(editorState, component)
     if (spanRef.current) spanRef.current.focus()
   }
-  useEffect(() => {
-    console.log(width)
-    console.log(styles.fontSize)
-    const newStyles = getStyles(styles, width)
-    console.log(newStyles.fontSize)
-  }, [width, styles])
   //WE ARE NOT ADDING DRAG DROP
   return (
     <div
-      style={getStyles(styles, width)}
+      style={getStyles(
+        {
+          ...styles,
+          minHeight: component.styles.lineHeight,
+          minWidth: '16px',
+        },
+        width,
+      )}
       ref={bodyRef}
-      className={clsx('relative w-full transition-all', {
+      className={clsx('relative flex w-full items-center transition-all', {
         '!border-blue-500': editorState.editor.selected?.id === component.id,
 
         '!border-solid': editorState.editor.selected?.id === component.id,

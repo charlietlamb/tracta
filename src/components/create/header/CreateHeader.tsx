@@ -1,3 +1,4 @@
+import CreateHeaderDownload from './CreateHeaderDownload'
 import CreateHeaderLogo from './CreateHeaderLogo'
 import CreateHeaderUndo from './CreateHeaderUndo'
 
@@ -6,6 +7,7 @@ export default function CreateHeader() {
     <div className="divide-border relative z-50 flex h-8 divide-x">
       <CreateHeaderLogo />
       <CreateHeaderUndo />
+      <CreateHeaderDownload />
     </div>
   )
 }

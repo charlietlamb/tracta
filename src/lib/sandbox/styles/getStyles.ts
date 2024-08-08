@@ -8,10 +8,12 @@ export function getStyles(
     ...styles,
     fontSize: getStyle(styles.fontSize, ratio),
     lineHeight: getStyle(styles.lineHeight, ratio),
-    padding: getStyle(styles.padding, ratio),
-    margin: getStyle(styles.margin, ratio),
-    width: getStyle(styles.width, ratio),
-    height: getStyle(styles.height, ratio),
+    paddingLeft: getStyle(styles.paddingLeft, ratio),
+    paddingRight: getStyle(styles.paddingRight, ratio),
+    paddingTop: getStyle(styles.paddingTop, ratio),
+    paddingBottom: getStyle(styles.paddingBottom, ratio),
+    width: getStyleAuto(styles.width, ratio),
+    height: getStyleAuto(styles.height, ratio),
   }
 }
 
@@ -20,6 +22,18 @@ export function getStyle(str: string | number | undefined, ratio: number) {
     console.log('--STYLE UNDEFINED--')
     return undefined
   }
+  if (typeof str === 'string' && str.includes('%')) return str
+  const intStyle =
+    typeof str === 'number' ? str : parseInt(str?.replace('px', ''))
+  return `${intStyle * ratio}px`
+}
+
+export function getStyleAuto(str: string | number | undefined, ratio: number) {
+  if (str === undefined) {
+    console.log('--STYLE UNDEFINED--')
+    return undefined
+  }
+  if (str === 'auto') return 'auto'
   if (typeof str === 'string' && str.includes('%')) return str
   const intStyle =
     typeof str === 'number' ? str : parseInt(str?.replace('px', ''))

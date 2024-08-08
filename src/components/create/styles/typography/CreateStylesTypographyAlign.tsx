@@ -5,7 +5,7 @@ import { useEditorStore } from '@/state/editor/store'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from 'lucide-react'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-export default function CreateSidebarTypographyAlign() {
+export default function CreateStylesTypographyAlign() {
   const { editorState, updateComponent, getComponent } = useEditorStore(
     (state) => state,
   )
@@ -31,7 +31,7 @@ export default function CreateSidebarTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('start')}
-          className={cn('', align === 'start' && 'bg-dark rounded-base')}
+          className={cn('', align === 'start' && 'bg-darker rounded-base')}
         >
           <AlignLeft className="size-4" />
         </Button>
@@ -39,7 +39,7 @@ export default function CreateSidebarTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('center')}
-          className={cn('', align === 'center' && 'bg-dark rounded-base')}
+          className={cn('', align === 'center' && 'bg-darker rounded-base')}
         >
           <AlignCenter className="size-4" />
         </Button>
@@ -47,7 +47,7 @@ export default function CreateSidebarTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('end')}
-          className={cn('', align === 'end' && 'bg-dark rounded-base')}
+          className={cn('', align === 'end' && 'bg-darker rounded-base')}
         >
           <AlignRight className="size-4" />
         </Button>
@@ -55,7 +55,7 @@ export default function CreateSidebarTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('stretch')}
-          className={cn('', align === 'stretch' && 'bg-dark rounded-base')}
+          className={cn('', align === 'stretch' && 'bg-darker rounded-base')}
         >
           <AlignJustify className="size-4" />
         </Button>

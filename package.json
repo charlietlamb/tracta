@@ -97,6 +97,7 @@
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "next-transpile-modules": "^10.0.1",
+    "node-polyfill-webpack-plugin": "^4.0.0",
     "npm": "^10.8.2",
     "office-script": "^1.7.0",
     "path": "^0.12.7",

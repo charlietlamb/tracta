@@ -9,7 +9,7 @@ import {
 import { useScrollbar } from '@/hooks/dialog/useScrollbar'
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
-import CreateComponentGrid from '../component/CreateComponentGrid'
+import CreateComponentGrid from '../../component/CreateComponentGrid'
 import { useSandboxStore } from '@/state/sandbox/store'
 
 export default function CreateToolbarAddButton() {

@@ -1,14 +1,17 @@
 import { Input } from '@/components/ui/input'
-import { defaultStyles } from '@/lib/constants'
 import { extractDigits } from '@/lib/general/extractDigits'
 import { updateStyles } from '@/lib/sandbox/styles/updateStyles'
 import { useEditorStore } from '@/state/editor/store'
 import React, { useEffect, useState } from 'react'
 
+import GeneralSelect from '@/components/general/select/GeneralSelect'
+
 export default function CreateStylesSizeStandard() {
   const { editorState, getComponent, updateComponent } = useEditorStore(
     (state) => state,
   )
+  const [widthMetric, setWidthMetric] = useState<Metric>('%')
+  const [heightMetric, setHeightMetric] = useState<Metric>('%')
   const selected = editorState.editor.selected
   const [width, setWidth] = useState<string>(
     extractDigits(
@@ -45,34 +48,20 @@ export default function CreateStylesSizeStandard() {
   return (
     <>
       <h6 className="flex items-center justify-start font-larken">Width</h6>
-      <Input
-        variant="editor"
+      <GeneralSelect
         value={width}
-        onChange={(e) => {
-          setWidth(e.target.value)
-          updateStyles(
-            editorState,
-            selected.id,
-            { width: e.target.value + '%' },
-            getComponent,
-            updateComponent,
-          )
-        }}
+        setValue={setWidth}
+        metric={widthMetric}
+        setMetric={setWidthMetric}
+        stylesKey="width"
       />
       <h6 className="flex items-center justify-start font-larken">Height</h6>
-      <Input
-        variant="editor"
+      <GeneralSelect
         value={height}
-        onChange={(e) => {
-          setHeight(e.target.value)
-          updateStyles(
-            editorState,
-            selected.id,
-            { height: e.target.value + '%' },
-            getComponent,
-            updateComponent,
-          )
-        }}
+        setValue={setHeight}
+        metric={heightMetric}
+        setMetric={setHeightMetric}
+        stylesKey="height"
       />
     </>
   )

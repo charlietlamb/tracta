@@ -3,6 +3,7 @@ import addComponent from './functions/addComponent'
 import updateComponent from './functions/updateComponent'
 import deleteComponent from './functions/deleteComponent'
 import getComponent from './functions/getComponent'
+import { defaultStylesBody } from '@/lib/constants'
 
 const initEditor: Editor = {
   settings: {
@@ -16,7 +17,7 @@ const initEditor: Editor = {
       id: '1',
       tracta: 'body',
       name: 'Body',
-      styles: { color: 'black' },
+      styles: defaultStylesBody,
       content: [],
     },
   ],

@@ -9,8 +9,29 @@ export const defaultStyles: React.CSSProperties = {
   fontWeight: '400',
   fontFamily: 'Larken',
   color: '#000000',
+  width: 'auto',
+  height: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: 'transparent',
+}
+
+export const defaultStylesBody: React.CSSProperties = {
+  backgroundPosition: 'center',
+  objectFit: 'cover',
+  backgroundRepeat: 'no-repeat',
+  textAlign: 'left',
+  opacity: '100%',
+  fontSize: '16px',
+  lineHeight: '16px',
+  fontWeight: '400',
+  fontFamily: 'Larken',
+  color: '#000000',
   width: '100%',
   height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: 'transparent',
 }
 
 export const defaultTextStyles: React.CSSProperties = {
@@ -25,6 +46,9 @@ export const defaultTextStyles: React.CSSProperties = {
   fontFamily: 'Larken',
   color: '#000000',
   padding: '4px',
-  width: '100%',
-  height: '100%',
+  width: 'auto',
+  height: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: 'transparent',
 }

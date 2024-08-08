@@ -11,7 +11,7 @@ import React, {
   useState,
 } from 'react'
 
-export default function CreateSidebarTypographySize() {
+export default function CreateStylesTypographySize() {
   const { editorState, getComponent, updateComponent } = useEditorStore(
     (state) => state,
   )

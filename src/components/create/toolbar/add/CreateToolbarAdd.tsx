@@ -26,7 +26,7 @@ export default function CreateToolbarAdd() {
         value="components"
         className="bg-dark text-light divide-border divide-y rounded-none rounded-b-none border-none shadow-none"
       >
-        <AccordionTrigger className="border-none bg-transparent p-0 px-2 font-larken text-xl shadow-none">
+        <AccordionTrigger className="border-none bg-transparent px-2 py-1 font-larken text-xl text-white shadow-none">
           Components
         </AccordionTrigger>
         <AccordionContent className="bg-dark grid auto-rows-min grid-cols-3 gap-0 rounded-b-none p-0">
