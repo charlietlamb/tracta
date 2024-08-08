@@ -5,7 +5,8 @@ import { useEditorStore } from '@/state/editor/store'
 import { useSandboxStore } from '@/state/sandbox/store'
 import clsx from 'clsx'
 import { Trash } from 'lucide-react'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import Tiptap from '../../tiptap/TipTap'
 
 export default function Text({ component }: { component: TractaComponent }) {
   const { editorState, changeClickedComponent, updateComponent } =
@@ -17,8 +18,13 @@ export default function Text({ component }: { component: TractaComponent }) {
   const handleOnClickBody = (e: React.MouseEvent) => {
     e.stopPropagation()
     changeClickedComponent(editorState, component)
-    if (spanRef.current) spanRef.current.focus()
+    // if (spanRef.current) spanRef.current.focus()
   }
+  useEffect(() => {
+    if (!editorState.editor.selected) return
+    setSelected(editorState.editor.selected.id === component.id)
+  }, [editorState.editor.selected])
+  const [selected, setSelected] = useState(false)
   //WE ARE NOT ADDING DRAG DROP
   return (
     <div
@@ -46,23 +52,24 @@ export default function Text({ component }: { component: TractaComponent }) {
         )}
       <span
         ref={spanRef}
-        contentEditable={!editorState.editor.liveMode}
         className="tracta-text focus-active:outline-none placeholder:text-slate-500 focus-visible:outline-none"
-        data-placeholder={
-          editorState.editor.liveMode ? '' : 'Enter text here...'
-        }
+        // contentEditable={!editorState.editor.liveMode}
+        // data-placeholder={
+        //   editorState.editor.liveMode ? '' : 'Enter text here...'
+        // }
         onBlur={(e) => {
           const spanElement = e.target as HTMLSpanElement
           updateComponent(editorState, {
             ...component,
             content: {
-              innerText: spanElement.innerText,
+              innerHTML: spanElement.innerHTML,
             },
           })
         }}
       >
-        {!Array.isArray(component.content) && component.content.innerText}
+        {!Array.isArray(component.content) && component.content.innerHTML}
       </span>
+      <Tiptap />
     </div>
   )
 }

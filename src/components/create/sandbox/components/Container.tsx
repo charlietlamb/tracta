@@ -28,7 +28,7 @@ const Container = ({ component }: { component: TractaComponent }) => {
         addComponent(
           editorState,
           {
-            content: { innerText: 'Text Element' },
+            content: { innerHTML: 'Text Element' },
             id: v4(),
             name: 'Text',
             styles: {

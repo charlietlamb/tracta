@@ -36,7 +36,7 @@ declare global {
     styles: React.CSSProperties
     content:
       | TractaComponent[]
-      | { href?: string; innerText?: string; src?: string }
+      | { href?: string; innerHTML?: string; src?: string }
   }
   type TractaComponentType =
     | 'body'
