@@ -1,6 +1,7 @@
-![Image 3](https://i.ibb.co/b3vyq7b/image3.png)
+<img width="1710" alt="app" src="https://github.com/user-attachments/assets/3bd0ad33-ef4f-43b3-9eed-b3dcfd71cc31">
 
 # Tracta
+
 
 Tracta is an old app I created when sharpening my frontend tools.
 It makes use of a webflow like editor and makes use of React to create a smooth.
@@ -10,4 +11,4 @@ However being able to dyanmically create styles based on user input and craft do
 
 Due to the frontend focus, Tracta uses supabase for storing data, at the moment it is not currently deployed :(
 
-![Image 1](https://i.ibb.co/d5dJKFN/image1.png)
+<img width="1710" alt="hero" src="https://github.com/user-attachments/assets/06f9948c-34b3-47f1-b37f-0bc6eced19b3">
