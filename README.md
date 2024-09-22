@@ -5,3 +5,7 @@ This project is far from complete and ultimately I have moved on to other priori
 However being able to dyanmically create styles based on user input and craft documents like this really increased my frontend knowledge.
 
 Due to the frontend focus, Tracta uses supabase for storing data, at the moment it is not currently deployed :(
+
+![Image 1](https://i.ibb.co/d5dJKFN/image1.png)
+![Image 2](https://i.ibb.co/zmbcHp9/image2.png)
+![Image 3](https://i.ibb.co/b3vyq7b/image3.png)
