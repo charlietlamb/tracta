@@ -5,17 +5,16 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import CreateStylesSpacingStandard from './CreateStylesSpacingStandard'
+import StylesSectionLabel from '../StylesSectionLabel'
 
 export default function CreateStylesSpacing() {
   return (
     <AccordionItem
       value="spacing"
-      className="bg-dark w-full rounded-none border-none text-white shadow-none"
+      className="w-full rounded-none border-none bg-dark text-white shadow-none"
     >
-      <AccordionTrigger className="bg-dark rounded-none border-none p-2 py-0 font-larken">
-        Spacing
-      </AccordionTrigger>
-      <AccordionContent className="bg-dark font-veryLight grid h-full w-full grid-cols-[48px_1fr_48px_1fr] gap-2 rounded-none p-2">
+      <StylesSectionLabel>Spacing</StylesSectionLabel>
+      <AccordionContent className="grid h-full w-full grid-cols-[44px_1fr_44px_1fr] gap-2 rounded-none border-t border-border bg-dark p-2 font-veryLight">
         <CreateStylesSpacingStandard />
       </AccordionContent>
     </AccordionItem>

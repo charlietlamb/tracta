@@ -4,34 +4,41 @@ import { cn } from '@/lib/utils'
 import { useEditorStore } from '@/state/editor/store'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from 'lucide-react'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import StyleLabel from '../StyleLabel'
+import { getInitStyle } from '@/lib/sandbox/styles/getInitStyle'
 
 export default function CreateStylesTypographyAlign() {
   const { editorState, updateComponent, getComponent } = useEditorStore(
     (state) => state,
   )
   const selected = editorState.editor.selected
-  const [align, setAlign] = useState('start')
+  const [align, setAlign] = useState(
+    getInitStyle(selected?.styles, 'textAlign', false, 'start') as string,
+  )
   if (!selected) return null
+  useEffect(() => {
+    setAlign(selected?.styles?.textAlign || 'start')
+  }, [selected])
   function handleAlignClick(align: string) {
     if (!selected) return
     setAlign(align)
     updateStyles(
       editorState,
       selected.id,
-      { alignItems: align },
+      { textAlign: align as React.CSSProperties['textAlign'] },
       getComponent,
       updateComponent,
     )
   }
   return (
     <>
-      <h6 className="flex items-center justify-start font-larken">Align</h6>
-      <div className="border-border divide-x-1 divide-border bg-border col-span-3 flex h-6 w-full overflow-hidden rounded-base border">
+      <StyleLabel>Align</StyleLabel>
+      <div className="divide-x-1 col-span-3 flex h-6 w-full divide-border overflow-hidden rounded-base border border-border bg-border">
         <Button
           variant="align"
           size="align"
           onClick={() => handleAlignClick('start')}
-          className={cn('', align === 'start' && 'bg-darker rounded-base')}
+          className={cn('', align === 'start' && 'rounded-base bg-darker')}
         >
           <AlignLeft className="size-4" />
         </Button>
@@ -39,7 +46,7 @@ export default function CreateStylesTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('center')}
-          className={cn('', align === 'center' && 'bg-darker rounded-base')}
+          className={cn('', align === 'center' && 'rounded-base bg-darker')}
         >
           <AlignCenter className="size-4" />
         </Button>
@@ -47,15 +54,15 @@ export default function CreateStylesTypographyAlign() {
           variant="align"
           size="align"
           onClick={() => handleAlignClick('end')}
-          className={cn('', align === 'end' && 'bg-darker rounded-base')}
+          className={cn('', align === 'end' && 'rounded-base bg-darker')}
         >
           <AlignRight className="size-4" />
         </Button>
         <Button
           variant="align"
           size="align"
-          onClick={() => handleAlignClick('stretch')}
-          className={cn('', align === 'stretch' && 'bg-darker rounded-base')}
+          onClick={() => handleAlignClick('justify')}
+          className={cn('', align === 'stretch' && 'rounded-base bg-darker')}
         >
           <AlignJustify className="size-4" />
         </Button>

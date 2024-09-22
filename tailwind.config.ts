@@ -48,6 +48,12 @@ const config: Config = {
         smallAccent: '2px 2px 0px 0px rgba(193, 154, 107, 1)',
         smallDarker: '2px 2px 0px 0px rgba(26, 29, 29, 1)',
       },
+      fontSize: {
+        '2xs': '0.5rem',
+      },
+      lineHeight: {
+        '2xs': '0.5rem',
+      },
       translate: {
         boxShadowX: '4px',
         boxShadowY: '4px',

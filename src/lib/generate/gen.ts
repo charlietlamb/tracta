@@ -1,8 +1,7 @@
 'use server'
 
-import { FileforgeClient } from '@fileforge/client/dist/esm/client/codegen'
+import { FileforgeClient } from '@fileforge/client'
 import fs from 'fs'
-import { Blob } from 'buffer'
 
 const ff = new FileforgeClient({
   apiKey: process.env.FILEFORGE_API_KEY,
@@ -19,6 +18,8 @@ export async function gen(html: string): Promise<Buffer | null> {
       {
         options: {
           host: false, // default
+          test: true,
+          margin: 0,
         },
       },
       {
@@ -36,9 +37,10 @@ export async function gen(html: string): Promise<Buffer | null> {
 
     // Read the file into a buffer
     const pdfBuffer = await fs.promises.readFile('./result.pdf')
+
     return pdfBuffer
   } catch (e) {
-    console.log(e)
+    console.error(e)
     return null
   }
 }

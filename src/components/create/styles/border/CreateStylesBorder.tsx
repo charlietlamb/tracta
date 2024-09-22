@@ -1,24 +1,20 @@
-import {
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
+import { AccordionContent, AccordionItem } from '@/components/ui/accordion'
 import CreateStylesBorderRadius from './CreateStylesBorderRadius'
+import StylesSectionLabel from '../StylesSectionLabel'
+import CreateStylesBorderStyle from './CreateStylesBorderStyle'
 
 export default function CreateStylesBorder() {
   return (
     <AccordionItem
       value="border"
-      className="bg-dark w-full rounded-none border-none text-white shadow-none"
+      className="w-full rounded-none border-none bg-dark text-white shadow-none"
     >
-      <AccordionTrigger className="bg-dark rounded-none border-none p-2 py-0 font-larken">
-        Border
-      </AccordionTrigger>
-      <AccordionContent className="bg-dark font-veryLight flex h-full w-full flex-col gap-2 rounded-none p-2">
+      <StylesSectionLabel>Border</StylesSectionLabel>
+      <AccordionContent className="flex h-full w-full flex-col rounded-none border-t border-border bg-dark p-2 font-veryLight">
         <div className="grid grid-cols-[48px_1fr] gap-2 rounded-none">
           <CreateStylesBorderRadius />
         </div>
-        <div className="grid grid-cols-2 gap-2 rounded-none"></div>
+        <CreateStylesBorderStyle />
       </AccordionContent>
     </AccordionItem>
   )

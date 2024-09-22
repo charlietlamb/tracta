@@ -23,6 +23,11 @@ declare global {
     selected: TractaComponent | null
     liveMode: boolean
     pages: number
+    styleOptions: StyleOptions
+  }
+
+  interface StyleOptions {
+    linkedBorder: boolean
   }
 
   interface TractaSettings {
@@ -44,6 +49,8 @@ declare global {
     | 'heading'
     | 'text'
     | 'table'
+    | 'section'
+    | 'clause'
     | null
 
   interface EditorHistory {

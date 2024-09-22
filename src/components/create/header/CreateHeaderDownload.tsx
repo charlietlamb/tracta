@@ -6,33 +6,23 @@ import TractaComponent from '../sandbox/TractaComponent'
 import { gen } from '@/lib/generate/gen'
 import { useState } from 'react'
 
-const testHTML = `<!DOCTYPE html>
-<html>
-    <head>
-        <title>My First Document</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
-`
-
 export default function CreateHeaderDownload() {
   const { editorState } = useEditorStore((state) => state)
   const [loading, setLoading] = useState(false)
-  const component = (
-    <Tailwind>
-      <div className="w-[794px] bg-white text-black">
-        {Array.isArray(editorState.editor.components) &&
-          editorState.editor.components.map((c) => (
-            <TractaComponent key={c.id} component={c} />
-          ))}
-      </div>
-    </Tailwind>
-  )
+
   async function downloadPdf(editorState: EditorState) {
-    setLoading(true)
+    const component = (
+      <Tailwind>
+        <div className="h-full w-[100vw] bg-white text-black">
+          {Array.isArray(editorState.editor.components) &&
+            editorState.editor.components.map((c) => (
+              <TractaComponent key={c.id} component={c} pdf />
+            ))}
+        </div>
+      </Tailwind>
+    )
     const html = await compile(component)
+    console.log(html)
     const pdf = await gen(html)
     if (!pdf) return
     const pdfArray = new Uint8Array(pdf)
@@ -49,11 +39,7 @@ export default function CreateHeaderDownload() {
   }
   return (
     <div className="flex items-center">
-      <Button
-        variant="ghost"
-        className="px-2 text-white"
-        onClick={() => downloadPdf(editorState)}
-      >
+      <Button variant="ghostHeader" onClick={() => downloadPdf(editorState)}>
         {!loading ? (
           <Download className="size-5" />
         ) : (

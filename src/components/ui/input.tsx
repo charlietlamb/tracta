@@ -15,7 +15,7 @@ const inputVariants = cva(
       variant: {
         default: '',
         editor:
-          'border-border bg-darker font-veryLight selection:bg-border mb-0 h-auto border px-1 py-[2px] pr-6 shadow-none',
+          'bg-darker font-veryLight selection:bg-border placeholder:text-border mb-0 h-auto border-none px-1 py-[2px] pr-6 shadow-none',
         marginBottom: 'mb-4',
       },
     },

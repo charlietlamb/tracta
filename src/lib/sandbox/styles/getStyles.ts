@@ -14,12 +14,22 @@ export function getStyles(
     paddingBottom: getStyle(styles.paddingBottom, ratio),
     width: getStyleAuto(styles.width, ratio),
     height: getStyleAuto(styles.height, ratio),
+    borderWidth: getStyle(styles.borderWidth, ratio),
+    borderTopWidth: getStyle(styles.borderTopWidth, ratio),
+    borderRightWidth: getStyle(styles.borderRightWidth, ratio),
+    borderBottomWidth: getStyle(styles.borderBottomWidth, ratio),
+    borderLeftWidth: getStyle(styles.borderLeftWidth, ratio),
+    borderRadius: getStyle(styles.borderRadius, ratio),
+    borderTopLeftRadius: getStyle(styles.borderTopLeftRadius, ratio),
+    borderTopRightRadius: getStyle(styles.borderTopRightRadius, ratio),
+    borderBottomRightRadius: getStyle(styles.borderBottomRightRadius, ratio),
+    borderBottomLeftRadius: getStyle(styles.borderBottomLeftRadius, ratio),
   }
 }
 
 export function getStyle(str: string | number | undefined, ratio: number) {
   if (str === undefined) {
-    console.log('--STYLE UNDEFINED--')
+    // console.log('--STYLE UNDEFINED--')
     return undefined
   }
   if (typeof str === 'string' && str.includes('%')) return str
@@ -30,7 +40,7 @@ export function getStyle(str: string | number | undefined, ratio: number) {
 
 export function getStyleAuto(str: string | number | undefined, ratio: number) {
   if (str === undefined) {
-    console.log('--STYLE UNDEFINED--')
+    // console.log('--STYLE UNDEFINED--')
     return undefined
   }
   if (str === 'auto') return 'auto'

@@ -5,6 +5,8 @@ export interface SandboxState {
   setMode: (mode: ToolbarMode) => void
   width: number
   setWidth: (width: number) => void
+  hover: string | null
+  setHover: (hover: string | null) => void
 }
 
 export const useSandboxStore = create<SandboxState>((set) => ({
@@ -12,4 +14,6 @@ export const useSandboxStore = create<SandboxState>((set) => ({
   setMode: (mode: ToolbarMode) => set({ mode }),
   width: 0,
   setWidth: (width: number) => set({ width }),
+  hover: null,
+  setHover: (hover: string | null) => set({ hover }),
 }))

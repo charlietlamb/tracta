@@ -1,23 +1,29 @@
 'use client'
 import clsx from 'clsx'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { v4 } from 'uuid'
-import { Plus, Trash } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { useEditorStore } from '@/state/editor/store'
-import { defaultStyles } from '@/lib/constants'
-import { Badge } from '@/components/ui/badge'
+import { defaultStyles } from '@/lib/styles'
 import TractaComponent from '../TractaComponent'
-import { Button } from '@/components/ui/button'
 import { useSandboxStore } from '@/state/sandbox/store'
-import { cn } from '@/lib/utils'
 import { getStyles } from '@/lib/sandbox/styles/getStyles'
-
-const Container = ({ component }: { component: TractaComponent }) => {
-  const { id, content, name, styles, tracta } = component
-  const { width, setMode } = useSandboxStore((state) => state)
+import ComponentLabel from '../general/ComponentLabel'
+import ContainerAdd from '../general/ContainerAdd'
+import { cn } from '@/lib/utils'
+import Hover from '../general/Hover'
+export default function Container({
+  component,
+  pdf = false,
+}: {
+  component: TractaComponent
+  pdf?: boolean
+}) {
+  const { id, content, styles, tracta } = component
+  const { width, hover, setHover } = useSandboxStore((state) => state)
   const { editorState, addComponent, deleteComponent, changeClickedComponent } =
     useEditorStore((state) => state)
-
+  const show = !pdf && !editorState.editor.liveMode
   const handleOnDrop = (e: React.DragEvent, type: string) => {
     e.stopPropagation()
     const componentType = e.dataTransfer.getData(
@@ -74,72 +80,57 @@ const Container = ({ component }: { component: TractaComponent }) => {
     deleteComponent(editorState, component)
   }
 
+  useEffect(() => {
+    console.log(hover)
+  }, [hover])
+
   return (
     <div
-      style={getStyles({ ...styles, padding: '16px' }, width)}
-      className={clsx('group relative transition-all', {
-        // 'w-full max-w-full': tracta === 'container' || tracta === '2Col',
+      className={clsx('group relative  transition-all', {
         'h-fit': tracta === 'container',
         'h-full w-full': tracta === 'body',
-        // 'overflow-y-scroll ': tracta === 'body',
-        // 'flex flex-col md:!flex-row': tracta === '2Col',
-        '!border-blue-500':
+        'border !border-blue-500':
           editorState.editor.selected?.id === id &&
-          !editorState.editor.liveMode &&
+          show &&
           editorState.editor.selected?.tracta !== 'body',
         '!border-2 !border-blue-500':
           editorState.editor.selected?.id === id &&
-          !editorState.editor.liveMode &&
+          show &&
           editorState.editor.selected?.tracta === 'body',
-        '!border-solid':
-          editorState.editor.selected?.id === id &&
-          !editorState.editor.liveMode,
-        'border-border border-[1px] border-dashed':
-          !editorState.editor.liveMode,
+        '!border-solid': editorState.editor.selected?.id === id && show,
+        'border border-border/20': !editorState.editor.liveMode && !pdf,
         '!border-solid border-blue-500':
-          editorState.editor.selected?.tracta !== 'body' &&
-          !editorState.editor.liveMode,
+          editorState.editor.selected?.tracta !== 'body' && show,
       })}
       onDrop={(e) => handleOnDrop(e, id)}
       onDragOver={handleDragOver}
       draggable={tracta !== 'body'}
       onClick={handleOnClickBody}
       onDragStart={(e) => handleDragStart(e, 'container')}
+      onMouseOver={(e) => {
+        e.stopPropagation()
+        setHover(id)
+      }}
+      onMouseLeave={(e) => {
+        e.stopPropagation()
+        setHover(null)
+      }}
     >
-      <Badge
-        variant="editor"
-        className={cn(
-          'hidden',
-          editorState.editor.selected?.id === component.id &&
-            !editorState.editor.liveMode &&
-            'block',
+      <div style={getStyles({ ...styles, padding: '16px' }, pdf ? 794 : width)}>
+        <ComponentLabel component={component} pdf={pdf} />
+        <Hover component={component} styles={styles} />
+        {Array.isArray(content) && content.length > 0 ? (
+          content.map((childElement) => (
+            <TractaComponent
+              component={childElement}
+              key={childElement.id}
+              pdf={pdf}
+            />
+          ))
+        ) : (
+          <ContainerAdd pdf={pdf} />
         )}
-      >
-        {component.name}
-      </Badge>
-
-      {Array.isArray(content) && content.length > 0 ? (
-        content.map((childElement) => (
-          <TractaComponent key={childElement.id} component={childElement} />
-        ))
-      ) : (
-        <div
-          className="flex h-full w-full items-center justify-center"
-          onClick={() => setMode('add')}
-        >
-          <Plus style={getStyles({ width: '64px', height: '64px' }, width)} />
-        </div>
-      )}
-
-      {editorState.editor.selected?.id === component.id &&
-        !editorState.editor.liveMode &&
-        editorState.editor.selected?.tracta !== 'body' && (
-          <div className="bg-primary absolute -right-[1px] -top-[25px] rounded-none rounded-t-lg  px-2.5 py-1 text-xs font-bold ">
-            <Trash size={16} onClick={handleDeleteElement} />
-          </div>
-        )}
+      </div>
     </div>
   )
 }
-
-export default Container

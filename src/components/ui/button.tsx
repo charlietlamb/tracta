@@ -26,6 +26,8 @@ const buttonVariants = cva(
         dangerNoShadow: 'bg-red-200 hover:bg-red-400  border-2 border-black',
         ghost:
           'bg-transparent text-black hover:bg-transparent hover:text-border',
+        ghostHeader:
+          'bg-transparent text-black hover:bg-transparent hover:text-border px-2 text-white hover:text-white/80',
         appOutline:
           'border-border border-2 text-white shadow-smallBorder hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         appSmall: 'border-border border-2 text-white',

@@ -5,6 +5,7 @@ import { useEditorStore } from '@/state/editor/store'
 import React, { useEffect, useState } from 'react'
 
 import GeneralSelect from '@/components/general/select/GeneralSelect'
+import StyleLabel from '../StyleLabel'
 
 export default function CreateStylesSizeStandard() {
   const { editorState, getComponent, updateComponent } = useEditorStore(
@@ -47,7 +48,7 @@ export default function CreateStylesSizeStandard() {
   if (!selected) return null
   return (
     <>
-      <h6 className="flex items-center justify-start font-larken">Width</h6>
+      <StyleLabel>Width</StyleLabel>
       <GeneralSelect
         value={width}
         setValue={setWidth}
@@ -55,13 +56,14 @@ export default function CreateStylesSizeStandard() {
         setMetric={setWidthMetric}
         stylesKey="width"
       />
-      <h6 className="flex items-center justify-start font-larken">Height</h6>
+      <StyleLabel>Height</StyleLabel>
       <GeneralSelect
         value={height}
         setValue={setHeight}
         metric={heightMetric}
         setMetric={setHeightMetric}
         stylesKey="height"
+        defaultValue="auto"
       />
     </>
   )

@@ -4,17 +4,16 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import CreateStylesBackgroundStandard from './CreateStylesBackgroundStandard'
+import StylesSectionLabel from '../StylesSectionLabel'
 
 export default function CreateStylesBackground() {
   return (
     <AccordionItem
       value="background"
-      className="bg-dark w-full rounded-none border-none text-white shadow-none"
+      className="w-full rounded-none border-none bg-dark text-white shadow-none"
     >
-      <AccordionTrigger className="bg-dark rounded-none border-none p-2 py-0 font-larken">
-        Background
-      </AccordionTrigger>
-      <AccordionContent className="bg-dark font-veryLight grid h-full w-full grid-cols-[48px_1fr_48px_1fr] gap-2 rounded-none p-2">
+      <StylesSectionLabel>Background</StylesSectionLabel>
+      <AccordionContent className="grid h-full w-full grid-cols-[44px_1fr_44px_1fr] gap-2 rounded-none border-t border-border bg-dark p-2 font-veryLight">
         <CreateStylesBackgroundStandard />
       </AccordionContent>
     </AccordionItem>

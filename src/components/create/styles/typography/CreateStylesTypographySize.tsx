@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/input'
-import { defaultStyles } from '@/lib/constants'
+import { defaultStyles } from '@/lib/styles'
 import { extractDigits } from '@/lib/general/extractDigits'
 import { updateStyles } from '@/lib/sandbox/styles/updateStyles'
 import { useEditorStore } from '@/state/editor/store'
@@ -10,6 +10,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import StyleLabel from '../StyleLabel'
 
 export default function CreateStylesTypographySize() {
   const { editorState, getComponent, updateComponent } = useEditorStore(
@@ -50,8 +51,8 @@ export default function CreateStylesTypographySize() {
   if (!selected) return null
   return (
     <>
-      <h6 className="flex items-center justify-start font-larken">Size</h6>
-      <div className="relative w-full">
+      <StyleLabel>Size</StyleLabel>
+      <div className="relative w-auto">
         <Input
           variant="editor"
           value={size}
@@ -68,7 +69,7 @@ export default function CreateStylesTypographySize() {
         />
         <div className="absolute right-1 top-0 text-white">px</div>
       </div>
-      <h6 className="flex items-center justify-start font-larken">Height</h6>
+      <StyleLabel>Height</StyleLabel>
       <div className="relative w-full">
         <Input
           variant="editor"

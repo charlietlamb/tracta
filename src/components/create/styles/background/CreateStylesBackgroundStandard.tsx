@@ -8,6 +8,7 @@ import { updateStyles } from '@/lib/sandbox/styles/updateStyles'
 import { useEditorStore } from '@/state/editor/store'
 import { useEffect, useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
+import StyleLabel from '../StyleLabel'
 export default function CreateStylesBackgroundStandard() {
   const { editorState, updateComponent, getComponent } = useEditorStore(
     (state) => state,
@@ -18,7 +19,7 @@ export default function CreateStylesBackgroundStandard() {
   )
   if (!selected) return null
   useEffect(() => {
-    setColor(selected?.styles?.color || '#00000000')
+    setColor(selected?.styles?.backgroundColor || '#00000000')
   }, [selected])
 
   function handleColorChange(e: string) {
@@ -34,15 +35,18 @@ export default function CreateStylesBackgroundStandard() {
   }
   return (
     <>
-      <h6 className="flex items-center justify-start font-larken">Color</h6>
+      <StyleLabel>Color</StyleLabel>
       <Popover>
-        <div className="border-border col-span-3 flex items-center overflow-hidden rounded-base border">
+        <div className="col-span-3 flex items-center overflow-hidden rounded-base">
           <PopoverTrigger asChild>
-            <div className="size-6" style={{ backgroundColor: color }} />
+            <div
+              className="size-6 cursor-pointer"
+              style={{ backgroundColor: color }}
+            />
           </PopoverTrigger>
           <Input
             variant="editor"
-            className="border-none"
+            className="rounded-none border-none"
             value={color}
             onChange={(e) => handleColorChange(e.target.value)}
           />

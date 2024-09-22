@@ -16,7 +16,9 @@ const badgeVariants = cva(
           'border-transparent bg-red-500 text-slate-50 hover:bg-red-500/80 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/80',
         outline: 'text-slate-950 dark:text-slate-50',
         editor:
-          'bg-blue-500 text-slate-50 border-blue-500 border-none absolute -left-[1px] -top-[20px] rounded-none rounded-t-lg',
+          'bg-blue-500 px-0.5 py-0 text-xs text-slate-50 border-blue-500 border-none absolute -left-[2px] -top-[16px] rounded-none ',
+        editorGhost:
+          'bg-transparent px-0.5 py-0 text-xs text-blue-500 font-light border-none absolute -left-[2px] -top-[16px] rounded-none ',
       },
     },
     defaultVariants: {

@@ -10,6 +10,7 @@ import { useEditorStore } from '@/state/editor/store'
 import { useSandboxStore } from '@/state/sandbox/store'
 import { v4 as uuidv4 } from 'uuid'
 import React from 'react'
+import { getFreshComponent } from '@/lib/sandbox/components/functions/getFreshComponent'
 
 export default function CreateToolbarAdd() {
   const { editorState, addComponent } = useEditorStore((state) => state)
@@ -20,28 +21,28 @@ export default function CreateToolbarAdd() {
     <Accordion
       type="multiple"
       defaultValue={['components']}
-      className="bg-dark text-light divide-border border-border absolute bottom-0 left-[100%] top-0 z-50 flex h-full w-60 flex-col divide-y rounded-none border-x !border-t-0 shadow-none transition"
+      className="absolute bottom-0 left-[100%] top-0 z-50 flex h-full w-60 flex-col divide-y divide-border rounded-none border-x !border-t-0 border-border bg-dark text-light shadow-none transition"
     >
       <AccordionItem
         value="components"
-        className="bg-dark text-light divide-border divide-y rounded-none rounded-b-none border-none shadow-none"
+        className="divide-y divide-border rounded-none rounded-b-none border-none bg-dark text-light shadow-none"
       >
         <AccordionTrigger className="border-none bg-transparent px-2 py-1 font-larken text-xl text-white shadow-none">
           Components
         </AccordionTrigger>
-        <AccordionContent className="bg-dark grid auto-rows-min grid-cols-3 gap-0 rounded-b-none p-0">
+        <AccordionContent className="grid auto-rows-min grid-cols-3 gap-0 rounded-b-none bg-dark p-0">
           {Components.map((component, index) => (
             <div
               key={component.id}
               className={cn(
-                'border-border hover:bg-border flex h-20 w-20 cursor-pointer flex-col items-center justify-center border-b p-2 text-white transition',
-                index % 3 === 1 && 'border-border border-x',
+                'flex h-20 w-20 cursor-pointer flex-col items-center justify-center border-b border-border p-2 text-light transition hover:bg-border',
+                index % 3 === 1 && 'border-x border-border',
               )}
               onClick={() => {
                 {
                   addComponent(
                     editorState,
-                    { ...component.component, id: uuidv4() },
+                    getFreshComponent(component.component),
                     selected,
                   )
                   setMode(null)
@@ -49,7 +50,7 @@ export default function CreateToolbarAdd() {
               }}
             >
               {component.icon}
-              <p className="text-light font-larken">{component.text}</p>
+              <p className="text-xs text-white/80">{component.text}</p>
             </div>
           ))}
         </AccordionContent>

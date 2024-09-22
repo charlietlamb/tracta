@@ -10,16 +10,14 @@ export default function CreateHeaderUndo() {
   return (
     <div className="flex items-center">
       <Button
-        className="px-2 text-white"
-        variant="ghost"
+        variant="ghostHeader"
         onClick={() => undo(editorState)}
         disabled={editorState.history.index === 0}
       >
         <Undo2 className="size-5" />
       </Button>
       <Button
-        className="px-2 text-white"
-        variant="ghost"
+        variant="ghostHeader"
         onClick={() => redo(editorState)}
         disabled={
           editorState.history.index === editorState.history.editors.length - 1

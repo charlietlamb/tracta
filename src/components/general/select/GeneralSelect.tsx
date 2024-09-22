@@ -21,6 +21,7 @@ export default function GeneralSelect({
   stylesKey,
   defaultValue = 'auto',
   className,
+  onChange = null,
 }: {
   value: string
   setValue: React.Dispatch<React.SetStateAction<string>>
@@ -29,6 +30,7 @@ export default function GeneralSelect({
   stylesKey: string
   defaultValue?: string
   className?: string
+  onChange?: null | ((e: string) => void)
 }) {
   const { editorState, getComponent, updateComponent } = useEditorStore(
     (state) => state,
@@ -46,6 +48,10 @@ export default function GeneralSelect({
         placeholder={defaultValue}
         className="pr-[30px]"
         onChange={(e) => {
+          if (onChange) {
+            onChange(e.target.value)
+            return
+          }
           setValue(e.target.value)
           const newVar =
             e.target.value == 'auto' || e.target.value.length === 0
@@ -74,7 +80,7 @@ export default function GeneralSelect({
           )
         }}
       >
-        <SelectTrigger className="text-light absolute bottom-0 right-0 top-0 z-10 h-auto w-[30px] items-center justify-start border-none p-0 font-larken">
+        <SelectTrigger className="absolute bottom-0 right-0 top-0 z-10 h-auto w-[30px] items-center justify-start border-none p-0 font-larken text-light">
           <p className={cn(' leading-none', metric === '%' && 'pt-[2px]')}>
             {metric}
           </p>

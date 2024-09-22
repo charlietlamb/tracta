@@ -222,3 +222,8 @@ body::-webkit-scrollbar-thumb {
     var(--rpv-default-layout__toolbar-border-bottom-color);
   height: 40px;
 }
+
+.tiptap-editor .ProseMirror-focused {
+  outline: none;
+  border: none;
+}

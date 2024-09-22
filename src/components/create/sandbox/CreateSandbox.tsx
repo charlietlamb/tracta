@@ -12,12 +12,12 @@ export default function CreateSandbox() {
   useSandbox(width, height, ref, editorState.editor.pages, setWidth)
   return (
     <div
-      className="bg-darker no-scrollbar flex w-full flex-grow flex-col items-center overflow-y-auto px-[10vw] py-4"
+      className="no-scrollbar flex w-full flex-grow flex-col items-center overflow-y-auto bg-darker px-[10vw] py-4"
       style={{ height: 'calc(100vh - 32px)' }}
     >
       <Resizable
         defaultSize={{
-          width: '80vw',
+          width: '80%',
           height: '100%',
         }}
         maxHeight="100%"

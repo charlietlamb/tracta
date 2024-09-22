@@ -9,18 +9,19 @@ export default function Hero() {
   const router = useRouter()
   return (
     <div
-      className="bg-dark text-light relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden"
+      className="relative inset-0 flex w-full flex-col items-center justify-center overflow-hidden bg-dark text-light"
       style={{ minHeight: 'calc(100vh - 58px)' }}
     >
       <MovingGrid />
       <div className="relative z-10 mx-auto flex w-container max-w-full flex-col items-center gap-4 px-5 py-[110px] text-center md:gap-8 lg:py-[150px]">
         <div className="flex w-full flex-col items-center gap-2">
           <h1 className="h1-text">
-            Start creating contracts <br />
-            for your business.
+            Start creating documents
+            <br />
+            the better way.
           </h1>
           <p className="h2-text tracking-tighter text-accent">
-            Create your first contract within{' '}
+            Create your first doc within{' '}
             <span className="underline">minutes</span>.
           </p>
         </div>
@@ -28,7 +29,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="hero"
-            className="bg-dark text-light w-fit text-base font-light md:text-lg lg:h-14 lg:text-xl"
+            className="w-fit bg-dark text-base font-light text-light md:text-lg lg:h-14 lg:text-xl"
             onClick={() => router.push('/create')}
           >
             Learn More
@@ -36,7 +37,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="hero"
-            className="bg-dark text-light w-fit text-base font-light md:text-lg lg:h-14 lg:text-xl"
+            className="w-fit bg-dark text-base font-light text-light md:text-lg lg:h-14 lg:text-xl"
             onClick={() => router.push('/create')}
           >
             Get started

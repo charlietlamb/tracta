@@ -14,6 +14,7 @@ import {
   useState,
 } from 'react'
 import { HexColorPicker } from 'react-colorful'
+import StyleLabel from '../StyleLabel'
 export default function CreateStylesTypographyColor() {
   const { editorState, updateComponent, getComponent } = useEditorStore(
     (state) => state,
@@ -38,15 +39,18 @@ export default function CreateStylesTypographyColor() {
   }
   return (
     <>
-      <h6 className="flex items-center justify-start font-larken">Color</h6>
+      <StyleLabel>Color</StyleLabel>
       <Popover>
-        <div className="border-border col-span-3 flex items-center overflow-hidden rounded-base border">
+        <div className="col-span-3 flex items-center overflow-hidden rounded-base">
           <PopoverTrigger asChild>
-            <div className="size-6" style={{ backgroundColor: color }} />
+            <div
+              className="size-6 cursor-pointer"
+              style={{ backgroundColor: color }}
+            />
           </PopoverTrigger>
           <Input
             variant="editor"
-            className="border-none"
+            className="rounded-none border-none"
             value={color}
             onChange={(e) => handleColorChange(e.target.value)}
           />

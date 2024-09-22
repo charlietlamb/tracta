@@ -3,12 +3,18 @@ import addComponent from './functions/addComponent'
 import updateComponent from './functions/updateComponent'
 import deleteComponent from './functions/deleteComponent'
 import getComponent from './functions/getComponent'
-import { defaultStylesBody } from '@/lib/constants'
+import { defaultStylesBody } from '@/lib/styles'
+import getEditorIdArray from './functions/getEditorComponentArray'
+import getEditorComponentArray from './functions/getEditorComponentArray'
+import getComponentParent from './functions/getComponentParent'
 
 const initEditor: Editor = {
   settings: {
     title: 'Tracta',
     template: false,
+  },
+  styleOptions: {
+    linkedBorder: true,
   },
   liveMode: false,
   pages: 1,
@@ -62,6 +68,12 @@ type EditorStore = {
   redo: (editorState: EditorState) => void
   undo: (editorState: EditorState) => void
   load: (editorState: EditorState, editor: Editor) => void
+  getComponentArray: (editorState: EditorState) => TractaComponent[]
+  getParent: (
+    editorState: EditorState,
+    component: TractaComponent,
+  ) => TractaComponent | null
+  toggleLiveMode: (editorState: EditorState) => void
 }
 
 export const useEditorStore = create<EditorStore>((set) => ({
@@ -262,6 +274,42 @@ export const useEditorStore = create<EditorStore>((set) => ({
       editor: {
         ...editorState.editor,
         ...editor,
+      },
+      history: updatedHistory,
+    }
+    set({ editorState: updatedState })
+  },
+
+  getComponentArray: (editorState: EditorState) => {
+    return getEditorComponentArray(editorState.editor.components)
+  },
+
+  getParent: (editorState: EditorState, component: TractaComponent) => {
+    if (!Array.isArray(editorState.editor.components[0].content)) return null
+    return getComponentParent(
+      editorState.editor.components[0].content,
+      editorState.editor.components[0],
+      component,
+    )
+  },
+  toggleLiveMode: (editorState: EditorState) => {
+    const updatedEditor = {
+      ...editorState.editor,
+      liveMode: !editorState.editor.liveMode,
+    }
+    const updatedHistory = {
+      ...editorState.history,
+      editors: [
+        ...editorState.history.editors.slice(0, editorState.history.index + 1),
+        { ...updatedEditor },
+      ],
+      index: editorState.history.index + 1,
+    }
+    const updatedState = {
+      ...editorState,
+      editor: {
+        ...editorState.editor,
+        ...updatedEditor,
       },
       history: updatedHistory,
     }
